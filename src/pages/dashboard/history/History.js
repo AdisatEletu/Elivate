@@ -14,7 +14,7 @@ const History = () => {
   };
   
   return (
-    <div className={'profile-card'}>
+    <div className={'profile-card3'}>
       <div className={'header3  '}>List of your previous referrals</div>
       <div className={'mt-5'}>
         <Nav tabs>
