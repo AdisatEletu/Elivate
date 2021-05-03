@@ -15,6 +15,12 @@ const Signup = lazy(() => import('../pages/auth/signup/Signup'));
 const Verification = lazy(() => import('../pages/auth/signup/Verification'));
 const Setup = lazy(() => import('../pages/auth/signup/Setup'));
 const Raffles = lazy(() => import('../pages/raffles/Raffles'));
+const RaffleDetails = lazy(() => import('../pages/raffles/RaffleDetails'));
+const Watchlist= lazy(() => import('../pages/Watchlist'));
+const Dashboard= lazy(() => import('../pages/dashboard/Dashboard'));
+const Notification= lazy(() => import('../pages/dashboard/notification/Notification'));
+const Ticket= lazy(() => import('../pages/dashboard/ticket/Ticket'));
+const History= lazy(() => import('../pages/dashboard/history/History'));
 
 const Routes = () => (
   // eslint-disable-next-line no-undef
@@ -35,6 +41,13 @@ const Routes = () => (
   
         <PublicRoute exact path='/' component={Home}/>
         <PublicRoute exact path='/raffles' component={Raffles}/>
+        <PublicRoute path='/raffles/:id/details' component={RaffleDetails}/>
+        <PublicRoute path='/raffles/:id/watchlist' component={Watchlist}/>
+        
+        <PrivateRoute exact path={'/dashboard'} component={Dashboard}/>
+        <PrivateRoute exact path={'/notifications'} component={Notification}/>
+        <PrivateRoute exact path={'/tickets'} component={Ticket}/>
+        <PrivateRoute exact path={'/history'} component={History}/>
   
   
         {/* catch all invalid urls */}

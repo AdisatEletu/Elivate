@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import {Link, NavLink} from 'react-router-dom';
 import {FormButton} from "../components/forms/Button";
 
 
@@ -16,31 +16,28 @@ const Header = () => {
         <nav className="menu">
           <ul className="navigation-items">
             <li>
-              <Link to="/about">Home</Link>
+              <NavLink activeClassName={'active-nav'} exact to="/">Home</NavLink>
             </li>
             <li>
-              <Link to="/raffles">Raffles</Link>
+              <NavLink activeClassName={'active-nav'} to="/raffles">Raffles</NavLink>
             </li>
             <li>
-              <Link to="/about">About us</Link>
+              <NavLink activeClassName={'active-nav'} to="/about">About us</NavLink>
             </li>
             <li>
-              <Link to="/">Help & FAQs</Link>
+              <NavLink activeClassName={'active-nav'} to="/help">Help & FAQs</NavLink>
             </li>
             <li>
-              <Link to="/">Charity</Link>
+              <NavLink activeClassName={'active-nav'} to="/charity">Charity</NavLink>
             </li>
             <li>
-              <Link to="/">Winners</Link>
+              <NavLink activeClassName={'active-nav'} to="/winners">Winners</NavLink>
             </li>
             <li>
-              <a href="/login">
-                <Link to="/login">Login</Link>
-              </a>
+                <NavLink activeClassName={'active-nav'} to="/login">Login</NavLink>
             </li>
             <li className={""}>
               <button className={`paragraph-bold text-align-center header-button`} >Sign up</button>
-
             </li>
           </ul>
         </nav>

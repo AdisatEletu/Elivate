@@ -11,10 +11,20 @@
     font-family: "Devonshire", cursive;
 }
 
+hr{
+    background-color: #aeaeae;
+}
+
 * {
     box-sizing: border-box;
 }
 
+.pointer{
+    cursor: pointer;
+}
+.table>:not(:last-child)>:last-child>* {
+    border-bottom: 1px solid #ececec;
+}
 body {
     margin: 0;
     font-family: 'Larsseit', Larsseit, sans-serif;
@@ -31,7 +41,7 @@ a {
 }
 
 a:hover {
-    color: #ffffff;
+    color: initial;
     opacity: 0.7;
 }
 
@@ -82,8 +92,34 @@ a {
     grid-gap: 30px;
 
 }
+.sponsor-grid {
+    display: grid;
+    grid-template-columns: 19% 19% 19% 19% 19%;
+    grid-gap: 30px;
+
+}
+
+.ticket-grid {
+    display: grid;
+    grid-template-columns: 18% 18% 18% 18% 18%;
+    grid-gap: 25px;
+
+}
+
+.profile-grid {
+    display: grid;
+    grid-template-columns: 19% 79% ;
+    grid-gap: 30px;
+
+}
 
 .winner-grid {
+    display: grid;
+    grid-template-columns: 25% 25% 25% 25%;
+    grid-gap: 30px;
+
+}
+.dashboard-grid {
     display: grid;
     grid-template-columns: 25% 25% 25% 25%;
     grid-gap: 30px;
@@ -106,10 +142,12 @@ header a {
     color: #4F5873;
     text-decoration: none;
     font-size: 16px;
+    /*font-weight: bold;*/
 }
 
 header a:hover {
     font-weight: bold;
+    color: #4d9e39;
 }
 
 .menu > ul > li {
@@ -138,6 +176,10 @@ header a:hover {
 
 .margin-top-100 {
     margin-top: 100px;
+}
+
+.margin-top-150 {
+    margin-top: 150px;
 }
 
 ul.navigtion-items {
@@ -309,6 +351,16 @@ ul.navigtion-items {
     border: none;
 }
 
+.ticket-button {
+    background-color: #035EA8;
+    color: #ffffff;
+    width: 100%;
+    height: 33px;
+    border-radius: 100px;
+    outline: none;
+    border: none;
+}
+
 .secondary-btn {
     width: 280px;
     height: 50px;
@@ -318,6 +370,14 @@ ul.navigtion-items {
     text-align: center;
     padding: 0 15px;
     line-height: 50px;
+}
+
+.danger-bg-color {
+    background-color: #EB5757;
+}
+
+.green-bg-color {
+    background-color: #4d9e39;
 }
 
 .header-button {
@@ -405,10 +465,14 @@ ul.navigtion-items {
     /* Add a pointer on hover */
 }
 
+.black-color{
+    color: #000000;
+}
+
 .footer {
     background-color: #00335C;
     min-height: 620px;
-    position: fixed;
+    /*position: fixed;*/
     left: 0;
     bottom: 0;
     width: 100%;
@@ -481,13 +545,12 @@ ul.navigtion-items {
 }
 
 .raffle-button {
-    height: 40px;
+    min-height: 40px;
     border-radius: 4px;
     background-color: rgba(255, 255, 255, 0.2);
     width: 100%;
     color: #ffffff;
-    padding: 0 5%;
-    line-height: 40px;
+    padding: 5%;
 }
 
 .raffle-card-button {
@@ -665,4 +728,145 @@ ul.navigtion-items {
     height: 8px;
     border-radius: 50%;
     margin: 5px;
+}
+
+.active-nav{
+    color: #4d9e39;
+    font-weight: bold;
+}
+
+
+.page-item.active .page-link {
+    background-color: #4d9e39;
+    border-radius: 50% ;
+    color: #ffffff;
+    border: #4d9e39 1px solid;
+}
+
+.page-item.disabled .page-link {
+    border: none;
+    color: #949AAD;
+}
+
+.pagination-holder{
+    border: 1px solid #ececec;
+    padding: 5px 15px;
+    border-radius: 100px;
+}
+
+.raffle-details{
+    min-height: 534px;
+    border-radius: 30px;
+}
+
+.nav-tabs .nav-link.active{
+    background-color: #ffffff;
+    color: #1e3b9e;
+    font-weight: bold;
+}
+
+.nav-tabs .nav-link{
+    background-color: #ececec;
+    color: #4F5873;
+}
+
+.nav-item{
+    margin-right: 10px;
+}
+
+.height-80px{
+    height: 80px;
+}
+
+.tab-content{
+    border: 1px solid #EAEDF3;
+    border-top: none;
+    min-height: 482px;
+    border-radius: 8px;
+}
+
+.raffle-details-image{
+    background-repeat: no-repeat;
+    height: 534px;
+    background-size: contain;
+}
+
+.padding-5{
+    padding: 0 5%;
+}
+
+.dashboard-stats-holder{
+    min-height: 142px;
+    border-radius: 20px;
+    padding: 20px
+}
+.dashboard-stats{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.fw-400{
+    font-weight: 400;
+}
+
+.profile-card{
+    box-shadow: 0px 1px 107px -56px rgba(148,154,173,0.71);
+    -webkit-box-shadow: 0px 1px 107px -56px rgba(148,154,173,0.71);
+    -moz-box-shadow: 0px 1px 107px -56px rgba(148,154,173,0.71);
+    min-height: 644px;
+    padding: 15px;
+}
+
+.active-class{
+    height: 40px;
+    background-color: #035EA8;
+    color: #ffffff;
+    border-radius: 100px;
+    padding: 0 5%;
+}
+
+.sidebar-link{
+    color: #949AAD;
+    margin: 15px 0;
+    padding: 0 5%;
+}
+
+.log-out{
+    color: #EB5757;;
+    top: 0;
+    position: relative;
+    cursor: pointer;
+    padding: 0 5%;
+}
+
+.pl-2{
+    padding-left: 2rem;
+}
+
+.empty-state{
+    height: 590px
+}
+
+.ticket-card{
+    height: 215px;
+    padding: 5%;
+    border: 1px solid #ececec;
+    border-radius: 20px;
+}
+
+.disabled-btn{
+    background-color: #ececec;
+    height: 50px;
+    line-height: 50px;
+    border-radius: 100px;
+    text-align: center;
+    /*padding: 0 15%;*/
+}
+
+.margin-top-2{
+    margin-top: 2em;
+}
+.ml-5px{
+    margin-left: 5px;
 }

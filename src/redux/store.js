@@ -5,15 +5,15 @@ import rootReducer from './reducers';
 import { composeWithDevTools } from 'redux-devtools-extension';
 
 const logger = createLogger();
-const middlewares = [logger, thunk];
+const middleware = [logger, thunk];
 
 const initialState = {};
 
 const devTools =
   // eslint-disable-next-line no-undef
   process.env.NODE_ENV === 'production'
-    ? applyMiddleware(...middlewares)
-    : composeWithDevTools(applyMiddleware(...middlewares));
+    ? applyMiddleware(...middleware)
+    : composeWithDevTools(applyMiddleware(...middleware));
 
 const store = createStore(rootReducer, initialState, devTools);
 

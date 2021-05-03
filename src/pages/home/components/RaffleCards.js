@@ -3,9 +3,9 @@ import {RaffleTimer} from "./RaffleTimer";
 import {WatchlistBtn} from "./WatchlistBtn";
 import {Ticket} from "./Ticket";
 
-export const RaffleCard = ({imgUrl, title, ticket, description, timer, charity}) => {
+export const RaffleCard = ({imgUrl, title, ticket, description,status, timer, onClick, charity, stacked}) => {
   return (
-    <div className={'raffle-card-holder justify-content-between m-flex col-md-12'}>
+    <div className={'raffle-card-holder justify-content-between m-flex col-md-12 pointer'} onClick={()=> onClick ? onClick('18781237') : undefined}>
       <div className={'col-md-4'}>
         {/*<img src={(imgUrl)} className={'raffle-image'}/>*/}
         <div className={'raffle-image'} style={{backgroundImage: `url(${imgUrl})`}}>
@@ -22,13 +22,13 @@ export const RaffleCard = ({imgUrl, title, ticket, description, timer, charity})
           <Ticket ticket={ticket}/>
         </div>
         <div className={'padding-right-15'}>
-          <div className={'title2 mt-5 display-none'}>{title}</div>
-          <div className={'paragraph'}>{description}</div>
+          <div className={`title2 mt-5 display-none`}>{title}</div>
+          <div className={`${stacked ? 'small-paragraph mt-3' : 'paragraph'}`}>{description}</div>
           <div className={'mt-3'}>
-            <RaffleTimer black className={'raffle-card-button'} timer={timer}/>
+            <RaffleTimer black stacked className={'raffle-card-button'} timer={timer}/>
           </div>
           <div className={'mt-3'}>
-            <WatchlistBtn fullwidth/>
+            <WatchlistBtn fullwidth status={status}/>
           </div>
         </div>
       </div>

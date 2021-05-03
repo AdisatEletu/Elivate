@@ -38,10 +38,10 @@ const Home = () => {
   
   
   return (
-    <div className="margin-bottom-300 margin-top-100">
+    <div className="">
       <Banner data={data}/>
       <HowItWorks/>
-      <Filter/>
+      <Filter classNames={'mt-6'}/>
       
       <div className={'mt-3'}>
         <div className={"homepage-featured "}

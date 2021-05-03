@@ -15,7 +15,7 @@ export const Banner = ({data}) => {
   };
   
   useEffect(()=>{
-    setInterval(()=>handleSlideShow(), 10000);
+    // setInterval(()=>handleSlideShow(), 10000);
   },[index]);
   
   return (

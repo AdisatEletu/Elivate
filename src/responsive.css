@@ -101,6 +101,7 @@
         padding: 0 2em;
     }
 
+
     .m-hidden {
         display: none;
     }
@@ -116,30 +117,60 @@
         padding: 30px;
     }
 
-    .winners-div  {
+    .winners-div {
         margin-right: 0;
         margin-bottom: 30px;
     }
-    .card-grid{
+
+    .card-grid {
         display: grid;
         grid-template-columns: 100%;
         grid-gap: 30px;
     }
 
-    .raffle-image{
+    .dashboard-grid {
+        display: grid;
+        grid-template-columns: 100%;
+        grid-gap: 30px;
+    }
+
+    .raffle-image {
         height: 200px;
         background-size: cover;
         background-position: center;
     }
 
-    .charity-icon{
-        bottom: -165px;
+    .charity-icon {
+        bottom: -20px;
     }
-    .m-display-none{
+
+    .m-display-none {
         display: none;
     }
 
-    .display-none{
+    .display-none {
         display: block;
+    }
+
+    .side-nav{
+        display: none;
+    }
+
+    .profile-grid{
+        display: block;
+    }
+
+    .ticket-grid{
+        display: block;
+        width: 50%;
+    }
+    .ticket-m{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .ticket-card{
+        margin-bottom: 30px;
     }
 }

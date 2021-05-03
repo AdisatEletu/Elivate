@@ -14,7 +14,7 @@ const PublicRoute = ({ component: Component, ...rest }) => {
           <ErrorBoundary>
             <Header />
             {/* <SideNav /> */}
-            <main className="container-fluid align-self-stretch container-padding" id="public-route-layout">
+            <main className="container-fluid align-self-stretch container-padding margin-bottom-300 margin-top-100" id="public-route-layout">
               <Component {...props} />
             </main>
             <Footer/>
