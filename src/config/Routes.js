@@ -21,6 +21,8 @@ const Dashboard= lazy(() => import('../pages/dashboard/Dashboard'));
 const Notification= lazy(() => import('../pages/dashboard/notification/Notification'));
 const Ticket= lazy(() => import('../pages/dashboard/ticket/Ticket'));
 const History= lazy(() => import('../pages/dashboard/history/History'));
+const Referrals= lazy(() => import('../pages/dashboard/referrals/Referrals'));
+const Profile= lazy(() => import('../pages/dashboard/profile/Profile'));
 
 const Routes = () => (
   // eslint-disable-next-line no-undef
@@ -48,6 +50,8 @@ const Routes = () => (
         <PrivateRoute exact path={'/notifications'} component={Notification}/>
         <PrivateRoute exact path={'/tickets'} component={Ticket}/>
         <PrivateRoute exact path={'/history'} component={History}/>
+        <PrivateRoute exact path={'/referral'} component={Referrals}/>
+        <PrivateRoute exact path={'/profile'} component={Profile}/>
   
   
         {/* catch all invalid urls */}

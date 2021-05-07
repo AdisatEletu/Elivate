@@ -2,8 +2,10 @@ import React from "react";
 import {RaffleTimer} from "./RaffleTimer";
 import {WatchlistBtn} from "./WatchlistBtn";
 import {Ticket} from "./Ticket";
+import {bool, func, string} from "prop-types";
 
-export const RaffleCard = ({imgUrl, title, ticket, description,status, timer, onClick, charity, stacked}) => {
+export const RaffleCard = ({imgUrl, title, ticket, description,status, timer, onClick, charity, profile, winner, stacked, ended}) => {
+  console.log({profile,stacked});
   return (
     <div className={'raffle-card-holder justify-content-between m-flex col-md-12 pointer'} onClick={()=> onClick ? onClick('18781237') : undefined}>
       <div className={'col-md-4'}>
@@ -23,9 +25,9 @@ export const RaffleCard = ({imgUrl, title, ticket, description,status, timer, on
         </div>
         <div className={'padding-right-15'}>
           <div className={`title2 mt-5 display-none`}>{title}</div>
-          <div className={`${stacked ? 'small-paragraph mt-3' : 'paragraph'}`}>{description}</div>
+          <div className={`${stacked ? 'small-paragraph mt-3' : 'small-paragraph mt-3'}`}>{description}</div>
           <div className={'mt-3'}>
-            <RaffleTimer black stacked className={'raffle-card-button'} timer={timer}/>
+            <RaffleTimer  winner={winner} black stacked={stacked} ended={ended} profile={profile} className={'raffle-card-button'} timer={timer}/>
           </div>
           <div className={'mt-3'}>
             <WatchlistBtn fullwidth status={status}/>
@@ -34,4 +36,32 @@ export const RaffleCard = ({imgUrl, title, ticket, description,status, timer, on
       </div>
     </div>
   )
+};
+
+RaffleCard.prototype={
+  imgUrl: string,
+  title: string,
+  ticket: string,
+  description: string,
+  status: string,
+  timer:string,
+  onClick: func,
+  charity: bool,
+  profile: bool,
+  stacked: bool,
+  ended: bool
+};
+
+RaffleCard.defaultProps={
+  imgUrl: '',
+  title: "",
+  ticket: "",
+  description: "",
+  status: "watchlist",
+  timer: "",
+  onClick: func,
+  charity: false,
+  profile: false,
+  stacked: false,
+  ended: false
 }

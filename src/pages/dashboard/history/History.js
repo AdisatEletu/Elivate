@@ -1,10 +1,12 @@
 import React, {useState} from "react";
 import {Col, Nav, NavItem, NavLink, Row, TabContent, TabPane} from "reactstrap";
 import classnames from "classnames";
-import {AboutRaffle} from "../../raffles/detailsTab/About";
 import {Sponsors} from "../../raffles/detailsTab/Sponsors";
 import {RaffleHowItWorks} from "../../raffles/detailsTab/HowItWorks";
-import {Entry} from "../../raffles/detailsTab/Entry";
+import Referrals from "./Referrals";
+import Raffles from "./Raffles";
+import Win from "./Wins";
+import Payment from "./Payment";
 
 const History = () => {
   const [activeTab, setActiveTab] = useState('1');
@@ -54,30 +56,25 @@ const History = () => {
         </Nav>
         <TabContent activeTab={activeTab}>
           <TabPane tabId="1">
-            <Row>
+   
               <Col sm="12">
-                <AboutRaffle/>
+                <Raffles/>
               </Col>
-            </Row>
           </TabPane>
           <TabPane tabId="2">
-            <Row>
               <Col sm={"12"}>
-                <Sponsors/>
+               <Win/>
               </Col>
-            </Row>
           </TabPane>
           <TabPane tabId="3">
-            <Row>
               <Col sm={"12"}>
-                <RaffleHowItWorks/>
+              <Payment/>
               </Col>
-            </Row>
           </TabPane>
           <TabPane tabId="4">
             <Row>
               <Col sm={"12"}>
-                <Entry/>
+               <Referrals/>
               </Col>
             </Row>
           </TabPane>

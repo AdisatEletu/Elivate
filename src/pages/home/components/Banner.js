@@ -52,7 +52,7 @@ export const Banner = ({data}) => {
                  alt={"post-images"}/>
           </div>
         </div>
-        <div className={'d-flex justify-content-center p-3'}>
+        <div className={'d-flex justify-content-center p-3 carousel-holder'}>
           {data.map((slides, index) =>
             <div key={index} onClick={()=>setIndex(index)} className={'slider-icon'}/>
           )}

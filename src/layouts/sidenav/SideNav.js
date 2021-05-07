@@ -32,7 +32,7 @@ const SideNav = () => {
             <img className={'col-md-1'} alt={'not'} src={require('../../assets/icons/notification.svg')}/>
             <div className={'col-md-10'}> Payments</div>
           </NavLink>
-          <NavLink to={'/referrals'} activeClassName={'active-class'}
+          <NavLink to={'/referral'} activeClassName={'active-class'}
                    className={'d-flex sidebar-link justify-content-between align-items-center'}>
             <img className={'col-md-1'} alt={'not'} src={require('../../assets/icons/referrals.svg')}/>
             <div className={'col-md-10'}> Referrals</div>
