@@ -173,4 +173,13 @@
     .ticket-card{
         margin-bottom: 30px;
     }
+    .about-us-grid {
+        display: grid;
+        grid-template-columns: 28% 70%;
+        grid-gap: 2%;
+    }
+
+    .faq-grid{
+        display: block;
+    }
 }

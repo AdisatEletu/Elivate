@@ -95,6 +95,13 @@ a {
 
 }
 
+.about-us-grid {
+    display: grid;
+    grid-template-columns: 10% 88%;
+    grid-gap: 2%;
+
+}
+
 .sponsor-grid {
     display: grid;
     grid-template-columns: 19% 19% 19% 19% 19%;
@@ -129,9 +136,19 @@ a {
     grid-gap: 30px;
 
 }
+.faq-grid {
+    display: grid;
+    grid-template-columns: 32% 32% 32%;
+    grid-gap: 4%;
+
+}
 
 .secondary-bg-color {
     background-color: #E89606;
+}
+
+.off-black-color{
+    color: #111111
 }
 
 header #branding h1 {
@@ -618,6 +635,21 @@ ul.navigtion-items {
     color: #E89606;
 }
 
+.circle-background4{
+    color: #5340FF;
+    background-color: rgba(83, 64, 255, 0.2);
+    height: 80px;
+    width: 80px;
+    border-radius: 100px;
+}
+
+.circle-background5{
+    color: #000000;
+    background-color: rgba(0, 0, 0, 0.2);
+    height: 80px;
+    width: 80px;
+    border-radius: 100px;
+}
 .homepage-featured {
     background-position: center;
     background-size: cover;
@@ -737,6 +769,11 @@ ul.navigtion-items {
 .header3 {
     font-size: 18px;
     font-weight: bold;
+}
+
+.header3regular {
+    font-size: 18px;
+    /*font-weight: lighter;*/
 }
 
 .display-none {
@@ -954,4 +991,34 @@ ul.navigtion-items {
 
 .border-radius-20{
     border-radius: 20px;
+}
+
+.about-us-video, source{
+    border-radius: 20px;
+    height: 308px;
+}
+
+.faq-box{
+    border-radius: 20px;
+    height: 213px;
+    border: 1px solid #ececec;
+    padding: 15px;
+}
+
+.gap-30{
+    gap: 15px;
+}
+
+.flex-wrap{
+    flex-wrap: wrap;
+}
+
+.margin-bottom-30{
+    margin-bottom: 30px;
+}
+
+.charity-btn{
+    background-color: #140c5b;
+    color: #ffffff;
+    height: 35px;
 }

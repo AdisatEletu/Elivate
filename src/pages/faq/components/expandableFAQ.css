@@ -1,0 +1,20 @@
+.ex-faq-holder{
+    border-radius: 20px;
+    border: 1px solid #ececec;
+    min-height: 85px;
+    padding: 15px;
+}
+
+.active-faq-holder{
+    border-radius: 20px;
+    border: 1px solid #140c5b;
+    min-height: 85px;
+    padding: 15px;
+}
+
+.animate{
+    animation: ease-in;
+    transition: ease-in;
+    animation-duration: 2s;
+    transition-delay: 0.2s;
+}

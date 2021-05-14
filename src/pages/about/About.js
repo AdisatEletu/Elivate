@@ -3,7 +3,7 @@ import React from 'react';
 const About = () => {
   return (
     <section id="about">
-      <img src={require('../../assets/aboutUs.png')} className={'border-radius-20'} alt={'team-picture'}/>
+      <img src={require('../../assets/aboutUs.png')} className={'border-radius-20 col-md-12'} alt={'team-picture'}/>
       <div className={'card-grid align-items-center mt-6'}>
         <div>
           <div className={'paragraph grey-color'}>About us</div>
@@ -58,7 +58,7 @@ const About = () => {
       </div>
       
       <div>
-        <video className={'border-radius-20 mt-6 fullwidth'}
+        <video className={'border-radius-20 mt-6 fullwidth about-us-video'}
                autoPlay loop>
           <source
             src={('https://upload.wikimedia.org/wikipedia/commons/transcoded/1/18/Big_Buck_Bunny_Trailer_1080p.ogv/Big_Buck_Bunny_Trailer_1080p.ogv.360p.vp9.webm')}
@@ -69,6 +69,77 @@ const About = () => {
             the closer this life is to our grasp. As you dream big, let us be part of what makes the dream a reality.
           </div>
         </video>
+      </div>
+      <div className={"d-flex flex-column align-items-center mt-6 container"}>
+        <div className={'bigTitle text-align-center'}>Why Play With Elivate9ja Raffles?</div>
+        <div className={'grey-color text-align-center'}>Bidding on Elivate9ja happens in THREE easy steps</div>
+        <div className={' mt-5'}>
+          <div className={' about-us-grid'}>
+            <div className={'cursive biggestText text-align-center circle-background'}>1</div>
+            <div className={''}>
+              <div className={'title2'}>Our prizes are great</div>
+              <div className={'paragraph grey-color'}>Here at Elivate9ja, we believe that life should be lived to the
+                fullest, and we want you to do exactly that. Whether you fancy taking the holiday of your dreams,
+                getting
+                behind the wheel of a brand-new sports car, having the latest technology in your hands or embarking on a
+                new and adventurous experience, our raffles could be your ticket to the life you dream. .
+              </div>
+            </div>
+          </div>
+          <div className={' about-us-grid mt-6'}>
+            <div className={'cursive biggestText text-align-center circle-background2'}>2</div>
+            <div className={''}>
+              <div className={'title2'}>Our Raffles are fun</div>
+              <div className={'paragraph grey-color'}>Raffling is a source of light-hearted fun, and we are determined
+                to keep it that way. We’ve made our games super exciting so our players can enjoy themselves while
+                winning amazing prizes. To keep it even more interesting, we refresh our raffles frequently to ensure
+                you have a variety to choose from.
+              </div>
+            </div>
+          </div>
+          <div className={' about-us-grid mt-6'}>
+            <div className={'cursive biggestText text-align-center circle-background3'}>3</div>
+            <div className={''}>
+              <div className={'title2'}>Our odds are great</div>
+              <div className={'paragraph grey-color'}>Rather than accepting millions of entries, as most raffle and
+                lottery platforms do, we keep the number of our entries low --relative to the cost of the prize-- and
+                keep ticket prices low, as well. This way, you stand a better chance at winning.
+              </div>
+            </div>
+          </div>
+          <div className={' about-us-grid mt-6'}>
+            <div className={'cursive biggestText text-align-center circle-background4'}>4</div>
+            <div className={''}>
+              <div className={'title2'}>Our platforms are transparent</div>
+              <div className={'paragraph grey-color'}>Before you purchase a ticket, you will always know the number of
+                tickets available for that raffle. We share this information so you know what your chances of winning
+                are.
+              </div>
+            </div>
+          </div>
+          <div className={' about-us-grid mt-6'}>
+            <div className={'cursive biggestText text-align-center circle-background5'}>5</div>
+            <div className={''}>
+              <div className={'title2'}>Our fees are low</div>
+              <div className={'paragraph grey-color'}>Our platform was created to help people pursue their dreams. We
+                give a percentage of raffle earnings to charities, and for some raffles, we donate every single earning.
+                This means that every ticket purchased on the website goes to a good cause. So, even if you play and
+                don’t win, you would have helped someone out there achieve their dreams.
+              </div>
+            </div>
+          </div>
+          <div className={' about-us-grid mt-6'}>
+            <div className={'cursive biggestText text-align-center circle-background'}>6</div>
+            <div className={''}>
+              <div className={'title2'}>Our earnings go to charity</div>
+              <div className={'paragraph grey-color'}>Our platform was created to help people pursue their dreams. We
+                give a percentage of raffle earnings to charities, and for some raffles, we donate every single earning.
+                This means that every ticket purchased on the website goes to a good cause. So, even if you play and
+                don’t win, you would have helped someone out there achieve their dreams.
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
   );

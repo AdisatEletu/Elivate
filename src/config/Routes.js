@@ -23,6 +23,9 @@ const Ticket= lazy(() => import('../pages/dashboard/ticket/Ticket'));
 const History= lazy(() => import('../pages/dashboard/history/History'));
 const Referrals= lazy(() => import('../pages/dashboard/referrals/Referrals'));
 const Profile= lazy(() => import('../pages/dashboard/profile/Profile'));
+const FAQ= lazy(() => import('../pages/faq/FAQ'));
+const RaffleFAQ= lazy(() => import('../pages/faq/RaffleFAQ'));
+const Charity= lazy(() => import('../pages/charity/Charity'));
 
 const Routes = () => (
   // eslint-disable-next-line no-undef
@@ -45,6 +48,9 @@ const Routes = () => (
         <PublicRoute exact path='/raffles' component={Raffles}/>
         <PublicRoute path='/raffles/:id/details' component={RaffleDetails}/>
         <PublicRoute path='/raffles/:id/watchlist' component={Watchlist}/>
+        <PublicRoute exact path={'/help'} component={FAQ}/>
+        <PublicRoute path={'/help/raffle'} component={RaffleFAQ}/>
+        <PublicRoute path={'/charity'} component={Charity}/>
         
         <PrivateRoute exact path={'/dashboard'} component={Dashboard}/>
         <PrivateRoute exact path={'/notifications'} component={Notification}/>
