@@ -57,6 +57,8 @@ const Home = () => {
     getRaffles();
   }, []);
 
+  const baseURL = "https://desolate-fjord-54053.herokuapp.com/";
+
   console.log(raffles);
 
   return (

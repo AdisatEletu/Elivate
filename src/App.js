@@ -10,6 +10,7 @@ import "./responsive.css";
 
 export const initialize = (windowObj, axiosLib) => {
   axiosLib.defaults.baseURL = "https://desolate-fjord-54053.herokuapp.com/api/";
+  // axiosLib.defaults.baseURL = "http://localhost:8000/api/";
 };
 
 if (localStorage.jwt) {

@@ -13,9 +13,9 @@ export const Banner = ({ data }) => {
     }
   };
 
-  useEffect(() => {
-    setInterval(() => handleSlideShow(), 10000);
-  }, [index]);
+  // useEffect(() => {
+  //   setInterval(() => handleSlideShow(), 10000);
+  // }, [index]);
 
   return (
     <div className={"banner-bg banner"}>
