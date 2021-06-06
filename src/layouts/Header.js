@@ -37,7 +37,7 @@ const Header = () => {
                 <NavLink activeClassName={'active-nav'} to="/login">Login</NavLink>
             </li>
             <li className={""}>
-              <button className={`paragraph-bold text-align-center header-button`} >Sign up</button>
+              <button className={`paragraph-bold text-align-center header-button`} onClick={()=> window.location.href='/signup'}>Sign up</button>
             </li>
           </ul>
         </nav>
