@@ -4,6 +4,7 @@ node_modules
 /.pnp
 .pnp
 .pnp.js
+**/node_modules
 
 # testing
 /coverage
@@ -45,3 +46,4 @@ package-lock.json
 
 # Local Netlify folder
 .netlify
+node_modules
