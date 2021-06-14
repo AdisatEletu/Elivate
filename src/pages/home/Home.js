@@ -2,7 +2,8 @@ import React, { useEffect, useState } from "react";
 import { Banner } from "./components/Banner";
 import { HowItWorks } from "./components/HowItWorks";
 import { Filter } from "./components/Filter";
-import { RaffleTimer } from "./components/RaffleTimer";
+import { FeaturedRaffleTitle } from "./components/FeaturedRaffleTitle";
+import {RaffleTimer } from "./components/RaffleTimer";
 import { WatchlistBtn } from "./components/WatchlistBtn";
 import { RaffleCard } from "./components/RaffleCards";
 import { Ticket } from "./components/Ticket";
@@ -10,8 +11,8 @@ import { HomepageWinners } from "./components/Winners";
 import { FormButton } from "../../components/forms/Button";
 import { Testimonials } from "./components/Testimonials";
 
+// import { raffleFetcher } from "../../utils";
 import { getRequest } from "../../helper/request";
-import classes from "./Home.module.css";
 
 const Home = () => {
   const [data, setData] = useState([
@@ -56,12 +57,15 @@ const Home = () => {
     getRaffles();
   }, []);
 
-  const baseURL = "https://desolate-fjord-54053.herokuapp.com";
+  const baseURL = "https://desolate-fjord-54053.herokuapp.com/";
+
+  console.log(raffles);
 
   return (
     <div className="">
       <Banner data={data} />
       <HowItWorks />
+      <FeaturedRaffleTitle />
       <Filter classNames={"mt-6"} />
 
       <div className={"mt-3"}>
@@ -119,7 +123,7 @@ const Home = () => {
             />
           ))}
       </div>
-      <div className={"mt-6 m-background"}>
+      <div className={"mt-2 m-background"}>
         <div className={"m-flex justify-content-between"}>
           <div className={"col-md-10"}>
             <div className={"d-flex align-items-center"}>
@@ -143,6 +147,7 @@ const Home = () => {
           <HomepageWinners tickets={5} />
           <HomepageWinners tickets={4} />
           <HomepageWinners tickets={5} />
+          <HomepageWinners tickets={3} />
         </div>
       </div>
       <Testimonials />
