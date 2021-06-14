@@ -1,8 +1,45 @@
-import React from "react";
+import React, {useState} from "react";
 import {FormButton} from "../../../components/forms/Button";
 import {FormInput} from "../../../components/forms/Input";
+import { putRequest} from "../../../helpers/requests";
+import {doAlert} from "../../../components/alert/AlertComponent";
+import handleError from "../../../helpers/handleError";
+import Onchange from "../../../helpers/Onchange";
 
 const Setup = () => {
+  const fields = {
+    first_name: '',
+    password: '',
+    last_name: '',
+    username: '',
+  };
+  
+  const [values, setValues] = useState({
+    fields
+  });
+  const [is_creating, setCreating] = useState(false);
+  
+  
+  
+  const setUpUser = async () => {
+    setCreating(true);
+    const id = localStorage.getItem("id");
+    try {
+      const {success, data,message} = await putRequest(`/customer/complete-profile/${id}`, values);
+      if (success) {
+        doAlert(message,'success');
+        localStorage.removeItem('id');
+        window.location.href = ('/login')
+      }else{
+        doAlert(message, 'error')
+      }
+      setCreating(false)
+    } catch (e) {
+      handleError(e)
+    }
+  };
+  
+  
   return (
     <div className={"auth-bg"}
          style={{
@@ -32,10 +69,11 @@ const Setup = () => {
             </div>
             
             <div className={'mt-4'}>
-              <FormInput label={'First Name'} className={'mb-3'} />
-              <FormInput label={'Last name'} className={'mb-3'}/>
-              <FormInput label={'User name'} className={'mb-3'}/>
-              <FormButton title={'Continue'} className={'mt-3'} type={'submit'}/>
+              <FormInput label={'First Name'} value={values.first_name} name={'first_name'} onChange={(e)=> Onchange(e, values, setValues)} className={'mb-3'} />
+              <FormInput label={'Last name'} className={'mb-3'} onChange={(e)=> Onchange(e,values,setValues)} name={'last_name'} value={values.last_name}/>
+              <FormInput label={'User name'} className={'mb-3'}  onChange={(e)=> Onchange(e,values,setValues)} name={'username'} value={values.username}/>
+              <FormInput label={'Re-Enter Password'} className={'mb-3'} type={'password'}  onChange={(e)=> Onchange(e,values,setValues)} name={'password'} value={values.password}/>
+              <FormButton title={'Continue'} className={'mt-3'} type={'submit'} onClick={setUpUser}/>
             </div>
           </div>
         </div>

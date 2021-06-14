@@ -2,9 +2,30 @@ import React, {useState} from "react";
 import {FormButton} from "../../../components/forms/Button";
 import {NavLink} from "react-router-dom";
 import {OtpInput} from "../../../components/forms/otp/OtpInput";
+import {putRequest} from "../../../helpers/requests";
+import {doAlert} from "../../../components/alert/AlertComponent";
+import handleError from "../../../helpers/handleError";
 
 const VerificationForm = () => {
-  const [loading, setLoading] = useState(false);
+  const [is_creating, setCreating] = useState(false);
+  const [code, setCode] = useState('');
+  
+  const verifyCode = async()=>{
+    setCreating(true);
+    const id = localStorage.getItem('id');
+    try {
+      const {success,message} = await putRequest(`customer/verify-phone/${id}`, {code});
+      if (success) {
+        doAlert(message, 'success');
+        window.location.href = ('/setup')
+      }else{
+        doAlert(message, 'error')
+      }
+      setCreating(false)
+    } catch (e) {
+      handleError(e)
+    }
+  };
   return (
     <div className={"auth-bg"}
          style={{
@@ -36,11 +57,9 @@ const VerificationForm = () => {
             <div className={'mt-4 text-align-center'}>
              <OtpInput length={4}
                        onComplete={code => {
-                         console.log({code});
-                         setLoading(true);
-                         setTimeout(() => setLoading(false), 1000);
+                         setCode(code);
                        }}/>
-              <FormButton title={'Continue'} className={'mt-3'} type={'submit'} onClick={()=> window.location.href=('/setup') }/>
+              <FormButton title={'Continue'} className={'mt-3'} type={'submit'} onClick={()=> verifyCode() }/>
             </div>
           </div>
   
