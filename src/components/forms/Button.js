@@ -1,6 +1,5 @@
 import React from "react";
 
-
 export const FormButton = ({type, title, onClick, className, disabled}) =>{
   return(
     <>

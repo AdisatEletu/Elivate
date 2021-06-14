@@ -5,14 +5,16 @@ import jwt_decode from "jwt-decode";
 import store from "./redux/store";
 import { setCurrentUser, logoutUser } from "./redux/actions/authActions";
 import Routes from "./config/Routes";
-// import ServiceWorkerWrapper from './components/ServiceWorkerWrapper';
+
+import "./index.css";
+import "./responsive.css";
 
 export const initialize = (windowObj, axiosLib) => {
   axiosLib.defaults.baseURL = "https://desolate-fjord-54053.herokuapp.com/api/";
-
 };
 
-export const setInterceptor = (axiosLib) => {
+
+ const setInterceptor = (axiosLib) => {
   return axiosLib.interceptors.response.use((response) => {
     return (response);
   }, (error) => {
@@ -25,6 +27,13 @@ export const setInterceptor = (axiosLib) => {
     return Promise.reject(error);
   });
 };
+  axios.defaults.headers.common["Authorization"] = localStorage.jwt;
+  //decode token and get user
+  const decoded = jwt_decode(localStorage.jwt);
+  //set current user
+  //sets persistent session
+  if (localStorage.user)
+    store.dispatch(setCurrentUser(JSON.parse(localStorage.user)));
 
 export const verifyToken = (axiosLib) => {
   const bearerToken = localStorage.getItem("jwt");
