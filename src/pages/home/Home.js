@@ -109,7 +109,7 @@ const Home = () => {
           </div>
         </div>
       </div>
-      <div className={`mt-6 mb-5 card-grid ${classes.Raffles}`}>
+      <div className={`mt-6 mb-5 card-grid`}>
         {raffles &&
           raffles.map((raffle) => (
             <RaffleCard
