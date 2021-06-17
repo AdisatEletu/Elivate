@@ -1,0 +1,12 @@
+blockquote::before {
+    content: open-quote;
+
+}
+blockquote::after {
+    content: close-quote;
+}
+blockquote {
+    quotes: "“" "”" "‘" "’";
+    font-size: 36px;
+
+}

@@ -1,0 +1,185 @@
+@media only screen and (max-width: 768px) {
+    /* For mobile phones: */
+    [class*="col-"] {
+        width: 100% !important;
+    }
+
+    .menu {
+        display: none;
+    }
+
+    .m-align-items-center {
+        align-items: normal;
+    }
+
+    .burger-icon {
+        display: inline-block;
+        margin-right: 20px;
+    }
+
+    .flex-row {
+        flex-direction: column !important;
+    }
+
+    .m-pl-6 {
+        padding: 0;
+    }
+
+    .imag2 {
+        width: 343px;
+        height: 150px;
+    }
+
+    .m-fs-36 {
+        font-size: 16px;
+    }
+
+    .m-fs-24 {
+        font-size: 24px;
+    }
+
+    .footer-links-holder {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .footer-links > ul > li {
+        display: flex;
+        /*position: relative;*/
+        list-style: none;
+        /*display: inline;*/
+        padding-inline-start: 0 !important;
+        padding: 10px;
+        flex-direction: column;
+    }
+
+    .m-flex {
+        flex-direction: column;
+    }
+
+    .m-text-align-center {
+        text-align: center;
+    }
+
+    .m-raffle-btn {
+        width: 100%;
+    }
+
+    .m-mt-1 {
+        margin-top: 1em;
+    }
+
+    .m-ml-6 {
+        margin-left: 6em;
+    }
+
+    .m-mt-3 {
+        margin-top: 3em;
+    }
+
+    .m-mb-3 {
+        margin-bottom: 3em;
+    }
+
+    .m-justify-content-center {
+        justify-content: center;
+    }
+
+    .m-show {
+        display: block;
+    }
+
+    .m-justify-content-normal {
+        justify-content: normal;
+    }
+
+    .m-p-3 {
+        padding: 0 3em;
+    }
+
+    .m-p-2 {
+        padding: 0 2em;
+    }
+
+
+    .m-hidden {
+        display: none;
+    }
+
+    .winners-holder-div {
+        min-height: 625px;
+        background: #fff0d7;
+        margin-top: 35px;
+    }
+
+    .m-background {
+        background: #fff0d7;
+        padding: 30px;
+    }
+
+    .winners-div {
+        margin-right: 0;
+        margin-bottom: 30px;
+    }
+
+    .card-grid {
+        display: grid;
+        grid-template-columns: 100%;
+        grid-gap: 30px;
+    }
+
+    .dashboard-grid {
+        display: grid;
+        grid-template-columns: 100%;
+        grid-gap: 30px;
+    }
+
+    .raffle-image {
+        height: 200px;
+        background-size: cover;
+        background-position: center;
+    }
+
+    .charity-icon {
+        bottom: -20px;
+    }
+
+    .m-display-none {
+        display: none;
+    }
+
+    .display-none {
+        display: block;
+    }
+
+    .side-nav{
+        display: none;
+    }
+
+    .profile-grid{
+        display: block;
+    }
+
+    .ticket-grid{
+        display: block;
+        width: 50%;
+    }
+    .ticket-m{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .ticket-card{
+        margin-bottom: 30px;
+    }
+    .about-us-grid {
+        display: grid;
+        grid-template-columns: 28% 70%;
+        grid-gap: 2%;
+    }
+
+    .faq-grid{
+        display: block;
+    }
+}
