@@ -3,10 +3,45 @@ import {FormInput} from "../../../components/forms/Input";
 import {FormButton} from "../../../components/forms/Button";
 import {GoogleButton} from "../../../components/forms/GoogleBtn";
 import {NavLink} from "react-router-dom";
+import Onchange from "../../../helpers/Onchange";
+import {postRequest} from "../../../helpers/requests";
+import {doAlert} from "../../../components/alert/AlertComponent";
+import handleError from "../../../helpers/handleError";
 
 
 const Signup = () => {
   
+  const fields = {
+    email: '',
+    password: '',
+    phone_number: ''
+  }
+  const [values, setValues] = useState({
+    fields
+  });
+  const [is_creating, setCreating] = useState(false);
+  
+  
+  const createUser = async () => {
+    
+    setCreating(true);
+    
+    try {
+      const {success, data,message} = await postRequest('customer', values);
+      if (success) {
+        doAlert(message,'success');
+        localStorage.setItem('id', data.id_2);
+        
+        window.location.href = ('/verification')
+      }else{
+        doAlert(message, 'error')
+      }
+      setCreating(false)
+    } catch (e) {
+      handleError(e)
+    }
+  };
+
   return (
     <div className={"signup-bg"}
     >
@@ -36,10 +71,13 @@ const Signup = () => {
             </div>
             
             <div className={'mt-4'}>
-              <FormInput className={"mb-3"} type={'email'} label={"Email Address"}/>
-              <FormInput className={"mb-3"} type={'password'} label={"Phone number"}/>
-              <FormInput className={"mb-3"} type={'password'} label={"Password"}/>
-              <FormButton title={'Create account'} onClick={() => window.location.href = ('/verification')}
+              <FormInput className={"mb-3"} type={'email'} label={"Email Address"} value={values.email} name={'email'}
+                         onChange={(e) => Onchange(e, values, setValues)}/>
+              <FormInput className={"mb-3"} type={'number'} label={"Phone number"} value={values.phone_number}
+                         name={'phone_number'} onChange={(e) => Onchange(e, values, setValues)}/>
+              <FormInput className={"mb-3"} type={'password'} label={"Password"} value={values.password}
+                         name={'password'} onChange={(e) => Onchange(e, values, setValues)}/>
+              <FormButton title={'Create account'} disabled={is_creating}  onClick={() => createUser()}
                           className={'mt-3 '}
               />
               <div className={'col-md-12 hr-holder mt-4 '}>

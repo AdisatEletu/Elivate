@@ -62,6 +62,10 @@ const Header = (props) => {
               <NavLink activeClassName={"active-nav"} to="/profile">
                 Profile
               </NavLink>
+                <NavLink activeClassName={'active-nav'} to="/login">Login</NavLink>
+            </li>
+            <li className={""}>
+              <button className={`paragraph-bold text-align-center header-button`} onClick={()=> window.location.href='/signup'}>Sign up</button>
             </li>
             {props.isAuthenticated ? (
               <>
