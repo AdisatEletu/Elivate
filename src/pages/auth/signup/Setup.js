@@ -73,7 +73,7 @@ const Setup = () => {
               <FormInput label={'Last name'} className={'mb-3'} onChange={(e)=> Onchange(e,values,setValues)} name={'last_name'} value={values.last_name}/>
               <FormInput label={'User name'} className={'mb-3'}  onChange={(e)=> Onchange(e,values,setValues)} name={'username'} value={values.username}/>
               <FormInput label={'Re-Enter Password'} className={'mb-3'} type={'password'}  onChange={(e)=> Onchange(e,values,setValues)} name={'password'} value={values.password}/>
-              <FormButton title={'Continue'} className={'mt-3'} type={'submit'} onClick={setUpUser}/>
+              <FormButton title={'Continue'} loading={is_creating} className={'mt-3'}  type={'submit'} onClick={setUpUser}/>
             </div>
           </div>
         </div>
