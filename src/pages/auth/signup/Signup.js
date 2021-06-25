@@ -98,7 +98,7 @@ const Signup = () => {
               <span className={"small-paragraph grey-color text-align-center"}>
                Already have an account? &nbsp;
               </span>
-            <NavLink to={'/'}>
+            <NavLink to={'/login'}>
               <span className={'forgot-password small-paragraph-bold'}>
               Log in
             </span>
