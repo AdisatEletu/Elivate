@@ -45,7 +45,8 @@ const Home = () => {
   const [raffles, setRaffles] = useState([]);
   const getRaffles = async () => {
     try {
-      const { data, success } = await getRequest("customer/raffle");
+      // const { data, success } = await getRequest("customer/raffle");
+      const { data, success } = await getRequest("customer/raffle?charity=0");
 
       if (success) {
         setRaffles(data.data);

@@ -13,9 +13,15 @@ export const Filter = ({ classNames }) => {
         </div>
 
         <div className={"filter-width d-flex align-items-center"}>
-          <div style={{ marginTop: "1px" }}> Sort: &nbsp; </div>
+
+          <div> Sort: &nbsp; </div>
           <div className={""} style={{ width: "70%" }}>
-            <DropDown placeholder={"Popularity"} fontColor="red" />
+            <DropDown placeholder={"Popularity"} />
+
+//           <div style={{ marginTop: "1px" }}> Sort: &nbsp; </div>
+//           <div className={""} style={{ width: "70%" }}>
+//             <DropDown placeholder={"Popularity"} fontColor="red" />
+
           </div>
         </div>
       </div>
