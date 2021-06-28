@@ -1022,3 +1022,12 @@ ul.navigtion-items {
     color: #ffffff;
     height: 35px;
 }
+
+.bonus{
+    background-color: rgba(77, 158, 57, 0.2);
+    color: #4D9E39;
+    text-align: center;
+    border-radius: 4px;
+    width: 80%;
+    font-size: 12px;
+}

@@ -45,3 +45,18 @@ export const putRequest = async (endpoint, payload) => {
     return {success: false, error};
   }
 };
+
+
+export const deleteRequest = async (endpoint, payload) => {
+  try {
+    const res = await axios.delete(endpoint, payload);
+    const {success, data, message} = res.data;
+    if (success) {
+      return {success, data, message};
+    } else {
+      throw new Error('Something went wrong');
+    }
+  } catch (error) {
+    return {success: false, error};
+  }
+};

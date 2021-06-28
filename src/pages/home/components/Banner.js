@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { EmptyData } from "../../../components/EmptyData";
 import { RaffleTimer } from "./RaffleTimer";
 import { WatchlistBtn } from "./WatchlistBtn";
 
@@ -12,6 +13,8 @@ export const Banner = ({ data }) => {
       setIndex(0);
     }
   };
+
+  console.log();
 
   // useEffect(() => {
   //   setInterval(() => handleSlideShow(), 10000);
@@ -30,36 +33,40 @@ export const Banner = ({ data }) => {
           borderRadius: "30px",
         }}
       >
-        <div className={"col-md-12 d-flex m-flex"} key={index}>
-          <div
-            className={
-              "col-md-6 d-flex flex-column justify-content-center p-5 m-text-align-center"
-            }
-          >
-            <div className={"bigTitle white-color m-fs-24"}>
-              {data[index].title}
+        {data.length > 0 ? (
+          <div className={"col-md-12 d-flex m-flex"} key={index}>
+            <div
+              className={
+                "col-md-6 d-flex flex-column justify-content-center p-5 m-text-align-center"
+              }
+            >
+              <div className={"bigTitle white-color m-fs-24"}>
+                {data[index].name}
+              </div>
+              <div className={"paragraph off-white-color m-mt-1"}>
+                {data[index].description}
+              </div>
+              <div className={"col-md-7 mt-5"}>
+                <RaffleTimer timer={data.start_date} />
+              </div>
+              <div className={"mt-5"}>
+                <WatchlistBtn />
+              </div>
             </div>
-            <div className={"paragraph off-white-color m-mt-1"}>
-              {data[index].subtitle}
-            </div>
-            <div className={"col-md-7 mt-5"}>
-              <RaffleTimer timer={"1 hr : 30 mins : 27 sec"} />
-            </div>
-            <div className={"mt-5"}>
-              <WatchlistBtn />
-            </div>
-          </div>
 
-          <div className={"col-md-6"}>
-            <img
-              className={"fullwidth"}
-              src={data[index].image}
-              alt={"post-images"}
-            />
+            <div className={"col-md-6"}>
+              <img
+                className={"fullwidth"}
+                src={data[index].image}
+                alt={"post-images"}
+              />
+            </div>
           </div>
-        </div>
+        ) : (
+          <EmptyData />
+        )}
         <div className={"d-flex justify-content-center p-3 carousel-holder"}>
-          {data.map((slides, index) => (
+          {data?.map((slides, index) => (
             <div
               key={index}
               onClick={() => setIndex(index)}

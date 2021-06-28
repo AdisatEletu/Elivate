@@ -1,38 +1,70 @@
 import React from "react";
 
-export const WatchlistBtn = ({ className, fullwidth, status }) => {
-  if (status === "remove") {
+export const WatchlistBtn = ({
+  className,
+  fullwidth,
+  status,
+  adding,
+  handleEnterRaffle,
+  handleAddWatchlist,
+  watchlist,
+  handleRemoveWatchlist,
+  creating,
+  ended
+}) => {
+  if (watchlist) {
     return (
-      <div className={"d-flex m-justify-content-center"}>
-        <div
-          className={`secondary-btn danger-bg-color white-color paragraph-bold ${className}`}
-          style={fullwidth ? { width: "100%" } : { width: "280px" }}
-        >
-          {" "}
-          Remove
+      <div>
+        <div className={"d-flex m-justify-content-center"}>
+          <div
+            className={`secondary-btn danger-bg-color white-color paragraph-bold ${className}`}
+            style={fullwidth ? { width: "100%" } : { width: "280px" }}
+            onClick={() => handleRemoveWatchlist()}
+          >
+            {adding ? "Removing..." : "Remove"}
+          </div>
+        </div>
+        <div className={"d-flex m-justify-content-center mt-3"}>
+          <div
+            className={`green-bg-color secondary-btn white-color paragraph-bold ${className}`}
+            style={fullwidth ? { width: "100%" } : { width: "280px" }}
+            onClick={() => handleEnterRaffle()}
+          >
+          {creating ? " Entering Raffle...": "Enter Raffle"}
+          </div>
         </div>
       </div>
     );
-  } else if (status === "watchlist") {
+  } else if (!watchlist) {
     return (
-      <div className={"d-flex m-justify-content-center"}>
-        <div
-          className={`secondary-bg-color secondary-btn white-color paragraph-bold ${className}`}
-          style={fullwidth ? { width: "100%" } : { width: "280px" }}
-        >
-          {" "}
-          Add to watchlist
+      <div>
+        <div className={"d-flex m-justify-content-c`enter"}>
+          <div
+            className={`secondary-bg-color secondary-btn white-color paragraph-bold ${className}`}
+            style={fullwidth ? { width: "100%" } : { width: "280px" }}
+            onClick={() => handleAddWatchlist()}
+          >
+            {adding ? "Adding..." : "Add to watchlist"}
+          </div>
+        </div>
+        <div className={"d-flex m-justify-content-center mt-3"}>
+          <div
+            className={`green-bg-color secondary-btn white-color paragraph-bold ${className}`}
+            style={fullwidth ? { width: "100%" } : { width: "280px" }}
+            onClick={() => handleEnterRaffle()}
+          >
+           {creating ? " Entering Raffle...": "Enter Raffle"}
+          </div>
         </div>
       </div>
     );
-  } else if (status === "expired") {
+  } else if (watchlist && ended || !watchlist && ended) {
     return (
       <div className={"d-flex m-justify-content-center"}>
         <div
           className={`disabled secondary-btn paragraph-bold ${className}`}
           style={fullwidth ? { width: "100%" } : { width: "280px" }}
         >
-          {" "}
           Raffle Ended
         </div>
       </div>
@@ -43,8 +75,8 @@ export const WatchlistBtn = ({ className, fullwidth, status }) => {
         <div
           className={`green-bg-color secondary-btn white-color paragraph-bold ${className}`}
           style={fullwidth ? { width: "100%" } : { width: "280px" }}
+          onClick={() => handleEnterRaffle()}
         >
-          {" "}
           Enter Raffle
         </div>
       </div>
