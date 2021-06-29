@@ -10,7 +10,8 @@ export const WatchlistBtn = ({
   watchlist,
   handleRemoveWatchlist,
   creating,
-  ended
+  ended,
+  removing
 }) => {
   if (watchlist) {
     return (
@@ -21,7 +22,7 @@ export const WatchlistBtn = ({
             style={fullwidth ? { width: "100%" } : { width: "280px" }}
             onClick={() => handleRemoveWatchlist()}
           >
-            {adding ? "Removing..." : "Remove"}
+            {removing ? "Removing from watclist..." : "Remove"}
           </div>
         </div>
         <div className={"d-flex m-justify-content-center mt-3"}>

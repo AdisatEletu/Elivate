@@ -22,14 +22,13 @@ const Raffles = (props) => {
   },[]);
 
   const handlePageChange = (pageNumber) => {
-    console.log({ pageNumber });
+ 
   };
 
   const onClickRaffle = (id) => {
     window.location.href = `/raffles/${id}/details`;
   };
 
-  // console.log(header);
 
   return (
     <div className={"mt-4"}>
@@ -46,7 +45,7 @@ const Raffles = (props) => {
               <RaffleCard
                 key={index}
                 description={raffle.description}
-                timer={raffle.timer}
+                timer={raffle.start_date}
                 status={raffle.status}
                 charity={raffle.charity}
                 ticket={raffle.ticket}
@@ -54,6 +53,7 @@ const Raffles = (props) => {
                 imgUrl={raffle.imgUrl}
                 onClick={onClickRaffle}
                 getRaffles={getRaffles}
+                raffle={raffle}
               />
             ))
            } 

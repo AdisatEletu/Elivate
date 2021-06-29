@@ -1,10 +1,26 @@
-import React from "react";
+import React, {useEffect} from "react";
 import {Card, CardBody} from "reactstrap";
 import {raffleData} from "../../utils/mock";
 import {RaffleCard} from "../home/components/RaffleCards";
 import Pagination from "react-js-pagination";
+import { useRaffle } from "../raffles/useRaffle";
+import { useWatchlist } from "../watchlist/useWatchlist";
 
 const Dashboard = () => {
+
+  // const {  raffles,
+  //   fetching,
+  //   getRaffles} = useRaffle;
+
+    const {raffles,
+      fetching,
+      getWatchlist} = useWatchlist()
+
+
+    useEffect(() => {
+      getWatchlist()
+  
+    }, [])
   return (
     <div>
       <div className={'dashboard-stats-holder light-blue-bg dashboard-grid'}>
@@ -43,17 +59,20 @@ const Dashboard = () => {
       </div>
       <div className={'profile-card mt-6'}>
         <div className={'header3  '}>Your Wishlist</div>
-        
         <div className={'card-grid mt-4 '}>
-          {raffleData.map((raffle, index) =>
-            <RaffleCard key={index} description={raffle.description}
-                        timer={raffle.timer}
-                        status={raffle.status}
-                        charity={raffle.charity}
-                        ticket={raffle.ticket}
-                        title={raffle.title}
-                        imgUrl={raffle.imgUrl}
-                        stacked
+          {raffles.map((raffle, index) =>
+            <RaffleCard  
+            key={index}
+            description={raffle.description}
+            timer={raffle.start_date}
+            status={raffle.status}
+            charity={raffle.charity}
+            ticket={raffle.num_of_tickets}
+            title={raffle.name}
+            imgUrl={raffle.imgUrl}
+            getRaffles={getWatchlist}
+            raffle={raffle}
+        
               // onClick={onClickRaffle}
             />
           )}

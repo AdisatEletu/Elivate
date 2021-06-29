@@ -75,7 +75,12 @@ const Home = () => {
 
   return (
     <div className="">
-      <Banner data={raffles} />
+        <div
+          className={"homepage-featured  banner"}
+        >
+            <img src={require("../../assets/Ebanner(1272x534)_01.jpg")} alt="alt banner" height={543}/>
+        </div>
+      {/* <Banner data={raffles} /> */}
       <HowItWorks />
       <FeaturedRaffleTitle />
       <Filter classNames={"mt-6"} />
@@ -113,7 +118,7 @@ const Home = () => {
                 "col-md-4 d-flex align-items-center m-p-2 m-justify-content-normal m-mb-3"
               }
             >
-              <WatchlistBtn />
+              {/* <WatchlistBtn /> */}
             </div>
             <div className={"col-md-4 ticket-details-holder m-hidden"}>
               <Ticket ticket={5} />
@@ -127,9 +132,9 @@ const Home = () => {
            <PageLoader/>
            </div>
         ) : raffles.length > 0 ? (
-          raffles.map((raffle) => (
+          raffles.map((raffle, index) => (
             <RaffleCard
-              key={raffle.id}
+              key={index}
               description={raffle.description}
               timer={raffle.start_date}
               charity={raffle.is_charity}
@@ -137,6 +142,7 @@ const Home = () => {
               title={raffle.name}
               imgUrl={`${baseURL}${raffle.image_url}`}
               raffle={raffle}
+              getRaffles={getRaffles}
             />
           ))
         ) : (
@@ -145,7 +151,7 @@ const Home = () => {
           </div>
         )}
       </div>
-      <div className={"mt-2 m-background"}>
+      <div className={"mt-6 m-background"}>
         <div className={"m-flex justify-content-between"}>
           <div className={"col-md-10"}>
             <div className={"d-flex align-items-center"}>
