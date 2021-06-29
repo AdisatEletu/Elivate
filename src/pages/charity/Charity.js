@@ -55,7 +55,7 @@ const Charity = () => {
                 <RaffleTimer timer={'1 hr : 30 mins : 27 sec'}/>
               </div>
               <div className={'mt-5'}>
-                <WatchlistBtn/>
+                {/* <WatchlistBtn/> */}
               </div>
             </div>
         

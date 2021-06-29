@@ -14,6 +14,7 @@ const Ticket = ({ user }) => {
     setAmount,
     onSuccess,
     config,
+    buyTickets
   } = useTicket({user});
 
 
@@ -64,8 +65,7 @@ const Ticket = ({ user }) => {
                         "ticket-button d-flex align-items-center justify-content-center pointer"
                       }
                       onClick={() => {
-                        // setAmount(ticket.amount);
-                        initializePayment(onSuccess, onClose);
+                      buyTickets(ticket.id)
                       }}
                     >
                       Buy &#8358; {ticket.amount}

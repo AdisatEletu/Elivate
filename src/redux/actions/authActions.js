@@ -128,5 +128,6 @@ export const setCurrentUser = user => dispatch => {
   dispatch({ type: SET_USER, payload: user });
 };
 export const logoutUser = () => dispatch => {
+  console.log('dispatched')
   dispatch({ type: LOGOUT_USER });
 };

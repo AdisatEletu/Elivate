@@ -1,6 +1,8 @@
 import React from "react";
 import './sidenav.css'
 import {NavLink} from "react-router-dom";
+import {logoutUser} from '../../redux/actions/authActions';
+import {connect }from 'react-redux'
 
 const SideNav = () => {
   return (
@@ -43,7 +45,7 @@ const SideNav = () => {
             <div className={'col-md-10'}> Profile</div>
           </NavLink>
         </ul>
-        <div className={'log-out d-flex justify-content-between align-items-center pl-2'} onClick={()=> console.log('logout')}>
+        <div className={'log-out d-flex justify-content-between align-items-center pl-2'} onClick={()=>logoutUser()}>
           <img className={'col-md-1'} alt={'not'} src={require('../../assets/icons/logout.svg')}/>
           <div className={'col-md-10'}> Logout</div>
         </div>
@@ -51,4 +53,11 @@ const SideNav = () => {
     </div>
   )
 }
-export default SideNav
+
+const mapStateToProps = state => {
+  return {
+    user: state.auth.user,
+    uiReducer: state.uiReducer
+  };
+};
+export default connect(mapStateToProps, { logoutUser })(SideNav);

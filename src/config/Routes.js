@@ -16,7 +16,7 @@ const Verification = lazy(() => import("../pages/auth/signup/Verification"));
 const Setup = lazy(() => import("../pages/auth/signup/Setup"));
 const Raffles = lazy(() => import("../pages/raffles/Raffles"));
 const RaffleDetails = lazy(() => import("../pages/raffles/RaffleDetails"));
-const Watchlist = lazy(() => import("../pages/Watchlist"));
+const Watchlist = lazy(() => import("../pages/watchlist/Watchlist"));
 const Dashboard = lazy(() => import("../pages/dashboard/Dashboard"));
 const Notification = lazy(() =>
   import("../pages/dashboard/notification/Notification")
@@ -61,7 +61,7 @@ const Routes = () => (
         <PrivateRoute exact path={"/history"} component={History} />
         <PrivateRoute exact path={"/referral"} component={Referrals} />
         <PrivateRoute exact path={"/profile"} component={Profile} />
-        <PrivateRoute exact path={"/payment/response/:trxref"} component={Response} />
+        <PrivateRoute exact path={"/payment/response/:trxref/:reference"} component={Response} />
 
 
         {/* catch all invalid urls */}

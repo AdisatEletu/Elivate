@@ -50,7 +50,7 @@ export const Banner = ({ data }) => {
                 <RaffleTimer timer={data.start_date} />
               </div>
               <div className={"mt-5"}>
-                <WatchlistBtn />
+                {/* <WatchlistBtn /> */}
               </div>
             </div>
 

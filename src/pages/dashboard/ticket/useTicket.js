@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { doAlert } from "../../../components/alert/AlertComponent";
 import handleError from "../../../helpers/handleError";
-import { getRequest } from "../../../helpers/requests";
+import { getRequest, putRequest } from "../../../helpers/requests";
 
 export const useTicket = ({user}) => {
   const [tickets, setTickets] = useState([]);
@@ -21,6 +21,22 @@ export const useTicket = ({user}) => {
     }
   };
 
+
+
+  const buyTickets = async (id) => {
+    try {
+      const { data, success } = await putRequest(`/customer/ticket-bundle/${id}`);
+      if (success) {
+        window.location.href=data.url
+      }
+      setFetching(false);
+    } catch (error) {
+      handleError(error);
+      setFetching(false);
+    }
+  };
+
+
   const config = {
     reference: (new Date()).getTime(),
     email: user.email,
@@ -32,7 +48,7 @@ console.log({config})
   // you can call this function anything
   const onSuccess = (reference) => {
 
-    window.location.href=(`/payment/response/${reference.trxref}`)
+    window.open=(`/payment/response/${reference.trxref}`)
     // Implementation for whatever you want to do with reference and after success call.
     setRef(reference)
   };
@@ -53,7 +69,8 @@ console.log({config})
     tickets,
     onClose,
     onSuccess,
-    config, setAmount
+    config, setAmount,
+    buyTickets
 
   };
 };

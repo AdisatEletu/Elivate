@@ -1,34 +1,24 @@
 import React, { useEffect, useState } from "react";
-import { setSubHeaderAction } from "./../redux/actions/uiActions";
+import { setSubHeaderAction } from "../../redux/actions/uiActions";
 import { connect } from "react-redux";
-import { Filter } from "./home/components/Filter";
-import { RaffleCard } from "./home/components/RaffleCards";
+import { Filter } from "../home/components/Filter";
+import { RaffleCard } from "../home/components/RaffleCards";
 import Pagination from "react-js-pagination";
-import PageTitle from "./../components/title/PageTitle";
-import "../index.css";
-import { raffleData } from "../utils/mock";
-import { getRequest } from "../helper/request";
-import handleError from "../helpers/handleError";
-import { EmptyData } from "../components/EmptyData";
+import PageTitle from "../../components/title/PageTitle";
+import "../../index.css";
+import { raffleData } from "../../utils/mock";
+import { getRequest } from "../../helper/request";
+import handleError from "../../helpers/handleError";
+import { EmptyData } from "../../components/EmptyData";
 
-import { PageLoader } from "../components/Loaders";
+import { PageLoader } from "../../components/Loaders";
+import { useWatchlist } from "./useWatchlist";
 
 const Watchlist = (props) => {
   const [activePage, setActivePage] = useState(1);
-  const [data, setData] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
-  const getWatchlist = async () => {
-    try {
-      const { success, data } = await getRequest("/customer/watchlist");
-      if (success) {
-        setData(data?.data);
-        console.log({ data });
-        setIsLoading(false);
-      }
-    } catch (e) {
-      handleError(e);
-    }
-  };
+  const {raffles,
+    fetching,
+    getWatchlist} = useWatchlist()
 
   useEffect(() => {
     getWatchlist();
@@ -47,11 +37,11 @@ const Watchlist = (props) => {
     <div className={"mt-4"}>
       <PageTitle text={"Here’re your watchlist"} hideBack />
       <Filter />
-      {isLoading ? (
+      {fetching ? (
         <PageLoader />
       ) : (
         <div className={"mt-6 card-grid"}>
-          {data.length > 0 ? data.map((raffle, index) => (
+          {raffles.length > 0 ? raffles.map((raffle, index) => (
             <RaffleCard
               key={index}
               description={raffle.description}
