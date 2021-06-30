@@ -653,7 +653,7 @@ ul.navigtion-items {
 .homepage-featured {
     background-position: center;
     background-size: cover;
-    min-height: 325px;
+    min-height: 205px;
     width: 100%;
     border-radius: 20px;
 }
