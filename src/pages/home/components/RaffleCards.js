@@ -7,8 +7,10 @@ import { postRequest,deleteRequest } from "../../../helpers/requests";
 import handleError from "../../../helpers/handleError";
 import { doAlert } from "../../../components/alert/AlertComponent";
 import axios from "axios";
+import { useRaffle } from "../../raffles/useRaffle";
 
-export const RaffleCard = ({imgUrl, title, ticket, description,status, timer, getRaffles, onClick, charity, profile, winner, stacked, raffle}) => {
+export const RaffleCard = ({imgUrl, title, ticket, description,status, timer,onClick, charity, profile, winner, stacked, raffle}) => {
+  const {getRaffles} = useRaffle()
 
   const ended = raffle.start_date <= new Date().now;
 
@@ -16,13 +18,17 @@ export const RaffleCard = ({imgUrl, title, ticket, description,status, timer, ge
   const [adding, setAdding] = useState(false);
   const [creating, setCreating] = useState(false);
   const [removing, setRemoving] = useState(false);
+  const [watchlist, setWatchlist] = useState(raffle.in_watchlist)
+
   const handleAddWatchlist =async ()=>{
     try{
       setAdding(true)
       const {success} = await postRequest('/customer/watchlist', {raffle_id: raffle.id})
       
       if(success){
-        raffle.in_watchlist = true;
+       
+        setWatchlist(true)
+       await getRaffles()
        doAlert('successfully Added to watchlist', "success")
      
       }
@@ -37,16 +43,19 @@ export const RaffleCard = ({imgUrl, title, ticket, description,status, timer, ge
     try{
       setRemoving(true)
       const res= await axios.delete(`/customer/watchlist/${raffle.id}`)
+
+      setWatchlist(false)
+      
       if(res.success){
-        raffle.in_watchlist = false;
        doAlert('successfully removed from watchlist', "success")
-       
       }
       setRemoving(false)
     }catch(e){
       handleError(e)
     }
   }
+
+  console.log({watchlist})
 
   const handleEnterRaffle =async ()=>{
     try{
@@ -89,7 +98,7 @@ export const RaffleCard = ({imgUrl, title, ticket, description,status, timer, ge
             <RaffleTimer  winner={winner} black stacked={stacked} ended={ended} profile={profile} className={'raffle-card-button'} timer={raffle?.end_date}/>
           </div>
           <div className={'mt-3'}>
-            <WatchlistBtn adding={adding} removing={removing} creating={creating} ended={ended} handleRemoveWatchlist={handleRemoveWatchlist} watchlist={raffle.in_watchlist} handleEnterRaffle={handleEnterRaffle} handleAddWatchlist={handleAddWatchlist} fullwidth status={status}/>
+            <WatchlistBtn adding={adding} removing={removing} creating={creating} ended={ended} handleRemoveWatchlist={handleRemoveWatchlist} watchlist={watchlist} handleEnterRaffle={handleEnterRaffle} handleAddWatchlist={handleAddWatchlist} fullwidth status={status}/>
           </div>
         </div>
       </div>

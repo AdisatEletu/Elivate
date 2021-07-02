@@ -78,7 +78,7 @@ const Home = () => {
         <div
           className={"homepage-featured  banner"}
         >
-            <img src={require("../../assets/Ebanner(1272x534)_01.jpg")} alt="alt banner" height={543}/>
+            <img src={require("../../assets/Ebanner(1272x534)_01.jpg")} alt="alt banner" className='fullwidth' height={543}/>
         </div>
       {/* <Banner data={raffles} /> */}
       <HowItWorks />
@@ -126,12 +126,13 @@ const Home = () => {
           </div>
         </div>
       </div>
-      <div className={`mt-6 mb-5 card-grid`}>
-        {isLoading ? (
-          <div className='d-flex col-md-12 justify-content-center'>
+      {isLoading ? (
+          <div className='d-flex col-md-12 mb-5  justify-content-center'>
            <PageLoader/>
            </div>
-        ) : raffles.length > 0 ? (
+        ) :
+      <div className={`mt-6 mb-5 card-grid`}>
+       {raffles.length > 0 ? (
           raffles.map((raffle, index) => (
             <RaffleCard
               key={index}
@@ -150,7 +151,8 @@ const Home = () => {
             {/* Opsss! there happened to be no data at the moment */}
           </div>
         )}
-      </div>
+      </div>}
+    
       <div className={"mt-6 m-background"}>
         <div className={"m-flex justify-content-between"}>
           <div className={"col-md-10"}>

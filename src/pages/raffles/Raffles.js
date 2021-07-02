@@ -52,7 +52,6 @@ const Raffles = (props) => {
                 title={raffle.title}
                 imgUrl={raffle.imgUrl}
                 onClick={onClickRaffle}
-                getRaffles={getRaffles}
                 raffle={raffle}
               />
             ))
