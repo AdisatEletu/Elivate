@@ -58,7 +58,7 @@ const History = () => {
           <TabPane tabId="1">
    
               <Col sm="12">
-                <Raffles/>
+                {/* <Raffles/> */}
               </Col>
           </TabPane>
           <TabPane tabId="2">
