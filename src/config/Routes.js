@@ -61,7 +61,7 @@ const Routes = () => (
         <PrivateRoute exact path={"/history"} component={History} />
         <PrivateRoute exact path={"/referral"} component={Referrals} />
         <PrivateRoute exact path={"/profile"} component={Profile} />
-        <PrivateRoute exact path={"/payment/response/:trxref/:reference"} component={Response} />
+        <PrivateRoute exact path={"/payment/response"} component={Response} />
 
 
         {/* catch all invalid urls */}
