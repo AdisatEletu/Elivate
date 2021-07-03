@@ -78,7 +78,7 @@ const Home = () => {
         <div
           className={"homepage-featured  banner"}
         >
-            <img src={require("../../assets/Ebanner(1272x534)_01.jpg")} alt="alt banner" className='fullwidth' height={543}/>
+            <img src={require("../../assets/Ebanner(1272x534)_01.jpg")} alt="alt banner" className='fullwidth'/>
         </div>
       {/* <Banner data={raffles} /> */}
       <HowItWorks />

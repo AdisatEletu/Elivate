@@ -29,6 +29,7 @@ const Profile = lazy(() => import("../pages/dashboard/profile/Profile"));
 const FAQ = lazy(() => import("../pages/faq/FAQ"));
 const RaffleFAQ = lazy(() => import("../pages/faq/RaffleFAQ"));
 const Charity = lazy(() => import("../pages/charity/Charity"));
+const Transaction = lazy(()=> import('../pages/dashboard/transactions/Transactions'))
 
 const Routes = () => (
   // eslint-disable-next-line no-undef
@@ -62,7 +63,7 @@ const Routes = () => (
         <PrivateRoute exact path={"/referral"} component={Referrals} />
         <PrivateRoute exact path={"/profile"} component={Profile} />
         <PrivateRoute exact path={"/payment/response"} component={Response} />
-
+        <PrivateRoute exact path={"/transactions"} component={Transaction} />
 
         {/* catch all invalid urls */}
         <Route component={Error404} />
