@@ -1,0 +1,88 @@
+th {
+    background: #F8FAFB;
+    color: #000;
+    font-weight: 500;
+    height: 60px;
+    /*background: #F8FAFB;*/
+}
+
+th, thead {
+    height: 60px;
+}
+
+tr {
+    height: 77px;
+    transition: all .3s, height 0s;
+    background-color: #ffffff;
+}
+
+thead {
+    display: table-header-group;
+    vertical-align: middle;
+    border-color: inherit;
+
+}
+
+
+td {
+    border-bottom: 1px solid #DFE2E6;
+    color: #111111;
+}
+
+td, th {
+    padding: 16px 16px;
+    overflow-wrap: break-word;
+    /*vertical-align: top;*/
+}
+
+tr:hover {
+    background-color: #eff7eb;
+}
+
+table {
+    border: 0.5px solid #DFE2E6;
+    box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.1);
+    border-radius: 4px;
+    width: 100%;
+    text-align: left;
+    border-collapse: separate;
+    border-spacing: 0 !important;
+}
+
+tr > td {
+    padding: 16px 16px;
+    overflow-wrap: break-word;
+}
+
+.table-wrapper {
+    zoom: 1;
+}
+
+.t-table {
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    color: rgba(0, 0, 0, 0.65);
+    font-size: 14px;
+    font-variant: tabular-nums;
+    line-height: 1.5;
+    list-style: none;
+    -webkit-font-feature-settings: 'tnum';
+    font-feature-settings: 'tnum';
+    position: relative;
+    clear: both;
+}
+
+
+.table-image-holder{
+    /*border: 1px #ececec solid;*/
+    width: 150px;
+    height: 100px;
+    padding: 0 auto;
+}
+
+.table-image{
+    background-size: contain;
+    background-repeat: no-repeat;
+}

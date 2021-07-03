@@ -10,11 +10,9 @@ const Ticket = ({ user }) => {
     fetchTickets,
     fetching,
     tickets,
-    onClose,
     setAmount,
-    onSuccess,
-    config,
-    buyTickets
+    buyTickets,
+    loading
   } = useTicket({user});
 
 
@@ -22,7 +20,6 @@ const Ticket = ({ user }) => {
     fetchTickets();
   }, [user]);
 
-  const initializePayment = usePaystackPayment(config);
 
 
   return (
@@ -42,7 +39,7 @@ const Ticket = ({ user }) => {
                     className={
                       "ticket-card justify-content-around d-flex flex-column align-items-center"
                     }
-                    key={ticket.uuid} onLoad={()=>setAmount(ticket.amount)}
+                    key={ticket.uuid}
                   >
                     <div className={"text-align-center"}>
                       <img
@@ -65,10 +62,10 @@ const Ticket = ({ user }) => {
                         "ticket-button d-flex align-items-center justify-content-center pointer"
                       }
                       onClick={() => {
-                      buyTickets(ticket.id)
+                      buyTickets(ticket.id, index)
                       }}
                     >
-                      Buy &#8358; {ticket.amount}
+                     {loading[index] ? "Loading..." : <div>Buy &#8358; {ticket.amount}</div>}
                     </div>
                   </div>
                 
