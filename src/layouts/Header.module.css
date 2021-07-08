@@ -1,0 +1,12 @@
+.Button {
+  width: 12%;
+}
+
+.Image {
+  width: 4%;
+  border-radius: 50%;
+}
+
+.Watchlist {
+  border-left: 1px solid rgb(184, 176, 176);
+}

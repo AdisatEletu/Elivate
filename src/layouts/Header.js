@@ -1,8 +1,11 @@
 import React from "react";
 import { Link, NavLink } from "react-router-dom";
-import { FormButton } from "../components/forms/Button";
+import { connect } from "react-redux";
+import classes from "./Header.module.css";
+import { FaBell } from "react-icons/fa";
+import img from "../assets/12-small.png";
 
-const Header = () => {
+const Header = ({ user, isAuthenticated }) => {
   return (
     <header>
       <div className="navigation-div">
@@ -53,23 +56,54 @@ const Header = () => {
                 Winners
               </NavLink>
             </li>
-            <li>
-              <NavLink activeClassName={"active-nav"} to="/profile">
-                Profile
-              </NavLink>
-            </li>
-            <li>
-              <NavLink activeClassName={"active-nav"} to="/login">
-                Login
-              </NavLink>
-            </li>
-            <li className={""}>
-              <button
-                className={`paragraph-bold text-align-center header-button`}
-              >
-                Sign up
-              </button>
-            </li>
+
+            {isAuthenticated ? (
+              <>
+                <li className={classes.Watchlist}>
+                  <NavLink activeClassName={"active-nav"} to="/watchlist">
+                    Watchlist
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink activeClassName={"active-nav"} to="/tickets">
+                    <img src={require("../assets/icons/ticket.svg")} />
+                    &nbsp;
+                    {user?.tickets} Tickets
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink activeClassName={"active-nav"} to="/notifications">
+                    <FaBell />
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink activeClassName={"active-nav"} to="/profile">
+                    <img
+                      src={img}
+                      alt="img"
+                      srcset=""
+                      className={classes.Image}
+                    />
+                    {/* <BiDownArrow /> */}
+                  </NavLink>
+                </li>
+              </>
+            ) : (
+              <>
+                <li>
+                  <NavLink activeClassName={"active-nav"} to="/login">
+                    Login
+                  </NavLink>
+                </li>
+                <li className={""}>
+                  <button
+                    className={`paragraph-bold text-align-center header-button`}
+                  >
+                    Sign up
+                  </button>
+                </li>
+              </>
+            )}
           </ul>
         </nav>
       </div>
@@ -77,4 +111,9 @@ const Header = () => {
   );
 };
 
-export default Header;
+const mapStateToProps = (state) => ({
+  isAuthenticated: state.auth.isAuthenticated,
+  user: state.auth.user,
+});
+
+export default connect(mapStateToProps)(Header);

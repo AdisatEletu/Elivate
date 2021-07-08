@@ -16,18 +16,20 @@ const Verification = lazy(() => import("../pages/auth/signup/Verification"));
 const Setup = lazy(() => import("../pages/auth/signup/Setup"));
 const Raffles = lazy(() => import("../pages/raffles/Raffles"));
 const RaffleDetails = lazy(() => import("../pages/raffles/RaffleDetails"));
-const Watchlist = lazy(() => import("../pages/Watchlist"));
+const Watchlist = lazy(() => import("../pages/watchlist/Watchlist"));
 const Dashboard = lazy(() => import("../pages/dashboard/Dashboard"));
 const Notification = lazy(() =>
   import("../pages/dashboard/notification/Notification")
 );
 const Ticket = lazy(() => import("../pages/dashboard/ticket/Ticket"));
+const Response = lazy(() => import("../pages/dashboard/ticket/Response"));
 const History = lazy(() => import("../pages/dashboard/history/History"));
 const Referrals = lazy(() => import("../pages/dashboard/referrals/Referrals"));
 const Profile = lazy(() => import("../pages/dashboard/profile/Profile"));
 const FAQ = lazy(() => import("../pages/faq/FAQ"));
 const RaffleFAQ = lazy(() => import("../pages/faq/RaffleFAQ"));
 const Charity = lazy(() => import("../pages/charity/Charity"));
+const Transaction = lazy(()=> import('../pages/dashboard/transactions/Transactions'))
 
 const Routes = () => (
   // eslint-disable-next-line no-undef
@@ -49,7 +51,7 @@ const Routes = () => (
         <PublicRoute exact path="/" component={Home} />
         <PublicRoute exact path="/raffles" component={Raffles} />
         <PublicRoute path="/raffles/:id/details" component={RaffleDetails} />
-        <PublicRoute path="/raffles/:id/watchlist" component={Watchlist} />
+        <PublicRoute path="/watchlist" component={Watchlist} />
         <PublicRoute exact path={"/help"} component={FAQ} />
         <PublicRoute path={"/help/raffle"} component={RaffleFAQ} />
         <PublicRoute path={"/charity"} component={Charity} />
@@ -60,6 +62,8 @@ const Routes = () => (
         <PrivateRoute exact path={"/history"} component={History} />
         <PrivateRoute exact path={"/referral"} component={Referrals} />
         <PrivateRoute exact path={"/profile"} component={Profile} />
+        <PrivateRoute exact path={"/payment/response"} component={Response} />
+        <PrivateRoute exact path={"/transactions"} component={Transaction} />
 
         {/* catch all invalid urls */}
         <Route component={Error404} />

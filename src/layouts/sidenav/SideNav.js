@@ -1,8 +1,10 @@
 import React from "react";
 import './sidenav.css'
 import {NavLink} from "react-router-dom";
+import {logoutUser} from '../../redux/actions/authActions';
+import {connect }from 'react-redux'
 
-const SideNav = () => {
+const SideNav = ({logoutUser}) => {
   return (
     <div className={'side-nav'}>
       <div className={'box-shadow sidenav-holder d-flex flex-column justify-content-between p-3'}>
@@ -27,10 +29,10 @@ const SideNav = () => {
             <img className={'col-md-1'} alt={'not'} src={require('../../assets/icons/history.svg')}/>
             <div className={'col-md-10'}> History</div>
           </NavLink>
-          <NavLink to={'/payments'} activeClassName={'active-class'}
+          <NavLink to={'/transactions'} activeClassName={'active-class'}
                    className={'d-flex sidebar-link justify-content-between align-items-center'}>
             <img className={'col-md-1'} alt={'not'} src={require('../../assets/icons/notification.svg')}/>
-            <div className={'col-md-10'}> Payments</div>
+            <div className={'col-md-10'}> Transactions</div>
           </NavLink>
           <NavLink to={'/referral'} activeClassName={'active-class'}
                    className={'d-flex sidebar-link justify-content-between align-items-center'}>
@@ -43,7 +45,7 @@ const SideNav = () => {
             <div className={'col-md-10'}> Profile</div>
           </NavLink>
         </ul>
-        <div className={'log-out d-flex justify-content-between align-items-center pl-2'} onClick={()=> console.log('logout')}>
+        <div className={'log-out d-flex justify-content-between align-items-center pl-2'} onClick={logoutUser}>
           <img className={'col-md-1'} alt={'not'} src={require('../../assets/icons/logout.svg')}/>
           <div className={'col-md-10'}> Logout</div>
         </div>
@@ -51,4 +53,11 @@ const SideNav = () => {
     </div>
   )
 }
-export default SideNav
+
+const mapStateToProps = state => {
+  return {
+    user: state.auth.user,
+    uiReducer: state.uiReducer
+  };
+};
+export default connect(mapStateToProps, { logoutUser })(SideNav);

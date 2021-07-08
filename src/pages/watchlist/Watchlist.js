@@ -6,63 +6,56 @@ import { RaffleCard } from "../home/components/RaffleCards";
 import Pagination from "react-js-pagination";
 import PageTitle from "../../components/title/PageTitle";
 import "../../index.css";
-import { useRaffle } from "./useRaffle";
+import { raffleData } from "../../utils/mock";
+import { getRequest } from "../../helper/request";
+import handleError from "../../helpers/handleError";
 import { EmptyData } from "../../components/EmptyData";
+
 import { PageLoader } from "../../components/Loaders";
-import { getRequest } from "../../helpers/requests";
+import { useWatchlist } from "./useWatchlist";
 
-const Raffles = (props) => {
+const Watchlist = (props) => {
   const [activePage, setActivePage] = useState(1);
-
-  const { raffles, fetching, getRaffles } = useRaffle();
+  const {raffles,
+    fetching,
+    getWatchlist} = useWatchlist()
 
   useEffect(() => {
-    getRaffles()
+    getWatchlist();
     setSubHeaderAction("Ongoing and upcoming Raffles");
-  },[]);
+  }, []);
 
   const handlePageChange = (pageNumber) => {
- 
+    console.log({ pageNumber });
   };
 
-  const onClickRaffle = (id) => {
-    window.location.href = `/raffles/${id}/details`;
-  };
-
+  // const onClickRaffle = (id) => {
+  //   window.location.href = `/raffles/${id}/details`;
+  // };
 
   return (
     <div className={"mt-4"}>
-      {/*{header.title}*/}
-      <PageTitle text={"Ongoing and upcoming Raffles"} hideBack />
+      <PageTitle text={"Here’re your watchlist"} hideBack />
       <Filter />
       {fetching ? (
         <PageLoader />
       ) : (
-        <div>
-        {raffles.length > 0 ?
         <div className={"mt-6 card-grid"}>
-           {raffles.map((raffle, index) => (
-              <RaffleCard
-                key={index}
-                description={raffle.description}
-                timer={raffle.start_date}
-                status={raffle.status}
-                charity={raffle.charity}
-                ticket={raffle.ticket}
-                title={raffle.title}
-                imgUrl={raffle.imgUrl}
-                onClick={onClickRaffle}
-                raffle={raffle}
-              />
-            ))
-           } 
-          </div>
-          : (
-            <EmptyData />
-          )}
+          {raffles.length > 0 ? raffles.map((raffle, index) => (
+            <RaffleCard
+              key={index}
+              description={raffle.description}
+              timer={raffle.timer}
+              status={raffle.status}
+              charity={raffle.charity}
+              ticket={raffle.num_of_tickets}
+              title={raffle.name}
+              imgUrl={raffle.imgUrl}
+              raffle={raffle}
+            />
+          )): <EmptyData/>}
         </div>
       )}
-
       <div className={"d-flex justify-content-center primary-bg-color mt-6"}>
         <Pagination
           activePage={activePage}
@@ -86,4 +79,4 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps, { setSubHeaderAction })(Raffles);
+export default connect(mapStateToProps, { setSubHeaderAction })(Watchlist);

@@ -4,6 +4,7 @@ node_modules
 /.pnp
 .pnp
 .pnp.js
+**/node_modules
 
 **/node_modules
 
@@ -47,3 +48,4 @@ package-lock.json
 
 # Local Netlify folder
 .netlify
+node_modules
