@@ -218,6 +218,14 @@ ul.navigtion-items {
     color: red;
 }
 
+.failed{
+    color: red
+}
+
+.success{
+    color: #4D9E39;
+}
+
 .loader {
     display: flex;
     flex-direction: column;
@@ -247,6 +255,10 @@ ul.navigtion-items {
 
 .z-index-100 {
     z-index: 100;
+}
+
+.black{
+    color: #222222;
 }
 
 /**
@@ -412,6 +424,10 @@ ul.navigtion-items {
 
 .green-bg-color {
     background-color: #4d9e39;
+}
+
+.green-color{
+    color: #4d9e39
 }
 
 .header-button {
@@ -653,7 +669,7 @@ ul.navigtion-items {
 .homepage-featured {
     background-position: center;
     background-size: cover;
-    min-height: 325px;
+    min-height: 205px;
     width: 100%;
     border-radius: 20px;
 }

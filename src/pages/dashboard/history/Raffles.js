@@ -1,5 +1,4 @@
 import React from "react";
-import {Table} from "reactstrap";
 import {RaffleCard} from "../../home/components/RaffleCards";
 import {expiredData} from "../../../utils/mock";
 

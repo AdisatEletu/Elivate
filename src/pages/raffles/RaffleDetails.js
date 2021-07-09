@@ -28,7 +28,7 @@ const RaffleDetails = () =>{
               <RaffleTimer timer={'1 hr : 30 mins : 27 sec'} className={'raffle-card-button'} black/>
             </div>
             <div className={'mt-5'}>
-              <WatchlistBtn/>
+              {/* <WatchlistBtn/> */}
             </div>
         
         </div>
