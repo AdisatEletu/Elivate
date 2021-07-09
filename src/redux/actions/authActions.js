@@ -42,7 +42,7 @@
 //     dispatch(setCurrentUser(data));
 //     //Take note of the checkAuthTimeout. It affected my code previously..
 //     dispatch(checkAuthTimeout(3600));
-    
+
 //   }} catch (error) {
 //     console.log(error);
 //   }
@@ -51,7 +51,7 @@
 // //     .post(url, authData) // whatever operation
 // //     .then((user) => {
 // //       try {
-       
+
 // //       } catch (error) {
 // //         console.log(error);
 // //       }
@@ -91,7 +91,6 @@
 //   };
 // };
 
-
 import axios from "axios";
 import {
   IS_LOGGING_IN,
@@ -99,7 +98,6 @@ import {
   SET_USER,
   LOGOUT_USER
 } from "../types";
-import { v4 as uuidv4 } from "uuid";
 import {doAlert} from "../../components/alert/AlertComponent";
 import { postRequest } from "../../helper/request";
 import handleError from "../../helpers/handleError";
@@ -117,7 +115,9 @@ export const loginUser = (email, password, history) => async dispatch => {
       localStorage.user = JSON.stringify(data);
       doAlert("successfully logged in");
       window.location.href = ("/");
-    } 
+    } else{
+      console.log({res})
+    }
   } catch (e) {
     console.log(e);
     dispatch({type: DONE_LOGGING_IN});
@@ -127,6 +127,19 @@ export const loginUser = (email, password, history) => async dispatch => {
 export const setCurrentUser = user => dispatch => {
   dispatch({ type: SET_USER, payload: user });
 };
-export const logoutUser = () => dispatch => {
+
+export const getUser = () => async (dispatch) => {
+  try {
+    const { data, success } = await getRequest("/customer/profile");
+    if (success) {
+      setCurrentUser(data);
+      localStorage.user = JSON.stringify(data);
+    }
+  } catch (e) {
+    handleError(e);
+  }
+};
+
+export const logoutUser = () => (dispatch) => {
   dispatch({ type: LOGOUT_USER });
 };

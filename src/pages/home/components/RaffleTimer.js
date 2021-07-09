@@ -6,10 +6,12 @@ export const RaffleTimer = ({
   black,
   stacked,
   profile,
-  ended,
+ started,
   winner,
 }) => {
-  if (profile && !ended) {
+  console.log({started});
+  if (profile && !started)
+  {
     return (
       <div
         className={`raffle-profile-button light-blue-bg primary-color small-paragraph  m-raffle-btn text-align-center`}
@@ -17,7 +19,7 @@ export const RaffleTimer = ({
         <span>{timer}</span>
       </div>
     );
-  } else if (ended && profile && !winner) {
+  } else if (started && profile && !winner) {
     return (
       <div
         className={`raffle-button small-paragraph ${
@@ -27,7 +29,7 @@ export const RaffleTimer = ({
         <span>You cannot play this raffle. winners to be announced soon </span>
       </div>
     );
-  } else if (ended && profile && winner === "you") {
+  } else if (started && profile && winner === "you") {
     return (
       <div
         className={`raffle-button small-paragraph ${
@@ -41,7 +43,27 @@ export const RaffleTimer = ({
         <span> &nbsp; You won this!!! </span>
       </div>
     );
-  } else
+  } else if (started) {
+    return (
+      <div
+        className={`raffle-button small-paragraph ${
+          stacked ? "block" : "d-flex"
+        } align-items-center m-raffle-btn ${className}`}
+      >
+        <img
+          alt={"timer icon"}
+          width={24}
+          height={24}
+          src={
+            black
+              ? require("../../../assets/icons/blackTimer.svg")
+              : require("../../../assets/icons/timer.svg")
+          }
+        />{" "}
+        <span> &nbsp; Raffle have started </span>
+      </div>
+    );
+  } else if (!started) {
     return (
       <div
         className={`raffle-button small-paragraph align-items-center m-raffle-btn ${className}`}
@@ -60,8 +82,11 @@ export const RaffleTimer = ({
           &nbsp; Raffle starts in: &nbsp;
         </div>
         <div>
-          <DateCountdown dateTo={timer} />
+          <DateCountdown dateTo={timer}/>
         </div>
       </div>
-    );
-};
+    )
+  } else {
+    return <div>hh</div>
+  }
+}

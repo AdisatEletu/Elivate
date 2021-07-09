@@ -8,6 +8,8 @@ import Routes from "./config/Routes";
 
 import "./index.css";
 import "./responsive.css";
+import 'antd/dist/antd.css'
+
 
 export const initialize = (windowObj, axiosLib) => {
   axiosLib.defaults.baseURL = "https://desolate-fjord-54053.herokuapp.com/api/";

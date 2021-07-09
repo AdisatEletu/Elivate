@@ -18,33 +18,6 @@ import handleError from "../../helpers/handleError";
 import { PageLoader } from "../../components/Loaders";
 
 const Home = () => {
-  // const [data, setData] = useState([
-  //   {
-  //     image:
-  //       "https://image.similarpng.com/very-thumbnail/2020/04/cosmetic-products-ad-3d-skin-care-brand-cream-lotion-png.png",
-  //     subtitle:
-  //       "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.",
-  //     title: "Pixel 4 modern edition",
-  //     isManual: true,
-  //   },
-  //   {
-  //     image:
-  //       "https://image.similarpng.com/very-thumbnail/2020/04/cosmetic-products-ad-3d-skin-care-brand-cream-lotion-png.png",
-  //     subtitle:
-  //       "What do you say changed again the industry's standard dummy text ever since the 1500s.",
-  //     title: "Pixel 5 modern edition",
-  //     isManual: false,
-  //   },
-  //   {
-  //     image:
-  //       "https://image.similarpng.com/very-thumbnail/2020/04/cosmetic-products-ad-3d-skin-care-brand-cream-lotion-png.png",
-  //     subtitle:
-  //       "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.",
-  //     title: "Pixel 6 modern edition",
-  //     isManual: true,
-  //   },
-  // ]);
-
   const [raffles, setRaffles] = useState([]);
   const [featuredRaffles, setFeaturedRaffles] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -54,12 +27,11 @@ const Home = () => {
       const { data, success } = await getRequest("/customer/raffle/all");
       if (success) {
         const filteredRaffle = data.data.filter((featured)=> featured.is_featured)
-        setFeaturedRaffles(filteredRaffle)
+        setFeaturedRaffles(filteredRaffle);
         setRaffles(data.data);
       }
       setIsLoading(false);
     } catch (e) {
-      console.log(e);
       handleError(e);
       setIsLoading(false);
     }
@@ -75,12 +47,17 @@ const Home = () => {
 
   return (
     <div className="">
-      <Banner data={raffles} />
+        <div
+          className={"homepage-featured  banner"}
+        >
+            <img src={require("../../assets/Ebanner(1272x534)_01.jpg")} alt="alt banner" className='fullwidth'/>
+        </div>
+      {/* <Banner data={raffles} /> */}
       <HowItWorks />
       <FeaturedRaffleTitle />
       <Filter classNames={"mt-6"} />
 
-      <div className={"mt-3"}>
+      <div className={"mt-3 "}>
         <div
           className={"homepage-featured "}
           style={{
@@ -113,7 +90,7 @@ const Home = () => {
                 "col-md-4 d-flex align-items-center m-p-2 m-justify-content-normal m-mb-3"
               }
             >
-              <WatchlistBtn />
+              {/* <WatchlistBtn /> */}
             </div>
             <div className={"col-md-4 ticket-details-holder m-hidden"}>
               <Ticket ticket={5} />
@@ -121,22 +98,21 @@ const Home = () => {
           </div>
         </div>
       </div>
-      <div className={`mt-6 mb-5 card-grid`}>
-        {isLoading ? (
-          <div className='d-flex col-md-12 justify-content-center'>
+     
+     <div className='raffle-wrapper padding-b-20per'>
+     {/*{raffles.length < 10 && <div className="pointer float-right primary-color " onClick={()=>window.location.href='/raffles'}>View all raffles</div>}*/}
+      {isLoading ? (
+          <div className='d-flex col-md-12 mb-5  justify-content-center'>
            <PageLoader/>
            </div>
-        ) : raffles.length > 0 ? (
-          raffles.map((raffle) => (
+        ) :
+      <div className={`mt-6 mb-5 card-grid `}>
+       {raffles.length > 0 ? (
+          raffles.map((raffle, index) => (
             <RaffleCard
-              key={raffle.id}
-              description={raffle.description}
-              timer={raffle.start_date}
-              charity={raffle.is_charity}
-              ticket={raffle.number_of_tickets}
-              title={raffle.name}
-              imgUrl={`${baseURL}${raffle.image_url}`}
+              key={index}
               raffle={raffle}
+              getRaffles={getRaffles}
             />
           ))
         ) : (
@@ -144,8 +120,11 @@ const Home = () => {
             {/* Opsss! there happened to be no data at the moment */}
           </div>
         )}
-      </div>
-      <div className={"mt-2 m-background"}>
+      </div>}
+
+   
+    </div>
+      <div className={"mt-6  m-background"}>
         <div className={"m-flex justify-content-between"}>
           <div className={"col-md-10"}>
             <div className={"d-flex align-items-center"}>

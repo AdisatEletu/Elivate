@@ -19,7 +19,7 @@ const Raffles = (props) => {
   useEffect(() => {
     getRaffles()
     setSubHeaderAction("Ongoing and upcoming Raffles");
-  },[]);
+  },[activePage]);
 
   const handlePageChange = (pageNumber) => {
     console.log({ pageNumber });
@@ -29,7 +29,6 @@ const Raffles = (props) => {
     window.location.href = `/raffles/${id}/details`;
   };
 
-  // console.log(header);
 
   return (
     <div className={"mt-4"}>
@@ -45,15 +44,7 @@ const Raffles = (props) => {
            {raffles.map((raffle, index) => (
               <RaffleCard
                 key={index}
-                description={raffle.description}
-                timer={raffle.timer}
-                status={raffle.status}
-                charity={raffle.charity}
-                ticket={raffle.ticket}
-                title={raffle.title}
-                imgUrl={raffle.imgUrl}
-                onClick={onClickRaffle}
-                getRaffles={getRaffles}
+                raffle={raffle}
               />
             ))
            } 
@@ -67,8 +58,8 @@ const Raffles = (props) => {
       <div className={"d-flex justify-content-center primary-bg-color mt-6"}>
         <Pagination
           activePage={activePage}
-          itemsCountPerPage={10}
-          totalItemsCount={10}
+          itemsCountPerPage={per_page}
+          totalItemsCount={total}
           pageRangeDisplayed={10}
           onChange={handlePageChange}
           innerClass="pagination justify-content-center pagination-holder"

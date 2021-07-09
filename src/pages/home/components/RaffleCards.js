@@ -1,98 +1,112 @@
-import React, { useState } from "react";
+import React, {useState} from "react";
 import {RaffleTimer} from "./RaffleTimer";
 import {WatchlistBtn} from "./WatchlistBtn";
 import {Ticket} from "./Ticket";
-import {bool, func, string} from "prop-types";
-import { postRequest,deleteRequest } from "../../../helpers/requests";
+import {postRequest} from "../../../helpers/requests";
 import handleError from "../../../helpers/handleError";
-import { doAlert } from "../../../components/alert/AlertComponent";
+import {doAlert} from "../../../components/alert/AlertComponent";
 import axios from "axios";
+import {useRaffle} from "../../raffles/useRaffle";
+import moment from "moment";
 
-export const RaffleCard = ({imgUrl, title, ticket, description,status, timer, getRaffles, onClick, charity, profile, winner, stacked, raffle}) => {
-
-  const ended = raffle.end_date < new Date().now;
-
-
+export const RaffleCard = ({onClick, profile, winner, stacked, raffle}) => {
+  const {getRaffles} = useRaffle();
+  let  today = new Date();
+  let start_date = new Date(raffle?.start_date);
+  const end_date = new Date(raffle?.end_date);
+  
+  
+  const started = start_date < today;
+  const ended= end_date < today;
+  
   const [adding, setAdding] = useState(false);
   const [creating, setCreating] = useState(false);
-  const handleAddWatchlist =async ()=>{
-    try{
-      setAdding(true)
-      const {success} = await postRequest('/customer/watchlist', {raffle_id: raffle.id})
-      
-      if(success){
-        // getRaffles()
-       doAlert('successfully Added to watchlist', "success")
-     
-      }
-      setAdding(false)
-    }catch(e){
-      handleError(e)
-      setAdding(false)
-    }
-  }
-
-  const handleRemoveWatchlist =async ()=>{
-    try{
-      setAdding(true)
-      const raffle_id = raffle.id;
-
-      const {data,success} = deleteRequest(`/customer/watchlist/${raffle.id}`)
-      
-      if(success){
-        // getRaffles()
-       doAlert('successfully removed from watchlist', "success")
-       
-      }
-      setAdding(false)
-    }catch(e){
-      handleError(e)
-    }
-  }
-
-  const handleEnterRaffle =async ()=>{
-    try{
-      setCreating(true)
-      const {data,success, error} = await postRequest(`/customer/raffle/${raffle.id}` )
+  const [removing, setRemoving] = useState(false);
+  const [watchlist, setWatchlist] = useState(raffle.in_watchlist);
   
-      if(success){
-        // await getRaffles()
-       doAlert('successfully Added to watchlist', "success")
-       
-      }else{
+  const handleAddWatchlist = async () => {
+    try {
+      setAdding(true);
+      const {success} = await postRequest('/customer/watchlist', {raffle_id: raffle.id});
+      
+      if (success) {
+        
+        setWatchlist(true);
+        await getRaffles();
+        doAlert('successfully Added to watchlist', "success")
+        
+      }
+      setAdding(false)
+    } catch (e) {
+      handleError(e);
+      setAdding(false)
+    }
+  }
+  
+  const handleRemoveWatchlist = async () => {
+    try {
+      setRemoving(true);
+      const res = await axios.delete(`/customer/watchlist/${raffle.id}`)
+      
+      setWatchlist(false);
+      
+      if (res.success) {
+        doAlert('successfully removed from watchlist', "success")
+      }
+      setRemoving(false)
+    } catch (e) {
+      handleError(e)
+    }
+  }
+  
+  
+  const handleEnterRaffle = async () => {
+    try {
+      setCreating(true)
+      const {data, success, error} = await postRequest(`/customer/raffle/${raffle.id}`);
+      
+      if (success) {
+        doAlert('successfully entered raffle', "success")
+        
+      } else {
         doAlert(error.response.data.message, "error")
       }
       setCreating(false)
-    }catch(e){
+    } catch (e) {
       handleError(e)
     }
   }
-
+  
   return (
     <div className={'raffle-card-holder justify-content-between m-flex col-md-12 pointer'}>
       <div className={'col-md-4'}>
-        {/*<img src={(imgUrl)} className={'raffle-image'}/>*/}
-        <div className={'raffle-image'} style={{backgroundImage: `url(${imgUrl})`}}>
-          <Ticket ticket={ticket} className={'display-none'}/>
-  
-          {charity ?
+        <div className={'raffle-image'} style={{backgroundImage: `url(${raffle.image_url})`}}>
+          <Ticket ticket={raffle.number_of_tickets} className={'display-none'}/>
+          
+          {raffle.charity ?
             <img alt={'charity'} className={'charity-icon'} src={require('../../../assets/icons/charity.svg')}/>
             : ''}
         </div>
       </div>
       <div className={'col-md-7'}>
         <div className={'m-flex height-100px m-display-none justify-content-between'}>
-          <div className={'title2 mt-5 m-display-none'}>{title}</div>
-          <Ticket ticket={ticket}/>
+          <div className={'title2 mt-5 m-di splay-none'}>{raffle.name}</div>
+          <Ticket ticket={raffle.number_of_tickets}/>
         </div>
         <div className={'padding-right-15'}>
-          <div className={`title2 mt-5 display-none`}>{title}</div>
-          <div className={`${stacked ? 'small-paragraph mt-3' : 'small-paragraph mt-3'}`}>{description}</div>
+          <div className={`title2 mt-5 display-none`}>{raffle.name}</div>
+          <div className={`${stacked ? 'small-paragraph mt-3' : 'small-paragraph mt-3'}`} onClick={() => {
+            onClick ? onClick(raffle.raffle_id) : console.log("on location added")
+          }}>{raffle.description}</div>
           <div className={'mt-3'}>
-            <RaffleTimer  winner={winner} black stacked={stacked} ended={ended} profile={profile} className={'raffle-card-button'} timer={raffle?.start_date}/>
+            <RaffleTimer winner={winner} black stacked={stacked} started={started} profile={profile}
+                         className={'raffle-card-button'} timer={raffle?.start_date}/>
           </div>
           <div className={'mt-3'}>
-            <WatchlistBtn adding={adding} creating={creating} ended={ended} handleRemoveWatchlist={handleRemoveWatchlist} watchlist={raffle.in_watchlist} handleEnterRaffle={handleEnterRaffle} handleAddWatchlist={handleAddWatchlist} fullwidth status={status}/>
+            <WatchlistBtn adding={adding} removing={removing} creating={creating} ended={ended}
+                          handleRemoveWatchlist={handleRemoveWatchlist} started={started} start={raffle?.start_date}  watchlist={watchlist}
+                          handleEnterRaffle={handleEnterRaffle} handleAddWatchlist={handleAddWatchlist} fullwidth
+                          status={raffle.status}/>
           </div>
         </div>
       </div>
@@ -100,30 +114,3 @@ export const RaffleCard = ({imgUrl, title, ticket, description,status, timer, ge
   )
 };
 
-RaffleCard.prototype={
-  imgUrl: string,
-  title: string,
-  ticket: string,
-  description: string,
-  status: string,
-  timer:string,
-  onClick: func,
-  charity: bool,
-  profile: bool,
-  stacked: bool,
-  ended: bool
-};
-
-RaffleCard.defaultProps={
-  imgUrl: '',
-  title: "",
-  ticket: "",
-  description: "",
-  status: "watchlist",
-  timer: "",
-  onClick: func,
-  charity: false,
-  profile: false,
-  stacked: false,
-  ended: false
-}

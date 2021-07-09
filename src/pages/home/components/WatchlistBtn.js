@@ -3,16 +3,18 @@ import React from "react";
 export const WatchlistBtn = ({
   className,
   fullwidth,
-  status,
   adding,
   handleEnterRaffle,
   handleAddWatchlist,
   watchlist,
   handleRemoveWatchlist,
   creating,
-  ended
+  start,
+  ended,
+  started,
+  removing
 }) => {
-  if (watchlist) {
+  if (watchlist && !started) {
     return (
       <div>
         <div className={"d-flex m-justify-content-center"}>
@@ -21,24 +23,15 @@ export const WatchlistBtn = ({
             style={fullwidth ? { width: "100%" } : { width: "280px" }}
             onClick={() => handleRemoveWatchlist()}
           >
-            {adding ? "Removing..." : "Remove"}
-          </div>
-        </div>
-        <div className={"d-flex m-justify-content-center mt-3"}>
-          <div
-            className={`green-bg-color secondary-btn white-color paragraph-bold ${className}`}
-            style={fullwidth ? { width: "100%" } : { width: "280px" }}
-            onClick={() => handleEnterRaffle()}
-          >
-          {creating ? " Entering Raffle...": "Enter Raffle"}
+            {removing ? "Removing from watclist..." : "Remove"}
           </div>
         </div>
       </div>
     );
-  } else if (!watchlist) {
+  } else if (!watchlist && !started) {
     return (
       <div>
-        <div className={"d-flex m-justify-content-c`enter"}>
+        <div className={"d-flex m-justify-content-center"}>
           <div
             className={`secondary-bg-color secondary-btn white-color paragraph-bold ${className}`}
             style={fullwidth ? { width: "100%" } : { width: "280px" }}
@@ -47,7 +40,7 @@ export const WatchlistBtn = ({
             {adding ? "Adding..." : "Add to watchlist"}
           </div>
         </div>
-        <div className={"d-flex m-justify-content-center mt-3"}>
+        {/* <div className={"d-flex m-justify-content-center mt-3"}>
           <div
             className={`green-bg-color secondary-btn white-color paragraph-bold ${className}`}
             style={fullwidth ? { width: "100%" } : { width: "280px" }}
@@ -55,7 +48,7 @@ export const WatchlistBtn = ({
           >
            {creating ? " Entering Raffle...": "Enter Raffle"}
           </div>
-        </div>
+        </div> */}
       </div>
     );
   } else if (watchlist && ended || !watchlist && ended) {
@@ -69,15 +62,26 @@ export const WatchlistBtn = ({
         </div>
       </div>
     );
-  } else {
+  } else if(started) {
+    return (
+      <div className={"d-flex m-justify-content-center mt-3"}>
+          <div
+            className={`green-bg-color secondary-btn white-color paragraph-bold ${className}`}
+            style={fullwidth ? { width: "100%" } : { width: "280px" }}
+            onClick={() => handleEnterRaffle()}
+          >
+           {creating ? " Entering Raffle...": "Enter Raffle"}
+          </div>
+        </div>
+    );
+  }else{
     return (
       <div className={"d-flex m-justify-content-center"}>
         <div
-          className={`green-bg-color secondary-btn white-color paragraph-bold ${className}`}
+          className={`disabled secondary-btn paragraph-bold ${className}`}
           style={fullwidth ? { width: "100%" } : { width: "280px" }}
-          onClick={() => handleEnterRaffle()}
         >
-          Enter Raffle
+          Raffle Ended
         </div>
       </div>
     );

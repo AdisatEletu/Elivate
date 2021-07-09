@@ -41,14 +41,8 @@ const RaffleDetails = () =>{
         <div className={'bigTitle'}>You may also be interested in</div>
         <div className={'mt-4 card-grid'}>
           {raffleData.map((raffle, index) =>
-            <RaffleCard key={index} description={raffle.description}
-                        timer={raffle.timer}
-                        status={raffle.status}
-                        charity={raffle.charity}
-                        ticket={raffle.ticket}
-                        title={raffle.title}
-                        imgUrl={raffle.imgUrl}
-                        onClick={onClickRaffle}
+            <RaffleCard  key={index}
+                         raffle={raffle}
             />
           )}
         </div>

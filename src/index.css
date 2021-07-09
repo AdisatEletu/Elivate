@@ -707,6 +707,7 @@ ul.navigtion-items {
     /*width: 100%;*/
     background-repeat: no-repeat;
     height: 100%;
+    background-position: center;
     background-size: contain;
 }
 
@@ -1030,4 +1031,8 @@ ul.navigtion-items {
     border-radius: 4px;
     width: 80%;
     font-size: 12px;
+}
+
+.padding-b-20per{
+    padding-bottom: 20%;
 }
