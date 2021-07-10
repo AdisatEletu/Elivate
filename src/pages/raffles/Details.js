@@ -6,7 +6,7 @@ import {Sponsors} from "./detailsTab/Sponsors";
 import {RaffleHowItWorks} from "./detailsTab/HowItWorks";
 import {Entry} from "./detailsTab/Entry";
 
-const Details = (props) => {
+const Details = ({raffle}) => {
   const [activeTab, setActiveTab] = useState('1');
   
   const toggle = tab => {
@@ -54,28 +54,28 @@ const Details = (props) => {
         <TabPane tabId="1">
           <Row>
             <Col sm="12">
-              <AboutRaffle/>
+              <AboutRaffle  raffle={raffle}/>
             </Col>
           </Row>
         </TabPane>
         <TabPane tabId="2">
           <Row>
            <Col sm={"12"}>
-             <Sponsors/>
+             <Sponsors  raffle={raffle}/>
            </Col>
           </Row>
         </TabPane>
         <TabPane tabId="3">
           <Row>
            <Col sm={"12"}>
-             <RaffleHowItWorks/>
+             <RaffleHowItWorks  raffle={raffle}/>
            </Col>
           </Row>
         </TabPane>
         <TabPane tabId="4">
           <Row>
            <Col sm={"12"}>
-             <Entry/>
+             <Entry raffle={raffle}/>
            </Col>
           </Row>
         </TabPane>

@@ -4,6 +4,8 @@ import { usePaystackPayment } from "react-paystack";
 import { useTicket } from "./useTicket";
 import { connect } from "react-redux";
 import { EmptyData } from "../../../components/EmptyData";
+import { getUser } from "../../../redux/actions/authActions";
+import { useDispatch } from 'react-redux'
 
 const Ticket = ({ user }) => {
   const {
@@ -15,10 +17,12 @@ const Ticket = ({ user }) => {
     loading
   } = useTicket({user});
 
+  const dispatch = useDispatch()
 
   useEffect(() => {
+    dispatch(getUser());
     fetchTickets();
-  }, [user]);
+  }, []);
 
 
 
@@ -82,5 +86,6 @@ const mapStateToProps = (state) => {
     user: state.auth.user,
   };
 };
+
 
 export default connect(mapStateToProps)(Ticket);

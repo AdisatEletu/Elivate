@@ -2,7 +2,6 @@ import { useState } from "react";
 import { doAlert } from "../../../components/alert/AlertComponent";
 import handleError from "../../../helpers/handleError";
 import { getRequest, putRequest } from "../../../helpers/requests";
-
 export const useTicket = ({ user }) => {
   const [tickets, setTickets] = useState([]);
   const [fetching, setFetching] = useState(true);

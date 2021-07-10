@@ -66,7 +66,7 @@ export const WatchlistBtn = ({
     return (
       <div className={"d-flex m-justify-content-center mt-3"}>
           <div
-            className={`green-bg-color secondary-btn white-color paragraph-bold ${className}`}
+            className={`green-bg-color pointer secondary-btn white-color paragraph-bold ${className}`}
             style={fullwidth ? { width: "100%" } : { width: "280px" }}
             onClick={() => handleEnterRaffle()}
           >

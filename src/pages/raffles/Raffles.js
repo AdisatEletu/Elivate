@@ -14,7 +14,7 @@ import { getRequest } from "../../helpers/requests";
 const Raffles = (props) => {
   const [activePage, setActivePage] = useState(1);
 
-  const { raffles, fetching, getRaffles } = useRaffle();
+  const { raffles, fetching, getRaffles, per_page,total } = useRaffle();
 
   useEffect(() => {
     getRaffles()
