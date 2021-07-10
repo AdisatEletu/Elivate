@@ -3,6 +3,7 @@ import { Card } from "reactstrap";
 import { FormButton } from "../../../components/forms/Button.js";
 import { PageLoader } from "../../../components/Loaders.js";
 import { getRequest } from "../../../helpers/requests.js";
+import {getUser} from "../../../redux/actions/authActions";
 
 const Response = (props) => {
   const [success, setSuccess] = useState(false);
@@ -11,16 +12,14 @@ const Response = (props) => {
     const qString = props.location.search.split("=");
     const ref = qString[1];
 
-    console.log({ qString });
     try {
       const res = await getRequest(
         `/customer/payment/callback?trxref=${ref}&reference=${ref}`
       );
       if (res.success) {
-        console.log("finished");
-        setLoading(false)
+        dispatch(getUser());
+        setLoading(false);
         setSuccess(true);
-        console.log({ res });
       }
     } catch (error) {
       console.log({ error });

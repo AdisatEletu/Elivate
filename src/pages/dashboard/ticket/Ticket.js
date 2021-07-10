@@ -17,7 +17,7 @@ const Ticket = ({ user }) => {
     loading
   } = useTicket({user});
 
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(getUser());
