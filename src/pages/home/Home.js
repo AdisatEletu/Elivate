@@ -41,7 +41,7 @@ const Home = () => {
   const getRaffles = async () => {
     try {
       const { data, success } = await getRequest(
-        `/customer/raffle/all/featured=${1}`
+        `/customer/raffle/all/?featured=${1}`
       );
       if (success) {
         const filteredRaffle = data.data[0];

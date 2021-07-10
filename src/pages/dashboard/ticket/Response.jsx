@@ -4,10 +4,12 @@ import { FormButton } from "../../../components/forms/Button.js";
 import { PageLoader } from "../../../components/Loaders.js";
 import { getRequest } from "../../../helpers/requests.js";
 import {getUser} from "../../../redux/actions/authActions";
+import { useDispatch } from "react-redux";
 
 const Response = (props) => {
   const [success, setSuccess] = useState(false);
   const [loading, setLoading] = useState(true);
+  const dispatch = useDispatch();
   const getReference = async () => {
     const qString = props.location.search.split("=");
     const ref = qString[1];
