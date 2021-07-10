@@ -17,7 +17,7 @@ const Raffles = (props) => {
   const { raffles, fetching, getRaffles, per_page,total } = useRaffle();
 
   useEffect(() => {
-    getRaffles()
+    getRaffles();
     setSubHeaderAction("Ongoing and upcoming Raffles");
   },[activePage]);
 

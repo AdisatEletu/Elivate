@@ -1,40 +1,40 @@
-import React, { useEffect, useState } from "react";
-import { RaffleTimer } from "./RaffleTimer";
-import { WatchlistBtn } from "./WatchlistBtn";
-import { Ticket } from "./Ticket";
-import { postRequest } from "../../../helpers/requests";
+import React, {useEffect, useState} from "react";
+import {RaffleTimer} from "./RaffleTimer";
+import {WatchlistBtn} from "./WatchlistBtn";
+import {Ticket} from "./Ticket";
+import {postRequest} from "../../../helpers/requests";
 import handleError from "../../../helpers/handleError";
-import { doAlert } from "../../../components/alert/AlertComponent";
+import {doAlert} from "../../../components/alert/AlertComponent";
 import axios from "axios";
-import { useRaffle } from "../../raffles/useRaffle";
+import {useRaffle} from "../../raffles/useRaffle";
 import moment from "moment";
-import { useDispatch } from "react-redux";
-import { getUser } from "../../../redux/actions/authActions";
+import {useDispatch} from "react-redux";
+import {getUser} from "../../../redux/actions/authActions";
 
-export const RaffleCard = ({ onClick, profile, winner, stacked, raffle }) => {
-  const { getRaffles } = useRaffle();
+export const RaffleCard = ({onClick, profile, winner, stacked, raffle}) => {
+  const {getRaffles} = useRaffle();
   let today = new Date();
   let start_date = new Date(raffle?.start_date);
   const end_date = new Date(raffle?.end_date);
-
-
+  
+  
   const started = start_date < today;
   const ended = end_date < today;
-
+  
   const dispatch = useDispatch();
   
   const [adding, setAdding] = useState(false);
   const [creating, setCreating] = useState(false);
   const [removing, setRemoving] = useState(false);
   const [watchlist, setWatchlist] = useState(raffle.in_watchlist);
-
+  
   const handleAddWatchlist = async () => {
     try {
       setAdding(true);
-      const { success } = await postRequest("/customer/watchlist", {
+      const {success} = await postRequest("/customer/watchlist", {
         raffle_id: raffle.id,
       });
-
+      
       if (success) {
         setWatchlist(true);
         await getRaffles();
@@ -46,14 +46,14 @@ export const RaffleCard = ({ onClick, profile, winner, stacked, raffle }) => {
       setAdding(false);
     }
   };
-
+  
   const handleRemoveWatchlist = async () => {
     try {
       setRemoving(true);
       const res = await axios.delete(`/customer/watchlist/${raffle.id}`);
-
+      
       setWatchlist(false);
-
+      
       if (res.success) {
         doAlert("successfully removed from watchlist", "success");
       }
@@ -62,14 +62,14 @@ export const RaffleCard = ({ onClick, profile, winner, stacked, raffle }) => {
       handleError(e);
     }
   };
-
+  
   const handleEnterRaffle = async () => {
     try {
       setCreating(true);
-      const { data, success, error } = await postRequest(
+      const {data, success, error} = await postRequest(
         `/customer/raffle/${raffle.id}`
       );
-
+      
       if (success) {
         doAlert("successfully entered raffle", "success");
         dispatch(getUser());
@@ -81,7 +81,7 @@ export const RaffleCard = ({ onClick, profile, winner, stacked, raffle }) => {
       handleError(e);
     }
   };
-
+  
   return (
     <div
       className={
@@ -91,16 +91,15 @@ export const RaffleCard = ({ onClick, profile, winner, stacked, raffle }) => {
       <div className={"col-md-4"}>
         <div
           className={"raffle-image"}
-          style={{ backgroundImage: `url(${raffle.image_url})` }}
-          onClick={
-            (()=>window.location.href = `/raffles/${raffle?.id}/details`)
-          }
+          style={{backgroundImage: `url(${raffle.image_url})`}}
+         
         >
           <Ticket
             ticket={raffle.number_of_tickets}
             className={"display-none"}
+            onClick={()=>window.location.href=`/raffles/${raffle?.id}/details`}
           />
-
+          
           {raffle.charity ? (
             <img
               alt={"charity"}
@@ -119,10 +118,11 @@ export const RaffleCard = ({ onClick, profile, winner, stacked, raffle }) => {
           }
         >
           <div className={"title2 mt-5 m-di splay-none"}>{raffle.name}</div>
-          <Ticket ticket={raffle.number_of_tickets} />
+          <Ticket ticket={raffle.number_of_tickets}/>
         </div>
-        <div className={"padding-right-15"}  onClick={()=>window.location.href=`/raffles/${raffle?.id}/details`}>
-          <div className={`title2 mt-5 display-none`}>{raffle.name}</div>
+        <div className={"padding-right-15"}>
+          <div className={`title2 mt-5 display-none`}
+               onClick={() => window.location.href = `/raffles/${raffle?.id}/details`}>{raffle.name}</div>
           <div
             className={`${
               stacked ? "small-paragraph mt-3" : "small-paragraph mt-3"
@@ -135,7 +135,7 @@ export const RaffleCard = ({ onClick, profile, winner, stacked, raffle }) => {
           >
             {raffle.description}
           </div>
-          <div className={"mt-3"}  onClick={()=>window.location.href=`/raffles/${raffle?.id}/details`}>
+          <div className={"mt-3"} onClick={() => window.location.href = `/raffles/${raffle?.id}/details`}>
             <RaffleTimer
               winner={winner}
               black

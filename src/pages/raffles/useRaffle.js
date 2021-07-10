@@ -12,7 +12,7 @@ export const useRaffle =()=>{
   const [total, setTotal] = useState(0)
   const getRaffles = async () => {
     try {
-      const { data, success } = await getRequest(`/customer/raffle/all?per_page=${per_page}&page=${activePage}`);
+      const { data, success } = await getRequest(`/customer/raffle/all`);
       if (success) {
         setRaffles(data.data);
         setTotal(data.total)
