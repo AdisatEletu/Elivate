@@ -10,3 +10,15 @@
     -webkit-box-shadow: 0px 1px 107px -56px rgba(148,154,173,0.71);
     -moz-box-shadow: 0px 1px 107px -56px rgba(148,154,173,0.71);
 }
+
+.active-class{
+    color: #ffffff;
+}
+
+.active-class:hover{
+    color: #ffffff;
+}
+
+.sidebar-link:hover{
+    color: #222222;
+}

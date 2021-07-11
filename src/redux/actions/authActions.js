@@ -13,7 +13,7 @@ import handleError from "../../helpers/handleError";
 export const loginUser = (email, password, history) => async (dispatch) => {
   try {
     dispatch({ type: IS_LOGGING_IN });
-    const { data, success } = await postRequest("/customer/login", {
+    const { data, success, error } = await postRequest("/customer/login", {
       email,
       password,
     });
@@ -26,9 +26,11 @@ export const loginUser = (email, password, history) => async (dispatch) => {
       localStorage.user = JSON.stringify(data);
       doAlert("successfully logged in");
       window.location.href = "/";
+    }else{
+      doAlert(error.response.data.message)
+      dispatch({ type: DONE_LOGGING_IN });
     }
   } catch (e) {
-    console.log(e);
     dispatch({ type: DONE_LOGGING_IN });
     handleError(e);
   }

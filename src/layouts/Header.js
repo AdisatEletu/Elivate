@@ -3,7 +3,7 @@ import { Link, NavLink } from "react-router-dom";
 import { connect } from "react-redux";
 import classes from "./Header.module.css";
 import { FaBell } from "react-icons/fa";
-import img from "../assets/12-small.png";
+import img from "../assets/default-profile.jpeg";
 
 const Header = ({ user, isAuthenticated }) => {
   return (
@@ -79,10 +79,13 @@ const Header = ({ user, isAuthenticated }) => {
                 <li>
                   <NavLink activeClassName={"active-nav"} to="/profile">
                     <img
-                      src={img}
+                      src={user?.image_thumbnail_url || img}
                       alt="img"
-                      srcset=""
-                      className={classes.Image}
+                      style={{borderRadius: "50%"}}
+                      width= {40}
+                      height={40}
+                      // srcset=""
+                      // className={classes.Image}
                     />
                     {/* <BiDownArrow /> */}
                   </NavLink>

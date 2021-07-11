@@ -12,7 +12,7 @@ import handleError from "../../../helpers/handleError";
 const Signup = () => {
   
   const fields = {
-    email: '',
+    email: ''.trim(),
     password: '',
     phone_number: ''
   }
@@ -27,14 +27,13 @@ const Signup = () => {
     setCreating(true);
     
     try {
-      const {success, data,message} = await postRequest('customer', values);
+      const {success, data,error} = await postRequest('customer', values);
       if (success) {
-        doAlert(message,'success');
         localStorage.setItem('id', data.id_2);
-        
         window.location.href = ('/verification')
       }else{
-        doAlert(message, 'error')
+        console.log({error})
+        doAlert(error.response.data.data[0])
       }
       setCreating(false)
     } catch (e) {
@@ -77,7 +76,7 @@ const Signup = () => {
                          name={'phone_number'} onChange={(e) => Onchange(e, values, setValues)}/>
               <FormInput className={"mb-3"} type={'password'} label={"Password"} value={values.password}
                          name={'password'} onChange={(e) => Onchange(e, values, setValues)}/>
-              <FormButton title={'Create account'} disabled={is_creating}  onClick={() => createUser()}
+              <FormButton title={'Create account'} disabled={is_creating} loading={is_creating}  onClick={() => createUser()}
                           className={'mt-3 '}
               />
               <div className={'col-md-12 hr-holder mt-4 '}>

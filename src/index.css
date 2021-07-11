@@ -7,8 +7,29 @@
 ;
 }
 
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
 .cursive {
     font-family: "Devonshire", cursive;
+}
+
+a.faq-box {
+    color: #000000;
+}
+
+
+a.faq-box:hover {
+    color: #000000;
 }
 
 hr {

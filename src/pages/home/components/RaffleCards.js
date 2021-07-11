@@ -82,13 +82,16 @@ export const RaffleCard = ({onClick, profile, winner, stacked, raffle}) => {
     }
   };
   
+  const navigateToRaffleDetails=()=>{
+    window.location.href='/raffle/${raffle.id}/details'
+  }
   return (
     <div
       className={
         "raffle-card-holder justify-content-between m-flex col-md-12 pointer"
       }
     >
-      <div className={"col-md-4"}>
+      <div className={"col-md-4"} onClick={() => window.location.href = `/raffles/${raffle?.id}/details`}>
         <div
           className={"raffle-image"}
           style={{backgroundImage: `url(${raffle.image_url})`}}
@@ -97,7 +100,6 @@ export const RaffleCard = ({onClick, profile, winner, stacked, raffle}) => {
           <Ticket
             ticket={raffle.number_of_tickets}
             className={"display-none"}
-            onClick={()=>window.location.href=`/raffles/${raffle?.id}/details`}
           />
           
           {raffle.charity ? (
@@ -116,6 +118,7 @@ export const RaffleCard = ({onClick, profile, winner, stacked, raffle}) => {
           className={
             "m-flex height-100px m-display-none justify-content-between"
           }
+          onClick={() => window.location.href = `/raffles/${raffle?.id}/details`}
         >
           <div className={"title2 mt-5 m-di splay-none"}>{raffle.name}</div>
           <Ticket ticket={raffle.number_of_tickets}/>

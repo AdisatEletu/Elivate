@@ -6,6 +6,8 @@ import { putRequest } from "../../../helpers/requests";
 import { setCurrentUser } from "../../../redux/actions/authActions";
 import { connect } from "react-redux";
 import {UploadImage} from '../../../components/PhotoUploader'
+
+import img from '../../../assets/default-profile.jpeg'
 const Account = ({ profileDetails, setCurrentUser }) => {
   const [activeBtn, setActiveBtn] = useState(false);
   const [saving, setSaving] = useState(false);
@@ -51,7 +53,7 @@ const [image, setImage] = useState(profileDetails.image_thumbnail_url)
   return (
     <div className={"profile-card "}>
       <div className={"mt-5 d-flex flex-column align-items-center"}>
-      <UploadImage url={"/customer/profile/avatar"} photo={profileDetails.image_thumbnail_url} text={"Change Photo"} updatingText={"Changing Photo"} setImage={setImage} />
+      <UploadImage url={"/customer/profile/avatar"} photo={profileDetails.image_thumbnail_url || img} text={"Change Photo"} updatingText={"Changing Photo"} setImage={setImage} />
    
         <div className={"card-grid col-md-10 mt-5"}>
           <div>

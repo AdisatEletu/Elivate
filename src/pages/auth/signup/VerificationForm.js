@@ -14,12 +14,12 @@ const VerificationForm = () => {
     setCreating(true);
     const id = localStorage.getItem('id');
     try {
-      const {success,message} = await putRequest(`customer/verify-phone/${id}`, {code});
+      const {success,message,error} = await putRequest(`customer/verify-phone/${id}`, {code});
       if (success) {
         doAlert(message, 'success');
         window.location.href = ('/setup')
       }else{
-        doAlert(message, 'error')
+        doAlert(error.response.data.message, 'error')
       }
       setCreating(false)
     } catch (e) {
@@ -59,7 +59,7 @@ const VerificationForm = () => {
                        onComplete={code => {
                          setCode(code);
                        }}/>
-              <FormButton title={'Continue'} className={'mt-3'} type={'submit'} onClick={()=> verifyCode() }/>
+              <FormButton title={'Continue'} loading={is_creating} disabled={is_creating} className={'mt-3'} type={'submit'} onClick={()=> verifyCode() }/>
             </div>
           </div>
   

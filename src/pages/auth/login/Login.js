@@ -13,10 +13,11 @@ import { loginUser } from "../../../redux/actions/authActions";
 const Login = (props) => {
   const [formState, setFormState] = useState();
   const [input, setInput] = useState({
-    email: "",
+    email: "".trim(),
     password: "",
   });
 
+  console.log(input.email)
   const handleChange = (e) => {
     setInput({
       ...input,
@@ -27,11 +28,6 @@ const Login = (props) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     props.onAuth(input.email, input.password);
-
-    // setInput({
-    //   email: "",
-    //   password: "",
-    // });
   };
 
   return (
@@ -97,7 +93,10 @@ const Login = (props) => {
                   <FormButton
                     title={"Log In"}
                     className={"mt-3"}
+              
                     type={"submit"}
+                    disabled={props.isLoggingIn}
+                    loading={props.isLoggingIn}
                   />
                   <div className={"col-md-12 hr-holder mt-4 "}>
                     <div className={"col-md-4 hr"} />
@@ -147,4 +146,10 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-export default connect(null, mapDispatchToProps)(Login, axios);
+const matchStateToProps =(state)=>{
+  return{
+    isLoggingIn: state.auth.isLoggingIn
+  }
+}
+
+export default connect(matchStateToProps, mapDispatchToProps)(Login, axios);
