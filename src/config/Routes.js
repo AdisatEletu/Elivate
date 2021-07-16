@@ -29,8 +29,8 @@ const Profile = lazy(() => import("../pages/dashboard/profile/Profile"));
 const FAQ = lazy(() => import("../pages/faq/FAQ"));
 const RaffleFAQ = lazy(() => import("../pages/faq/RaffleFAQ"));
 const Charity = lazy(() => import("../pages/charity/Charity"));
-const Transaction = lazy(()=> import('../pages/dashboard/transactions/Transactions'))
-
+const Transaction = lazy(()=> import('../pages/dashboard/transactions/Transactions'));
+const Winners = lazy(()=> import('../pages/winners/Winners'))
 const Routes = () => (
   // eslint-disable-next-line no-undef
   <Router basename={process.env.PUBLIC_URL}>
@@ -55,6 +55,7 @@ const Routes = () => (
         <PublicRoute exact path={"/help"} component={FAQ} />
         <PublicRoute path={"/help/raffle"} component={RaffleFAQ} />
         <PublicRoute path={"/charity"} component={Charity} />
+        <PublicRoute path={"/winners"} component={Winners} />
 
         <PrivateRoute exact path={"/dashboard"} component={Dashboard} />
         <PrivateRoute exact path={"/notifications"} component={Notification} />

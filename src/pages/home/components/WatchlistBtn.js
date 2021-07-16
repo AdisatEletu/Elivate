@@ -17,7 +17,7 @@ export const WatchlistBtn = ({
   if (watchlist && !started) {
     return (
       <div>
-        <div className={"d-flex m-justify-content-center"}>
+        <div className={"d-flex m-justify-content-center fullwidth"}>
           <div
             className={`secondary-btn danger-bg-color white-color paragraph-bold ${className}`}
             style={fullwidth ? { width: "100%" } : { width: "280px" }}
@@ -31,7 +31,7 @@ export const WatchlistBtn = ({
   } else if (!watchlist && !started) {
     return (
       <div>
-        <div className={"d-flex m-justify-content-center"}>
+        <div className={"d-flex m-justify-content-center fullwidth"}>
           <div
             className={`secondary-bg-color secondary-btn white-color paragraph-bold ${className}`}
             style={fullwidth ? { width: "100%" } : { width: "280px" }}
@@ -53,7 +53,7 @@ export const WatchlistBtn = ({
     );
   } else if (watchlist && ended || !watchlist && ended) {
     return (
-      <div className={"d-flex m-justify-content-center"}>
+      <div className={"d-flex m-justify-content-center fullwidth"}>
         <div
           className={`disabled secondary-btn paragraph-bold ${className}`}
           style={fullwidth ? { width: "100%" } : { width: "280px" }}
@@ -64,7 +64,7 @@ export const WatchlistBtn = ({
     );
   } else if(started) {
     return (
-      <div className={"d-flex m-justify-content-center mt-3"}>
+      <div className={"d-flex m-justify-content-center mt-3 fullwidth"}>
           <div
             className={`green-bg-color pointer secondary-btn white-color paragraph-bold ${className}`}
             style={fullwidth ? { width: "100%" } : { width: "280px" }}
@@ -76,7 +76,7 @@ export const WatchlistBtn = ({
     );
   }else{
     return (
-      <div className={"d-flex m-justify-content-center"}>
+      <div className={"d-flex m-justify-content-center fullwidth"}>
         <div
           className={`disabled secondary-btn paragraph-bold ${className}`}
           style={fullwidth ? { width: "100%" } : { width: "280px" }}

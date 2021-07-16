@@ -41,7 +41,7 @@ const Home = () => {
   const getRaffles = async () => {
     try {
       const { data, success } = await getRequest(
-        `/customer/raffle/all/?feature=${1}`
+        `/customer/raffle/all?feature=${1}`
       );
       if (success) {
         const filteredRaffle = data.data[0];
@@ -146,7 +146,7 @@ const Home = () => {
               style={{ minHeight: " 325px" }}
             >
               <div className={"col-md-4 ticket-details-holder m-show"}>
-                <Ticket ticket={5} />
+                <Ticket ticket={featuredRaffles.num} />
               </div>
               <div
                 className={
@@ -160,7 +160,7 @@ const Home = () => {
                   {featuredRaffles.description}
                 </div>
                 <div className={"col-md-10 mt-5"}>
-                  <RaffleTimer timer={featuredRaffles.start_date} />
+                  <RaffleTimer timer={featuredRaffles?.start_date} started={started} />
                 </div>
               </div>
               <div
@@ -184,7 +184,7 @@ const Home = () => {
                 />
               </div>
               <div className={"col-md-4 ticket-details-holder m-hidden"}>
-                <Ticket ticket={featuredRaffles.ticket} />
+                <Ticket ticket={featuredRaffles.number_of_tickets} />
               </div>
             </div>
           </div>
@@ -193,7 +193,7 @@ const Home = () => {
          <div className="d-flex justify-content-center header3 mt-5 ">No featured raffle</div> 
       )}
       <div className="raffle-wrapper padding-b-20per">
-        {/*{raffles.length < 10 && <div className="pointer float-right primary-color " onClick={()=>window.location.href='/raffles'}>View all raffles</div>}*/}
+        {/*{raffles.length < 10x && <div className="pointer float-right primary-color " onClick={()=>window.location.href='/raffles'}>View all raffles</div>}*/}
         {isLoading ? (
           <div className="d-flex col-md-12 mb-5  justify-content-center">
             <PageLoader />

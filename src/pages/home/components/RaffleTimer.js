@@ -9,7 +9,6 @@ export const RaffleTimer = ({
  started,
   winner,
 }) => {
-  console.log({started});
   if (profile && !started)
   {
     return (
