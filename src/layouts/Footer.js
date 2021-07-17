@@ -1,6 +1,7 @@
 import React from "react";
 import {FormButton} from "../components/forms/Button";
-import {Link} from "react-router-dom";
+import {Link, NavLink} from "react-router-dom";
+
 
 export const Footer = () => {
   const date = new Date().getFullYear();
@@ -50,8 +51,8 @@ export const Footer = () => {
             </div>
             <div className={'footer-links-holder'}>
               <Link to="/">
-                <img alt={'logo'} src={require('../assets/Elivate9ja/Elivate9ja-01.svg')} width={'80%'}
-                     height={'80px'}/>
+                <img alt={'logo'} src={require('../assets/Elivate9ja/Elivat9ja_Logo_Asset_PNG.png')} 
+                     height={'120px'}/>
               </Link>
               <div className={'footer-links white-color'}>
                 <ul className="paragraph">
@@ -62,16 +63,16 @@ export const Footer = () => {
                     <Link to="/about">About us</Link>
                   </li>
                   <li>
-                    <Link to="/">Help & FAQs</Link>
+                    <Link to="/faq">Help & FAQs</Link>
                   </li>
                   <li>
-                    <Link to="/">Charity</Link>
+                    <Link to="/charity">Charity</Link>
                   </li>
                   <li>
-                    <Link to="/">Winners</Link>
+                    <Link to="/winners">Winners</Link>
                   </li>
                   <li>
-                    <Link to="/">Tickets</Link>
+                    <Link to="/tickets">Tickets</Link>
                   </li>
                 </ul>
               
@@ -89,7 +90,7 @@ export const Footer = () => {
           <div className={'paragraph text-align-center col-md-4 mt-2'}>
             &copy; Copyright {date} Elivate9ja Ltd. All rights reserved. Company No. 12345567
             123 Lekki express way. support@elivate9ja.com
-            Privacy Policy Terms & Condition
+           <NavLink to='/privacy' className={"pointer"}> Privacy Policy</NavLink><NavLink className={"pointer"} to='/terms'> Terms & Condition</NavLink>
           </div>
         </div>
       </div>

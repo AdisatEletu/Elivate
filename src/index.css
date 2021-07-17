@@ -112,7 +112,7 @@ a {
 .card-grid {
     display: grid;
     grid-template-columns: 48% 48%;
-    grid-gap: 4%;
+    grid-gap: 30px;
 
 }
 
@@ -543,7 +543,7 @@ ul.navigtion-items {
 .footer {
     background-color: #00335C;
     min-height: 620px;
-    /*position: fixed;*/
+    margin-top: 120px;
     left: 0;
     bottom: 0;
     width: 100%;

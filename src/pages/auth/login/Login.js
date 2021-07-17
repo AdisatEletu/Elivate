@@ -55,7 +55,7 @@ const Login = (props) => {
                 <div>
                   <img
                     alt={"elivate logo"}
-                    src={require("../../../assets/Elivate9ja/Elivate9ja-01.svg")}
+                    src={require("../../../assets/Elivate9ja/Elivat9ja_Logo_Asset_PNG.png")}
                     width={"114.1px"}
                     height={"80px"}
                   />

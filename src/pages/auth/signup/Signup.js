@@ -10,7 +10,8 @@ import handleError from "../../../helpers/handleError";
 
 
 const Signup = () => {
-  
+
+
   const fields = {
     email: ''.trim(),
     password: '',
@@ -47,7 +48,7 @@ const Signup = () => {
       <div className={'d-flex flex-row align-items-center fullheight col-md-12'}>
         <div className={'d-flex flex-column align-items-center col-md-7 col-xs-12'}>
           <div className={'text-align-center'}>
-            <img alt={'elivate'} src={require('../../../assets/Elivate9ja/Elivate9ja-01.svg')} width={'114.1px'}
+            <img alt={'elivate'} src={require('../../../assets/Elivate9ja/Elivat9ja_Logo_Asset_PNG.png')} width={'114.1px'}
                  height={'80px'}/>
           </div>
           <div className={'bigTitle text-align-center'}>
@@ -88,8 +89,8 @@ const Signup = () => {
             </div>
             <div className={'mt-3 small-paragraph text-align-center grey-color'}>
               By creating an account, you agree to Elevate9ja’s website
-              <span className={'forgot-password small-paragraph'}> Terms of Service </span>and
-              <span className={'forgot-password small-paragraph'}> Privacy Policy.</span>
+              <NavLink className={'forgot-password small-paragraph'} to='/terms'> Terms of Service </NavLink>and
+              <NavLink className={'forgot-password small-paragraph'} to='/privacy'> Privacy Policy.</NavLink>
             </div>
           </div>
           

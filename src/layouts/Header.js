@@ -13,8 +13,8 @@ const Header = ({ user, isAuthenticated }) => {
           <Link to="/">
             <img
               alt={"logo"}
-              src={require("../assets/Elivate9ja/Elivate9ja-01.svg")}
-              width={"80%"}
+              src={require("../assets/Elivate9ja/Elivat9ja_Logo_Asset_PNG.png")}
+       
               height={"80px"}
             />
           </Link>
@@ -82,7 +82,7 @@ const Header = ({ user, isAuthenticated }) => {
                       src={user?.image_thumbnail_url || img}
                       alt="img"
                       style={{borderRadius: "50%"}}
-                      width= {40}
+                    
                       height={40}
                       // srcset=""
                       // className={classes.Image}

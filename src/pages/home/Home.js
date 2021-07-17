@@ -16,12 +16,15 @@ import axios from "axios";
 import { doAlert } from "../../components/alert/AlertComponent";
 import { getRequest, postRequest } from "../../helpers/requests";
 import handleError from "../../helpers/handleError";
-// import { raffleFetcher } from "../../utils";
+import { useHistory } from "react-router-dom";
 import { PageLoader } from "../../components/Loaders";
 
 const Home = () => {
+  //Hooks
   const dispatch = useDispatch();
+  const history = useHistory();
 
+  //State
   const [raffles, setRaffles] = useState([]);
   const [featuredRaffles, setFeaturedRaffles] = useState({});
   const [isLoading, setIsLoading] = useState(true);
@@ -29,7 +32,7 @@ const Home = () => {
   const [adding, setAdding] = useState(false);
   const [creating, setCreating] = useState(false);
   const [removing, setRemoving] = useState(false);
-  const [watchlist, setWatchlist] = useState(featuredRaffles.in_watchlist);
+  const [watchlist, setWatchlist] = useState(featuredRaffles?.in_watchlist);
 
   let today = new Date();
   let start_date = new Date(featuredRaffles?.start_date);
@@ -41,12 +44,12 @@ const Home = () => {
   const getRaffles = async () => {
     try {
       const { data, success } = await getRequest(
-        `/customer/raffle/all?feature=${1}`
+        `/customer/raffle/all?featured=${1}`
       );
       if (success) {
-        const filteredRaffle = data.data[0];
+        const filteredRaffle = data?.data[0];
         setFeaturedRaffles(filteredRaffle);
-        setRaffles(data.data);
+        setRaffles(data?.data);
       }
       setIsLoading(false);
     } catch (e) {
@@ -126,73 +129,79 @@ const Home = () => {
       </div>
       {/* <Banner data={raffles} /> */}
       <HowItWorks />
-      
+
       <FeaturedRaffleTitle />
       {isLoading ? (
         ""
       ) : raffles.length > 0 ? (
         <>
-      <Filter classNames={"mt-6"} />
-     
-        <div className={"mt-3 "}>
-          <div
-            className={"homepage-featured "}
-            style={{
-              backgroundImage: `url(${featuredRaffles.image_url})`,
-            }}
-          >
+          <Filter classNames={"mt-6"} endpoint={`/customer/raffle/all?featured=${1}&category=`} setRaffles={setRaffles}/>
+
+          <div className={"mt-3 "}>
             <div
-              className={"homepage-cover col-md-12 m-flex m-pl-6"}
-              style={{ minHeight: " 325px" }}
+              className={"homepage-featured "}
+              style={{
+                backgroundImage: `url(${featuredRaffles.image_url})`,
+              }}
             >
-              <div className={"col-md-4 ticket-details-holder m-show"}>
-                <Ticket ticket={featuredRaffles.num} />
-              </div>
               <div
-                className={
-                  "col-md-4  m-flex flex-column m-p-2 justify-content-center"
-                }
+                className={"homepage-cover col-md-12 m-flex m-pl-6"}
+                style={{ minHeight: " 325px" }}
               >
-                <div className={"title1 white-color"}>
-                  {featuredRaffles.name}
+                <div className={"col-md-4 ticket-details-holder m-show"}>
+                  <Ticket ticket={featuredRaffles.num} />
                 </div>
-                <div className={"paragraph off-white-color"}>
-                  {featuredRaffles.description}
+                <div
+                  className={
+                    "col-md-4  m-flex flex-column m-p-2 justify-content-center"
+                  }
+                >
+                  <div className={"title1 white-color"}>
+                    {featuredRaffles.name}
+                  </div>
+                  <div className={"paragraph off-white-color"}>
+                    {featuredRaffles.description}
+                  </div>
+                  <div className={"col-md-10 mt-5"}>
+                    <RaffleTimer
+                      timer={featuredRaffles?.start_date}
+                      started={started}
+                    />
+                  </div>
                 </div>
-                <div className={"col-md-10 mt-5"}>
-                  <RaffleTimer timer={featuredRaffles?.start_date} started={started} />
+                <div
+                  className={
+                    "col-md-4 d-flex align-items-center m-p-2 m-justify-content-normal m-mb-3"
+                  }
+                >
+                  <WatchlistBtn
+                    adding={adding}
+                    removing={removing}
+                    creating={creating}
+                    ended={ended}
+                    handleRemoveWatchlist={handleRemoveWatchlist}
+                    started={started}
+                    start={featuredRaffles?.start_date}
+                    watchlist={watchlist}
+                    handleEnterRaffle={handleEnterRaffle}
+                    handleAddWatchlist={handleAddWatchlist}
+                    fullwidth
+                    status={featuredRaffles.status}
+                  />
                 </div>
-              </div>
-              <div
-                className={
-                  "col-md-4 d-flex align-items-center m-p-2 m-justify-content-normal m-mb-3"
-                }
-              >
-                <WatchlistBtn
-                  adding={adding}
-                  removing={removing}
-                  creating={creating}
-                  ended={ended}
-                  handleRemoveWatchlist={handleRemoveWatchlist}
-                  started={started}
-                  start={featuredRaffles?.start_date}
-                  watchlist={watchlist}
-                  handleEnterRaffle={handleEnterRaffle}
-                  handleAddWatchlist={handleAddWatchlist}
-                  fullwidth
-                  status={featuredRaffles.status}
-                />
-              </div>
-              <div className={"col-md-4 ticket-details-holder m-hidden"}>
-                <Ticket ticket={featuredRaffles.number_of_tickets} />
+                <div className={"col-md-4 ticket-details-holder m-hidden"}>
+                  <Ticket ticket={featuredRaffles.number_of_tickets} />
+                </div>
               </div>
             </div>
           </div>
+        </>
+      ) : (
+        <div className="d-flex justify-content-center header3 mt-5 " style={{height: "100px"}}>
+          No featured raffle
         </div>
-      </>) : (
-         <div className="d-flex justify-content-center header3 mt-5 ">No featured raffle</div> 
       )}
-      <div className="raffle-wrapper padding-b-20per">
+      <div className="raffle-wrapper ">
         {/*{raffles.length < 10x && <div className="pointer float-right primary-color " onClick={()=>window.location.href='/raffles'}>View all raffles</div>}*/}
         {isLoading ? (
           <div className="d-flex col-md-12 mb-5  justify-content-center">
@@ -228,7 +237,7 @@ const Home = () => {
             </div>
           </div>
           <div className={"col-md-2"}>
-            <FormButton title={"View all winners"} />
+            <FormButton title={"View all winners"} onClick={()=>history.push('/winners')} />
           </div>
         </div>
 

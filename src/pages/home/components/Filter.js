@@ -7,20 +7,13 @@ import DownOutlined from "@ant-design/icons/es/icons/DownOutlined";
 
 
 const { Option } = Select;
-export const Filter = ({ classNames }) => {
-  const { categories, getCategories, loading,handleChange} = useFilter();
+export const Filter = ({ classNames,setRaffles, endpoint }) => {
+  const { categories, getCategories, loading,handleChange} = useFilter({setRaffles, endpoint});
 
+  console.log({endpoint})
   useEffect(() => {
     getCategories();
   }, []);
-
-  // const menu = (
-  //   <Menu>
-  //     {categories.map((category, index) => (
-  //       <Menu.Item>{category.name}</Menu.Item>
-  //
-  //   </Menu>
-  // );
   return (
     <div
       className={`m-flex m-align-items-center justify-content-between ${classNames}`}
