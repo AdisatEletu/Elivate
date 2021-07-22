@@ -1033,7 +1033,11 @@ ul.navigtion-items {
 
 .about-us-video, source{
     border-radius: 20px;
-    height: 308px;
+    /* height: 308px; */
+}
+
+.about-us-video-height{
+    min-height: 608px;
 }
 
 .faq-box{
@@ -1072,4 +1076,34 @@ ul.navigtion-items {
 
 .padding-b-20per{
     padding-bottom: 20%;
+}
+
+.charity-banner{
+    min-height: 534px;
+}
+
+.bordered{
+    border: 1px solid #ececec;
+    border-radius: 16px;
+}
+
+.charity-list-image{
+    height: 192px;
+}
+
+.charity-raise{
+    background-color: #140c5b;
+    color: #ffffff;
+    height: 35px;
+    border-radius: 4px;
+    /* line-height: 35px; */
+}
+
+.charity-logo{
+    height: 100%;
+    object-fit: contain;
+}
+
+.text-align-left{
+    text-align: left;
 }

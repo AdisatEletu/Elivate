@@ -51,7 +51,7 @@ export const Footer = () => {
             </div>
             <div className={'footer-links-holder'}>
               <Link to="/">
-                <img alt={'logo'} src={require('../assets/Elivate9ja/Elivat9ja_Logo_Asset_PNG.png')} 
+                <img alt={'logo'} src={require('../assets/footer-logo.png')} 
                      height={'120px'}/>
               </Link>
               <div className={'footer-links white-color'}>

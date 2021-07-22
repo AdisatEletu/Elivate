@@ -1,75 +1,131 @@
-import React, {useEffect, useState} from "react";
-import {RaffleTimer} from "../home/components/RaffleTimer";
-import {WatchlistBtn} from "../home/components/WatchlistBtn";
-
-
+import React, { useEffect, useState } from "react";
+import { PageLoader } from "../../components/Loaders";
+import { useCharity } from "./useCharity";
+import { Carousel } from "react-responsive-carousel";
+import "react-responsive-carousel/lib/styles/carousel.min.css";
 const Charity = () => {
-  const [index, setIndex] = useState(0);
-  
-  const [data, setData] = useState([{
-    image: `${require('../../assets/charity.png')}`,
-    subtitle: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.",
-    title: "Pixel 4 modern edition",
-    isManual: true
-  },
-    {
-      image: 'https://image.similarpng.com/very-thumbnail/2020/04/cosmetic-products-ad-3d-skin-care-brand-cream-lotion-png.png',
-      subtitle: "What do you say changed again the industry's standard dummy text ever since the 1500s.",
-      title: "Pixel 5 modern edition",
-      isManual: false
-    },
-    {
-      image: 'https://image.similarpng.com/very-thumbnail/2020/04/cosmetic-products-ad-3d-skin-care-brand-cream-lotion-png.png',
-      subtitle: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.",
-      title: "Pixel 6 modern edition",
-      isManual: true
-    }
-  ]);
-  
-  
-  const handleSlideShow=()=>{
-    if(index + 1 < data.length){
-      setIndex(index+1);
-    }else{
-      setIndex(0)
-    }
-  };
-  
-  useEffect(()=>{
+  const { fetchCharities, charities, loading } = useCharity();
+
+  useEffect(() => {
     // setInterval(()=>handleSlideShow(), 10000);
-  },[index]);
-  
-  return (
-    <section>
-      <div className={'banner-bg banner'}>
-        <div className={"col-md-12 d-flex flex-column m-flex light-blue-bg"}>
-          <div className={'col-md-12 d-flex m-flex'} key={index}>
-            <div className={'col-md-6 d-flex flex-column justify-content-center p-5 m-text-align-center'}>
-              <div className={'bigTitle white-color m-fs-24'}>
-                {data[index].title}
-              </div>
-              <div className={"paragraph off-white-color m-mt-1"}>
-                {data[index].subtitle}
-              </div>
-              <div className={'col-md-7 mt-5'}>
-                <RaffleTimer timer={'1 hr : 30 mins : 27 sec'}/>
-              </div>
-              <div className={'mt-5'}>
-                {/* <WatchlistBtn/> */}
-              </div>
-            </div>
-        
-           
-          </div>
-          <div className={'d-flex justify-content-center p-3 carousel-holder'}>
-            {data.map((slides, index) =>
-              <div key={index} onClick={()=>setIndex(index)} className={'slider-icon'}/>
-            )}
-          </div>
-        </div>
+    fetchCharities();
+    console.log({ charities });
+  }, []);
+
+  if (loading) {
+    return (
+      <div>
+        <PageLoader />
       </div>
-    </section>
-  )
+    );
+  } else {
+    return (
+      <section>
+        <div className="col-md-12 d-flex banner charity-banner justify-content-center flex-column m-flex light-blue-bg">
+          <Carousel autoPlay={true} infiniteLoop swipeable showStatus={false}>
+            {charities &&
+              charities.map((charity, index) => (
+                <div
+                  className={
+                    "col-md-12 d-flex banner charity-banner justify-content-center flex-column m-flex light-blue-bg"
+                  }
+                  key={index}
+                >
+                  <div className={"col-md-12 d-flex align-items-center justify-content-center  m-flex"}>
+                    <div className="col-md-6 d-flex align-items-center justify-content-center">
+                      <img
+                        alt="charity-logo"
+                        src={charity.image_url}
+                        height={"70%"}
+                        className="p-5"
+                        className="charity-logo"
+                      />
+                    </div>
+                    <div
+                      className={
+                        "col-md-6 d-flex flex-column justify-content-center p-5 m-text-align-center"
+                      }
+                    >
+                      <div className="charity-raise col-md-7 p-2 mb-2">
+                        <span>Total amount raised for charity</span>
+                        <span> NGN 100, 000</span>
+                      </div>
+                      <div className={"bigTitle text-align-left mt-3 m-fs-24"}>
+                        {charity.title}
+                      </div>
+                      <div className={"paragraph text-align-left mt-3 m-mt-1"}>
+                        {charity.about || ""}
+                        <div
+                          className={
+                            "d-flex text-align-left mt-5 m-justify-content-center fullwidth"
+                          }
+                        >
+                          <a
+                            href={"https://" + charity.website || ""}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                          >
+                            <div
+                              className={`text-align-left secondary-bg-color secondary-btn white-color paragraph-bold`}
+                            >
+                              Visit charity
+                            </div>
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              ))}
+          </Carousel>
+        </div>
+        <div className="p-5">
+          <div className="text-align-center container mt-5">
+            <div className="big-title bigTitle">
+              The wonderful charities we support
+            </div>
+            <div className="grey-color paragraph">
+              Charity is right at the heart of our mission, when you sign up to
+              Elivate9ja Raffles a percentage of every ticket you purchase will
+              be donated to selected charity or to support good causes.
+            </div>
+          </div>
+
+          {charities &&
+            charities.map((charity, index) => (
+              <div
+                className="d-flex gap-30 p-5 align-items-center "
+                key={index}
+              >
+                <div className="col-md-3 bordered charity-list-image">
+                  <img
+                    src={charity.image_url || ""}
+                    className="charity-logo"
+                    alt="logo"
+                    width={"100%"}
+                  />
+                </div>
+                <div className="col-md-9">
+                  <div className="title1">{charity.title || ""}</div>
+                  <div className="paragraph grey-color">
+                    '{charity.about || ""}'
+                  </div>
+                  <div className="primary-color mt-4">
+                    <a
+                      href={"https://" + charity.website || ""}
+                      target="_blank"
+                      // ref="noopener noreferrer"
+                    >
+                      Visit charity
+                    </a>
+                  </div>
+                </div>
+              </div>
+            ))}
+        </div>
+      </section>
+    );
+  }
 };
 
-export default Charity
+export default Charity;

@@ -4,6 +4,11 @@
         width: 100% !important;
     }
 
+    blockquote {
+        quotes: "“" "”" "‘" "’";
+        font-size: 16px!important;
+    }
+
     .menu {
         display: none;
     }
