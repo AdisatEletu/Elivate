@@ -83,7 +83,7 @@ const About = () => {
             <div className={"paragraph mt-2 text-align-center p-4"}>
               At Elivate9ja, we are driven by the desire to change lives for the
               better. This can be seen in the rewards we offer, our affordable
-              ticket pricing, and the charities we support.
+              token pricing, and the charities we support.
             </div>
           </div>
           <div
@@ -139,7 +139,7 @@ const About = () => {
                 taking the holiday of your dreams, getting behind the wheel of a
                 brand-new sports car, having the latest technology in your hands
                 or embarking on a new and adventurous experience, our raffles
-                could be your ticket to the life you dream. .
+                could be your token to the life you dream.
               </div>
             </div>
           </div>
@@ -175,7 +175,7 @@ const About = () => {
               <div className={"paragraph grey-color"}>
                 Rather than accepting millions of entries, as most raffle and
                 lottery platforms do, we keep the number of our entries low
-                --relative to the cost of the prize-- and keep ticket prices
+                --relative to the cost of the prize-- and keep token prices
                 low, as well. This way, you stand a better chance at winning.
               </div>
             </div>
@@ -191,8 +191,8 @@ const About = () => {
             <div className={""}>
               <div className={"title2"}>Our platforms are transparent</div>
               <div className={"paragraph grey-color"}>
-                Before you purchase a ticket, you will always know the number of
-                tickets available for that raffle. We share this information so
+                Before you purchase a token, you will always know the number of
+                tokens available for that raffle. We share this information so
                 you know what your chances of winning are.
               </div>
             </div>
@@ -211,7 +211,7 @@ const About = () => {
                 Our platform was created to help people pursue their dreams. We
                 give a percentage of raffle earnings to charities, and for some
                 raffles, we donate every single earning. This means that every
-                ticket purchased on the website goes to a good cause. So, even
+                token purchased on the website goes to a good cause. So, even
                 if you play and don’t win, you would have helped someone out
                 there achieve their dreams.
               </div>
@@ -231,7 +231,7 @@ const About = () => {
                 Our platform was created to help people pursue their dreams. We
                 give a percentage of raffle earnings to charities, and for some
                 raffles, we donate every single earning. This means that every
-                ticket purchased on the website goes to a good cause. So, even
+                token purchased on the website goes to a good cause. So, even
                 if you play and don’t win, you would have helped someone out
                 there achieve their dreams.
               </div>

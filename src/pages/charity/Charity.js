@@ -86,7 +86,7 @@ const Charity = () => {
             </div>
             <div className="grey-color paragraph">
               Charity is right at the heart of our mission, when you sign up to
-              Elivate9ja Raffles a percentage of every ticket you purchase will
+              Elivate9ja Raffles a percentage of every token you purchase will
               be donated to selected charity or to support good causes.
             </div>
           </div>

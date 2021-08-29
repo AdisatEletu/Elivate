@@ -1,10 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React, { useState} from "react";
 import {
   Col,
   Nav,
   NavItem,
   NavLink,
-  Row,
   TabContent,
   TabPane,
 } from "reactstrap";
@@ -13,7 +12,6 @@ import Account from "./Account";
 import Password from "./Password";
 
 import { connect } from "react-redux";
-import { fetchUserdetails } from "../../../redux/actions/userActions";
 
 const Profile = ({user}) => {
   const [activeTab, setActiveTab] = useState("1");

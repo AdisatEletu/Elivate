@@ -42,8 +42,8 @@ const RaffleFAQ = () => {
         question={'When Does The Draw For A Raffle Happen?'}
         description={' '}/>
       <ExpandableFAQ
-        question={'Where Can I View My Tickets?'}
-        description={'You Can View The Number Of Tickets You Have In Your Account In The Top Right Corner Of The Screen Labelled "Ticket" You Will Also Be Able To See Your Spent Tickets When You Click On The Ticket Button.'}/>
+        question={'Where Can I View My Tokens?'}
+        description={'You Can View The Number Of Tokens You Have In Your Account In The Top Right Corner Of The Screen Labelled "Token" You Will Also Be Able To See Your Spent Tokens When You Click On The Token Button.'}/>
     
     </div>
   )

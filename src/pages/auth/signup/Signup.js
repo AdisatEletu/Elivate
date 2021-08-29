@@ -55,7 +55,7 @@ const Signup = () => {
             Host your own&nbsp;<span>Raffle </span>
           </div>
           <div className={'paragraph text-align-center grey-color'}>
-            Promote and sell tickets to win personal products,<br/> experiences or associated brands
+            Promote and sell tokens to win personal products,<br/> experiences or associated brands
           </div>
           <div><i className='fa fa-ellipsis-h'/></div>
           

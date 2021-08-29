@@ -14,6 +14,7 @@
     "react-bootstrap": "^1.6.1",
     "react-date-countdown-timer": "^1.0.9",
     "react-dom": "^16.14.0",
+    "react-facebook-share-link": "^1.0.4",
     "react-icons": "^4.2.0",
     "react-ionicons": "^3.0.1",
     "react-js-pagination": "^3.0.3",

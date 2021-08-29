@@ -51,7 +51,7 @@ export const Footer = () => {
             </div>
             <div className={'footer-links-holder'}>
               <Link to="/">
-                <img alt={'logo'} src={require('../assets/footer-logo.png')} 
+                <img alt={'logo'} src={require('../assets/Elivate9ja_Logo_On Black.png')} 
                      height={'120px'}/>
               </Link>
               <div className={'footer-links white-color'}>
@@ -72,7 +72,7 @@ export const Footer = () => {
                     <Link to="/winners">Winners</Link>
                   </li>
                   <li>
-                    <Link to="/tickets">Tickets</Link>
+                    <Link to="/tickets">Tokens</Link>
                   </li>
                 </ul>
               

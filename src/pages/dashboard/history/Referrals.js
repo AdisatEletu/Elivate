@@ -10,29 +10,29 @@ const Referrals = () => {
         <thead>
         <tr>
           <th className={'paragraph-bold'}>Email Invited</th>
-          <th className={'paragraph-bold'}>Tickets Won</th>
+          <th className={'paragraph-bold'}>Tokens Won</th>
           <th className={'paragraph-bold'}>Date</th>
         </tr>
         </thead>
         <tbody>
         <tr>
           <td className={'fw-400 grey-color p-3'}>deanna.curtis@example.com</td>
-          <td><img src={require('../../../assets/icons/cinema 1.svg')} alt={'ticket'}/> &nbsp; 326</td>
+          <td><img src={require('../../../assets/icons/cinema 1.svg')} alt={'token'}/> &nbsp; 326</td>
           <td>5 hours ago</td>
         </tr>
         <tr>
           <td className={'fw-400 grey-color p-3'}>deanna.curtis@example.com</td>
-          <td><img src={require('../../../assets/icons/cinema 1.svg')} alt={'ticket'}/> &nbsp; 326</td>
+          <td><img src={require('../../../assets/icons/cinema 1.svg')} alt={'token'}/> &nbsp; 326</td>
           <td>6 hours ago</td>
         </tr>
         <tr>
           <td className={'fw-400 grey-color p-3'}>deanna.curtis@example.com</td>
-          <td><img src={require('../../../assets/icons/cinema 1.svg')} alt={'ticket'}/> &nbsp; 326</td>
+          <td><img src={require('../../../assets/icons/cinema 1.svg')} alt={'token'}/> &nbsp; 326</td>
           <td>6 hours ago</td>
         </tr>
         <tr>
           <td className={'fw-400 grey-color p-3'}>deanna.curtis@example.com</td>
-          <td><img src={require('../../../assets/icons/cinema 1.svg')} alt={'ticket'}/> &nbsp; 326</td>
+          <td><img src={require('../../../assets/icons/cinema 1.svg')} alt={'token'}/> &nbsp; 326</td>
           <td>6 hours ago</td>
         </tr>
         

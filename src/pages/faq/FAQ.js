@@ -30,8 +30,8 @@ const FAQ = () => {
         <div className={'faq-box   d-flex align-items-center justify-content-center flex-column margin-bottom-30'}>
           <img alt={'ticket'} src={require('../../assets/icons/black-cinema.svg')} width={36} height={36}/>
           <div>
-            <div className={'paragraph-bold mb-1 text-align-center'}>Tickets</div>
-            <div className={'grey-color text-align-center'}>Everything you need to know about getting tickets
+            <div className={'paragraph-bold mb-1 text-align-center'}>Tokens</div>
+            <div className={'grey-color text-align-center'}>Everything you need to know about getting tokens
             </div>
           </div>
         </div>

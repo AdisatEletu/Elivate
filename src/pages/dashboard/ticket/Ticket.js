@@ -1,6 +1,4 @@
 import React, { useEffect } from "react";
-import { FormInput } from "../../../components/forms/Input";
-import { usePaystackPayment } from "react-paystack";
 import { useTicket } from "./useTicket";
 import { connect } from "react-redux";
 import { EmptyData } from "../../../components/EmptyData";
@@ -30,7 +28,7 @@ const Ticket = ({ user }) => {
     <div>
       <div className={"profile-card"}>
         <div className={"header3 mb-3 mt-3 fw-bold"}>
-          Purchase raffle tickets
+          Purchase raffle tokens
         </div>
         {fetching
           ? "...Loading"

@@ -13,7 +13,7 @@ export const HowItWorks = () => {
         </div>
         <div className={'d-flex flex-column align-items-center justify-content-center col-md-4'}>
           <div className={'cursive biggestText circle-background2'}>2</div>
-          <div className={'title2 mt-3'}>Buy tickets</div>
+          <div className={'title2 mt-3'}>Buy tokens</div>
           <div className={'paragraph mt-2  p-4'}>Join the community and stay up to date on the latest deals and auctions.</div>
 
         </div>

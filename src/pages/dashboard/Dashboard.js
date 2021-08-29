@@ -53,11 +53,11 @@ const Dashboard = () => {
       <div>
         <div className={"dashboard-stats-holder light-blue-bg dashboard-grid"}>
           <div className={"small-paragraph dashboard-stats"}>
-            <div className={"small-paragraph"}>Total Real tickets used</div>
+            <div className={"small-paragraph"}>Total Real tokens used</div>
             <div className={"biggestText fw-400"}>{dashboard?.total_tickets_used || 0}</div>
           </div>
           <div className={"small-paragraph dashboard-stats"}>
-            <div className={"small-paragraph"}>Total tickets available</div>
+            <div className={"small-paragraph"}>Total tokens available</div>
             <div className={"biggestText fw-400"}>{dashboard?.tickets_available || 0}</div>
           </div>
           <div className={"small-paragraph dashboard-stats"}>

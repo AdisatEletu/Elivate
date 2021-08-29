@@ -18,7 +18,7 @@ const Account = ({ profileDetails, setCurrentUser }) => {
     email: profileDetails.email || "",
     phone: profileDetails.phone_number || "",
   });
-const [image, setImage] = useState(profileDetails.image_thumbnail_url)
+const [, setImage] = useState(profileDetails.image_thumbnail_url)
   const handleChange = (e) => {
     setActiveBtn(true);
     setInput({
@@ -39,7 +39,7 @@ const [image, setImage] = useState(profileDetails.image_thumbnail_url)
       const { data, success } = await putRequest("/customer/profile", q);
       if (success) {
         // await getUser();
-        localStorage.setItem('user', JSON.stringify(data))
+        localStorage.setItem('user', JSON.stringify(data));
         doAlert("succefully updated", "success");
         setCurrentUser(data)
       }

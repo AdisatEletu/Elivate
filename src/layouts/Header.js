@@ -68,7 +68,7 @@ const Header = ({ user, isAuthenticated }) => {
                   <NavLink activeClassName={"active-nav"} to="/tickets">
                     <img src={require("../assets/icons/ticket.svg")} />
                     &nbsp;
-                    {user?.tickets} Tickets
+                    {user?.tickets} Tokens
                   </NavLink>
                 </li>
                 <li>

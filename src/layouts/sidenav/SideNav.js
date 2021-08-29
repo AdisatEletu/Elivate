@@ -22,7 +22,7 @@ const SideNav = ({logoutUser}) => {
           <NavLink to={'/tickets'} activeClassName={'active-class'}
                    className={'d-flex sidebar-link justify-content-between  align-items-center'}>
             <img className={'col-md-1'} alt={'not'} src={require('../../assets/icons/grey-ticket.svg')}/>
-            <div className={'col-md-10'}> Ticket</div>
+            <div className={'col-md-10'}> Token</div>
           </NavLink>
           <NavLink to={'/history'} activeClassName={'active-class'}
                    className={'d-flex sidebar-link justify-content-between align-items-center'}>

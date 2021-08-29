@@ -15,7 +15,7 @@ export const HomepageWinners = ({tickets}) => {
               </div>
               <div className={"d-flex mt-3"}><img alt={"winner"}
                                                   src={require('../../../assets/icons/ticket.svg')}/>&nbsp;
-                <div>{tickets} Tickets</div>
+                <div>{tickets} tokens</div>
               </div>
             </div>
           </div>

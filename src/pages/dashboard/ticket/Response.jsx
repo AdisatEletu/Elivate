@@ -45,14 +45,14 @@ const Response = (props) => {
               width={200}
             />
             <div className={"bigTitle green-color"}>
-              Ticket successfully purchased!
+              Token successfully purchased!
             </div>
             <div className={"paragraph grey-color mt-4"}>
               Payment was Successful, check your email for receipt
             </div>
             <div className="col-md-3 mt-5">
               <FormButton
-                title="Return to tickets"
+                title="Return to tokens"
                 onClick={() => (window.location.href = "/tickets")}
                 className="primary-button"
               />
@@ -67,7 +67,7 @@ const Response = (props) => {
           width={200}
         />
         <div className={"bigTitle red-color"}>
-          Ticket purchased Failed!
+          Token purchase Failed!
         </div>
         <div className={"paragraph grey-color mt-4"}>
           This payment was not successful.
