@@ -55,7 +55,7 @@ export const WatchlistBtn = ({
     return (
       <div className={"d-flex m-justify-content-center fullwidth"}>
         <div
-          className={`disabled secondary-btn paragraph-bold ${className}`}
+          className={`a-disabled secondary-btn paragraph-bold ${className}`}
           style={fullwidth ? { width: "100%" } : { width: "280px" }}
         >
           Raffle Ended
@@ -78,7 +78,7 @@ export const WatchlistBtn = ({
     return (
       <div className={"d-flex m-justify-content-center fullwidth"}>
         <div
-          className={`disabled secondary-btn paragraph-bold ${className}`}
+          className={`a-disabled secondary-btn paragraph-bold ${className}`}
           style={fullwidth ? { width: "100%" } : { width: "280px" }}
         >
           Raffle Ended

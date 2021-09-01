@@ -10,7 +10,6 @@ const { Option } = Select;
 export const Filter = ({ classNames,setRaffles, endpoint }) => {
   const { categories, getCategories, loading,handleChange} = useFilter({setRaffles, endpoint});
 
-  console.log({endpoint})
   useEffect(() => {
     getCategories();
   }, []);

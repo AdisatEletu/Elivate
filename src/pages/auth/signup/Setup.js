@@ -9,7 +9,7 @@ import Onchange from "../../../helpers/Onchange";
 const Setup = () => {
   const fields = {
     first_name: '',
-    password: '',
+    password: localStorage.getItem('spfa'),
     last_name: '',
     username: '',
   };
@@ -19,11 +19,12 @@ const Setup = () => {
   });
   const [is_creating, setCreating] = useState(false);
   
-  
+  console.log(localStorage.getItem("spfa"), fields.password)
   
   const setUpUser = async () => {
     setCreating(true);
     const id = localStorage.getItem("id");
+    values['password'] = localStorage.getItem('spfa')
     try {
       const {success, data,message} = await putRequest(`/customer/complete-profile/${id}`, values);
       if (success) {
@@ -33,6 +34,7 @@ const Setup = () => {
       }else{
         doAlert(message, 'error')
       }
+      localStorage.removeItem('spfa');
       setCreating(false)
     } catch (e) {
       handleError(e)
@@ -72,7 +74,7 @@ const Setup = () => {
               <FormInput label={'First Name'} value={values.first_name} name={'first_name'} onChange={(e)=> Onchange(e, values, setValues)} className={'mb-3'} />
               <FormInput label={'Last name'} className={'mb-3'} onChange={(e)=> Onchange(e,values,setValues)} name={'last_name'} value={values.last_name}/>
               <FormInput label={'User name'} className={'mb-3'}  onChange={(e)=> Onchange(e,values,setValues)} name={'username'} value={values.username}/>
-              <FormInput label={'Re-Enter Password'} className={'mb-3'} type={'password'}  onChange={(e)=> Onchange(e,values,setValues)} name={'password'} value={values.password}/>
+              {/* <FormInput label={'Re-Enter Password'} className={'mb-3'} type={'password'}  onChange={(e)=> Onchange(e,values,setValues)} name={'password'} value={values.password}/> */}
               <FormButton title={'Continue'} loading={is_creating} className={'mt-3'}  type={'submit'} onClick={setUpUser}/>
             </div>
           </div>

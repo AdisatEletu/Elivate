@@ -14,7 +14,7 @@ import { getRequest } from "../../helpers/requests";
 const Raffles = (props) => {
   const [activePage, setActivePage] = useState(1);
 
-  const { raffles, fetching, getRaffles, per_page,total } = useRaffle();
+  const { raffles, fetching, getRaffles, per_page,total,setRaffles } = useRaffle();
 
   useEffect(() => {
     getRaffles();
@@ -25,16 +25,12 @@ const Raffles = (props) => {
     console.log({ pageNumber });
   };
 
-  const onClickRaffle = (id) => {
-    window.location.href = `/raffles/${id}/details`;
-  };
-
 
   return (
     <div className={"mt-4"}>
       {/*{header.title}*/}
       <PageTitle text={"Ongoing and upcoming Raffles"} hideBack />
-      <Filter />
+      <Filter setRaffles={setRaffles} endpoint={"/customer/raffle/all?category="}/>
       {fetching ? (
         <PageLoader />
       ) : (
