@@ -36,15 +36,15 @@ export const Footer = () => {
             </div>
           </div>
           <div
-            className={'title2 d-flex flex-column align-items-center justify-content-center col-md-12 mt-5 col-md-90'}>
+            className={'title2 d-flex flex-column  align-items-center justify-content-center col-md-12 mt-5 col-md-90'}>
             <div>Trust & security</div>
-            <div className={'grid-container grid-column-gap col-md-3 mt-4'}>
+            <div className={'grid-container grid-column-gap col-md-3 align-items-center mt-4'}>
               <img alt={'image'} className={'grid-item'} src={require('../assets/security-images/image 34.png')}
-                   height={30} width={50}/>
+                  height={30} width={50}/>
               <img alt={'image'} className={'grid-item'} src={require('../assets/security-images/Group 5671.png')}
-                   height={30} width={50}/>
-              <img alt={'image'} className={'grid-item'} src={require('../assets/security-images/image 36.png')}
-                   height={30} width={50}/>
+                   height={30}  width={50}/>
+              <img alt={'image'} className={'grid-item'} src={require('../assets/LOTTERY AUTHORITY.png')}
+                   width={50}/>
             </div>
             <div className={'col-md-12 mt-5 mb-5'}>
               <hr/>

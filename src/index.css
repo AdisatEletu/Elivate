@@ -19,6 +19,9 @@ input[type=number] {
   -moz-appearance: textfield;
 }
 
+.align-items-center{
+    align-items: center;
+}
 .cursive {
     font-family: "Devonshire", cursive;
 }

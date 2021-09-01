@@ -4,8 +4,8 @@ import { connect } from "react-redux";
 import classes from "./Header.module.css";
 import { FaBell } from "react-icons/fa";
 import img from "../assets/default-profile.jpeg";
-
-const Header = ({ user, isAuthenticated }) => {
+import {Badge} from "antd"
+const Header = ({ user, isAuthenticated,count }) => {
   return (
     <header>
       <div className="navigation-div">
@@ -14,7 +14,6 @@ const Header = ({ user, isAuthenticated }) => {
             <img
               alt={"logo"}
               src={require("../assets/Elivate9ja/Elivat9ja_Logo_Asset_PNG.png")}
-       
               height={"80px"}
             />
           </Link>
@@ -73,7 +72,9 @@ const Header = ({ user, isAuthenticated }) => {
                 </li>
                 <li>
                   <NavLink activeClassName={"active-nav"} to="/notifications">
-                    <FaBell />
+                    <Badge count={count}>
+                      <FaBell />
+                    </Badge>
                   </NavLink>
                 </li>
                 <li>
@@ -81,8 +82,7 @@ const Header = ({ user, isAuthenticated }) => {
                     <img
                       src={user?.image_thumbnail_url || img}
                       alt="img"
-                      style={{borderRadius: "50%"}}
-                    
+                      style={{ borderRadius: "50%" }}
                       height={40}
                       // srcset=""
                       // className={classes.Image}
@@ -117,6 +117,7 @@ const Header = ({ user, isAuthenticated }) => {
 const mapStateToProps = (state) => ({
   isAuthenticated: state.auth.isAuthenticated,
   user: state.auth.user,
+  count: state.headerReducer.notification_count
 });
 
 export default connect(mapStateToProps)(Header);

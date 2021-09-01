@@ -1,7 +1,16 @@
-import React from "react";
+import React,{useEffect, useState} from "react";
 import EmptyNotification from "./EmptyNotification";
-
+import {useNotification} from "./useNotification"
 const Notification = () => {
+
+  const { notifications,
+    fetchNotification,
+    loading} = useNotification();
+
+    useEffect(() => {
+      fetchNotification()
+    }, [loading])
+    console.log({notifications})
   return (
     <div>
       <div className={'profile-card'}>

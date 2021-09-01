@@ -1,7 +1,7 @@
 import React from "react";
 import { Provider } from "react-redux";
 import axios from "axios";
-import jwt_decode from "jwt-decode";
+import {getNotificationCount} from "./redux/actions/uiActions"
 import store from "./redux/store";
 import { setCurrentUser, logoutUser } from "./redux/actions/authActions";
 import Routes from "./config/Routes";
@@ -11,13 +11,16 @@ import "./responsive.css";
 import 'antd/dist/antd.css'
 
 
-export const initialize = (windowObj, axiosLib) => {
+export const initialize = async (windowObj, axiosLib) => {
   axiosLib.defaults.baseURL = "https://desolate-fjord-54053.herokuapp.com/api/";
   axios.defaults.headers.common["Authorization"] = `Bearer ${localStorage.token}`;
   //decode token and get user
   // const decoded = jwt_decode(localStorage.token);
   //set current user
   //sets persistent session
+  
+
+ // console.log("get")
   if (localStorage.user)
     store.dispatch(setCurrentUser(JSON.parse(localStorage.user)));
 };
@@ -61,7 +64,7 @@ const App = () => {
   setInterceptor(axios);
   initialize(window, axios);
   // verifyToken(axios);
-  
+  getNotificationCount()
   return (
     <>
       <Provider store={store}>
