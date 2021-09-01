@@ -111,7 +111,7 @@ const Signup = () => {
                 type={"text"}
                 label={"Refferal code"}
                 value={values.referral_code}
-                name={"refferal_code"}
+                name={"referral_code"}
                 onChange={(e) => Onchange(e, values, setValues)}
               />
 
