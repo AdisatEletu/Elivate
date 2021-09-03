@@ -1,7 +1,7 @@
 import { useState } from "react"
 import { getRequest, putRequest } from "../../../helpers/requests"
-
-
+import {useDispatch} from "react-redux"
+import {getNotificationCount,setNotificationCount} from "../../../redux/actions/uiActions"
 export const useNotification =()=>{
     const [notifications, setNotification] = useState([])
     const [loading, setLoading] = useState(true);
@@ -12,6 +12,9 @@ export const useNotification =()=>{
     const [total, setTotal] = useState(0)
     const [page, setPage] = useState(1)
 
+    //hooks
+
+    const dispatch = useDispatch();
     const fetchNotification =async()=>{
         try {
             const {data, success} = await getRequest(`/customer/notifications?per_page=${limit}&page=${page}`)
@@ -35,11 +38,14 @@ export const useNotification =()=>{
         await putRequest(`/customer/notifications/${notification.id}`)
         setSelectedNotification(notification)
         setRequesting(false)
-        
+        const count = await getNotificationCount();
+        dispatch(setNotificationCount(count))
+    
     };
 
     const toggleOff = async() => {
         setModal(false)
+        fetchNotification()
     };
     return{
         notifications,

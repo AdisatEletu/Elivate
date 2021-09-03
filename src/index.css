@@ -341,6 +341,10 @@ ul.navigtion-items {
     font-weight: bold;
 }
 
+.gap-30{
+    gap: 30px;
+}
+
 .off-white-color {
     color: #ececec;
 }
@@ -937,6 +941,10 @@ ul.navigtion-items {
     font-weight: 400;
 }
 
+.fw-500{
+    font-weight: 500;
+}
+
 .profile-card {
     box-shadow: 0px 1px 107px -56px rgba(148, 154, 173, 0.71);
     -webkit-box-shadow: 0px 1px 107px -56px rgba(148, 154, 173, 0.71);
@@ -1119,4 +1127,16 @@ ul.navigtion-items {
 
 .text-align-left{
     text-align: left;
+}
+
+.num-of-users-holder{
+    border-left: 4px #E89606 solid ;
+}
+
+.num-of-prices-holder{
+    border-left: 4px solid #4F5873;
+}
+
+.num-of-winners-holder{
+    border-left: 4px solid #4D9E39;
 }

@@ -53,7 +53,7 @@ const Ticket = ({ user }) => {
                           {ticket.num_of_tickets}
                         </span>
                         &nbsp;
-                        <span className={"small-paragraph"}>Tickets</span>
+                        <span className={"small-paragraph"}>Tokens</span>
                       </div>
                     </div>
                     {ticket.bonus && (

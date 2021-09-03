@@ -48,13 +48,12 @@ const Notification = () => {
                       onClick={() => toggleOn(notification)}
                       className="pointer"
                     >
-                      <td className={"fw-400 grey-color p-3"}>
+                      <td className={!notification?.read ? 'fw-500 off-black-color  p-3' : " fw-400 grey-color p-3"}>
                         {notification.title}
                       </td>
-                      <td>
+                      <td className={!notification?.read ? 'fw-500 off-black-color  p-3' : " fw-400 grey-color p-3"}>
                         {moment(notification.created_at)
-                          .startOf("day")
-                          .fromNow()}
+                          .format('MM/DD/YYYY, h:mm:ss a')}
                       </td>
                     </tr>
                   ))

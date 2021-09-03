@@ -12,18 +12,14 @@ import { PageLoader } from "../../components/Loaders";
 import { getRequest } from "../../helpers/requests";
 
 const Raffles = (props) => {
-  const [activePage, setActivePage] = useState(1);
 
-  const { raffles, fetching, getRaffles, per_page,total,setRaffles } = useRaffle();
+  const { raffles, fetching, getRaffles, per_page,total,setRaffles,handlePageChange,activePage } = useRaffle();
 
   useEffect(() => {
     getRaffles();
     setSubHeaderAction("Ongoing and upcoming Raffles");
   },[activePage]);
 
-  const handlePageChange = (pageNumber) => {
-    console.log({ pageNumber });
-  };
 
 
   return (

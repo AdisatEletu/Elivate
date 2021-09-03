@@ -36,7 +36,6 @@ export const loginUser = (email, password, history) => async (dispatch) => {
   }
 };
 export const setCurrentUser = (user) => (dispatch) => {
-  console.log({ user });
   dispatch({ type: SET_USER, payload: user });
 };
 

@@ -1,7 +1,7 @@
 import React from "react";
 import { Provider } from "react-redux";
 import axios from "axios";
-import { getNotificationCount } from "./redux/actions/uiActions";
+import { getNotificationCount,setNotificationCount} from "./redux/actions/uiActions";
 import store from "./redux/store";
 import { setCurrentUser, logoutUser } from "./redux/actions/authActions";
 import Routes from "./config/Routes";
@@ -23,10 +23,13 @@ export const initialize = async (windowObj, axiosLib) => {
   // console.log("get")
   if (localStorage.user)
     store.dispatch(setCurrentUser(JSON.parse(localStorage.user)));
-  // getNotificationCount();
+    const count = await getNotificationCount();
+    store.dispatch(setNotificationCount(count))
+  
 };
 
-const setInterceptor = (axiosLib) => {
+const setInterceptor = async (axiosLib) => {
+
   return axiosLib.interceptors.response.use(
     (response) => {
       return response;

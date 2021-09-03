@@ -7,7 +7,7 @@ import handleError from "../../../helpers/handleError";
 import { doAlert } from "../../../components/alert/AlertComponent";
 import axios from "axios";
 import { useRaffle } from "../../raffles/useRaffle";
-import moment from "moment";
+import {getNotificationCount, setNotificationCount }from "../../../redux/actions/uiActions"
 import { useDispatch } from "react-redux";
 import { getUser } from "../../../redux/actions/authActions";
 import { useHistory } from "react-router-dom";
@@ -61,6 +61,7 @@ export const RaffleCard = ({ onClick, profile, winner, stacked, raffle }) => {
       setRemoving(false);
     } catch (e) {
       handleError(e);
+      setRemoving(false);
     }
   };
 
@@ -74,12 +75,16 @@ export const RaffleCard = ({ onClick, profile, winner, stacked, raffle }) => {
       if (success) {
         doAlert("successfully entered raffle", "success");
         dispatch(getUser());
+        const count = await getNotificationCount();
+        dispatch(setNotificationCount(count))
+    
       } else {
         doAlert(error.response.data.message, "error");
       }
       setCreating(false);
     } catch (e) {
       handleError(e);
+      setCreating(false);
     }
   };
 

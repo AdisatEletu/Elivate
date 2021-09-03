@@ -18,12 +18,12 @@ import { getRequest, postRequest } from "../../helpers/requests";
 import handleError from "../../helpers/handleError";
 import { useHistory } from "react-router-dom";
 import { PageLoader } from "../../components/Loaders";
-
+import { useWinners } from "../winners/useWinners";
 const Home = () => {
   //Hooks
   const dispatch = useDispatch();
   const history = useHistory();
-
+  const { winners } = useWinners();
   //State
   const [raffles, setRaffles] = useState([]);
   const [featuredRaffles, setFeaturedRaffles] = useState({});
@@ -135,7 +135,11 @@ const Home = () => {
         ""
       ) : raffles.length > 0 ? (
         <>
-          <Filter classNames={"mt-6"} endpoint={`/customer/raffle/all?featured=${1}&category=`} setRaffles={setRaffles}/>
+          <Filter
+            classNames={"mt-6"}
+            endpoint={`/customer/raffle/all?featured=${1}&category=`}
+            setRaffles={setRaffles}
+          />
 
           <div className={"mt-3 "}>
             <div
@@ -197,7 +201,10 @@ const Home = () => {
           </div>
         </>
       ) : (
-        <div className="d-flex justify-content-center header3 mt-5 " style={{height: "100px"}}>
+        <div
+          className="d-flex justify-content-center header3 mt-5 "
+          style={{ height: "100px" }}
+        >
           No featured raffle
         </div>
       )}
@@ -236,21 +243,16 @@ const Home = () => {
               Raffles recently won, don't miss out on the next raffles!
             </div>
           </div>
-          <div className={"col-md-2"}>
-            <FormButton title={"View all winners"} onClick={()=>history.push('/winners')} />
-          </div>
+          {winners && winners.length > 0 && (
+            <div className={"col-md-2"}>
+              <FormButton
+                title={"View all winners"}
+                onClick={() => history.push("/winners")}
+              />
+            </div>
+          )}
         </div>
-
-        <div
-          className={
-            "col-md-12 winners-holder-div justify-content-center m-flex m-align-items-center"
-          }
-        >
-          <HomepageWinners tickets={5} />
-          <HomepageWinners tickets={4} />
-          <HomepageWinners tickets={5} />
-          <HomepageWinners tickets={3} />
-        </div>
+        <HomepageWinners />
       </div>
       <Testimonials />
     </div>

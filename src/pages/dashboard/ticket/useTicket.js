@@ -24,7 +24,6 @@ export const useTicket = ({ user }) => {
   const buyTickets = async (id, index) => {
     
     setLoading({...loading, [index]: true});
-    console.log(index,loading)
     try {
       const { data, success } = await putRequest(
         `/customer/ticket-bundle/${id}`
@@ -39,29 +38,7 @@ export const useTicket = ({ user }) => {
     }
   };
 
-  const config = {
-    reference: new Date().getTime(),
-    email: user.email,
-    amount: amount.toLocaleString(),
-    publicKey: "pk_test_bae54c0032893f6cae06e53cd7faa17da05d4e4f",
-  };
 
-  // you can call this function anything
-  const onSuccess = (reference) => {
-    window.open = `/payment/response/${reference.trxref}`;
-    // Implementation for whatever you want to do with reference and after success call.
-    setRef(reference);
-  };
-
-  // you can call this function anything
-  const onClose = () => {
-    // implementation for  whatever you want t
-
-    window.location.href = `/payment/response/${ref.trxref}`;
-    if (ref.message === "Approved") {
-      doAlert("Payment Successful", "success");
-    }
-  };
 
   return {
     fetchTickets,

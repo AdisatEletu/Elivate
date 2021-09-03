@@ -35,5 +35,6 @@ export const useRaffle = () => {
     per_page,
     total,
     setRaffles,
+    handlePageChange
   };
 };
