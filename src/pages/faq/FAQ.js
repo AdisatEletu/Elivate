@@ -12,48 +12,48 @@ const FAQ = () => {
       </div>
       <div className={'mt-6 faq-grid align-items-center justify-content-center'}>
         <NavLink to={'/help/raffle'} className={'faq-box   d-flex align-items-center justify-content-center flex-column margin-bottom-30'}>
-          <img alt={'ticket'} src={require('../../assets/icons/ticket.svg')} width={36} height={36}/>
+          <img alt={'ticket'} src={require('../../assets/icons/Frame (7).svg')} width={36} height={36}/>
           <div>
             <div className={'paragraph-bold mb-1 text-align-center'}>Raffles</div>
             <div className={'grey-color text-align-center'}>Everything you need to know about raffles and winning them
             </div>
           </div>
         </NavLink>
-        <div className={'faq-box   d-flex align-items-center justify-content-center flex-column margin-bottom-30'}>
-          <img alt={'ticket'} src={require('../../assets/icons/profile.svg')} width={36} height={36}/>
+        <NavLink to={'/help/account'} className={'faq-box   d-flex align-items-center justify-content-center flex-column margin-bottom-30'}>
+          <img alt={'ticket'} src={require('../../assets/icons/Frame (4).svg')} width={36} height={36}/>
           <div>
             <div className={'paragraph-bold mb-1 text-align-center'}>Account</div>
             <div className={'grey-color text-align-center'}>Learn more about your account setup and activation
             </div>
           </div>
-        </div>
-        <div className={'faq-box   d-flex align-items-center justify-content-center flex-column margin-bottom-30'}>
-          <img alt={'ticket'} src={require('../../assets/icons/black-cinema.svg')} width={36} height={36}/>
+        </NavLink>
+        <NavLink to={'/help/token'} className={'faq-box   d-flex align-items-center justify-content-center flex-column margin-bottom-30'}>
+       <img alt={'ticket'} src={require('../../assets/icons/cinema 1 (1).svg')} width={36} height={36}/>
           <div>
             <div className={'paragraph-bold mb-1 text-align-center'}>Tokens</div>
             <div className={'grey-color text-align-center'}>Everything you need to know about getting tokens
             </div>
           </div>
-        </div>
+        </NavLink>
       </div>
       
       <div className={'m-flex justify-content-center gap-30 mt-4 '}>
-        <div className={' col-md-4  faq-box d-flex align-items-center justify-content-center flex-column margin-bottom-30'}>
-          <img alt={'ticket'} src={require('../../assets/icons/charity.svg')} width={36} height={36}/>
+      <NavLink to={'/help/charity'} className={'faq-box   d-flex align-items-center justify-content-center flex-column margin-bottom-30'}>
+       <img alt={'ticket'} src={require('../../assets/icons/heart 1.svg')} width={36} height={36}/>
           <div>
             <div className={'paragraph-bold mb-1 text-align-center'}>Charity</div>
             <div className={'grey-color text-align-center'}>Everything you need to know about raffles and winning them
             </div>
           </div>
-        </div>
-        <div className={' col-md-4 faq-box d-flex align-items-center justify-content-center flex-column margin-bottom-30'}>
-          <img alt={'ticket'} src={require('../../assets/icons/winning.svg')} width={36} height={36}/>
+        </NavLink>
+        <NavLink to={'/help/winnings'} className={'faq-box   d-flex align-items-center justify-content-center flex-column margin-bottom-30'}>
+          <img alt={'ticket'} src={require('../../assets/icons/Frame (5).svg')} width={36} height={36}/>
           <div>
             <div className={'paragraph-bold mb-1 text-align-center'}>Winning</div>
             <div className={'grey-color text-align-center'}>Everything you need to know about raffles and winning them
             </div>
           </div>
-        </div>
+        </NavLink>
       </div>
       
       <div className={'mt-6'}>

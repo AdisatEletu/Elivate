@@ -1,7 +1,14 @@
 import { Col, Row } from "react-bootstrap";
-import React from "react";
+import React,{useEffect} from "react";
 import "./winners.css"
+import {useWinners} from './useWinners'
 const Winners = () => {
+
+  const {winners, loading, fetchWinners} = useWinners();
+
+  useEffect(() => {
+    fetchWinners(12)
+  }, [])
   return (
     <div className="height-100vh  aligin-items-center justify-content-center">
       {/* <Empty/> */}
@@ -48,7 +55,7 @@ const Winners = () => {
             </Col>
           </Row>
         </Col>
-        <Col xs={12} sm={12} md={4} lg={4} className="num-of-winners-holder">
+        <Col xs={12} sm={12} md={4} lg={4} className="num-of-prices-holder">
           <Row>
             <Col md={2} className="text-align-center">
               <svg
@@ -145,22 +152,22 @@ const Winners = () => {
 
 
  <Row className="mt-5 ">
-        <Col md={2} sm={12}  xs={12} lg={4}>
+        <Col md={2} sm={12}  xs={12} lg={3} >
           <div className="items-holder">
               hello
           </div>
         </Col>
-        <Col md={2} sm={12}  xs={12} lg={4}>
+        <Col md={2} sm={12}  xs={12} lg={3}>
           <div  className="items-holder">
               hello
           </div>
         </Col>
-        <Col md={2} sm={12}  xs={12} lg={4}>
+        <Col md={2} sm={12}  xs={12} lg={3}>
           <div className="items-holder">
               hello
           </div>
         </Col>
-        <Col md={2} sm={12}  xs={12} lg={4}>
+        <Col md={2} sm={12}  xs={12} lg={3}>
           <div className="items-holder">
               hello
           </div>

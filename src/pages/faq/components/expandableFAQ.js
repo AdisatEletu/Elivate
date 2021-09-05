@@ -14,7 +14,7 @@ const ExpandableFAQ = ({question, description}) => {
       className={`${isOpen ? 'active-faq-holder light-blue-bg' : "ex-faq-holder"} d-flex justify-content-center flex-column mt-3 mb-3`}
       onClick={onClick}>
       <div className={'d-flex  justify-content-between align-items-center col-md-12'}>
-        <div className={'off-black-color header3regular'}>
+        <div className={'off-black-color header3 regular capitalize'}>
           {question}
         </div>
         {isOpen ? <img src={require('../../../assets/icons/minus-circle.svg')} alt={'close'}/> :

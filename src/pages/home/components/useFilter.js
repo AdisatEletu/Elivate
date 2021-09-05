@@ -2,7 +2,7 @@ import { useState } from "react";
 import handleError from "../../../helpers/handleError";
 import { getRequest } from "../../../helpers/requests";
 
-export const useFilter = ({ endpoint, setRaffles }) => {
+export const useFilter = ({ endpoint, setRaffles,sortEndpoint }) => {
   const [categories, setCategories] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -25,10 +25,18 @@ export const useFilter = ({ endpoint, setRaffles }) => {
     }
   };
 
+  const handleSortChange = async (value) => {
+    const { data, success } = await getRequest(`${sortEndpoint}${value}`);
+    if (success) {
+      setRaffles(data.data);
+    }
+  };
+
   return {
     categories,
     getCategories,
     loading,
     handleChange,
+    handleSortChange
   };
 };

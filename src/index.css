@@ -1140,3 +1140,7 @@ ul.navigtion-items {
 .num-of-winners-holder{
     border-left: 4px solid #4D9E39;
 }
+
+.capitalize{
+    text-transform: uppercase;
+}
