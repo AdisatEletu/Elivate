@@ -13,8 +13,6 @@ export const getNotificationCount = async (dispatch) => {
     const { data, success } = await axios.get(
       "/customer/notifications/unread-count"
     );
-    console.log("hcvgj", data, success);
-
     if (data.success) {
       // dispatch(setNotificationCount(data?.data?.count));
       return data.data.count
