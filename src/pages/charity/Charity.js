@@ -20,7 +20,7 @@ const Charity = () => {
   } else {
     return (
       <section>
-        <div className="col-md-12 d-flex banner charity-banner justify-content-center flex-column m-flex light-blue-bg">
+        <div className="col-md-12 d-flex banner charity-banner justify-content-center flex-column m-flex ">
           <Carousel autoPlay={true} infiniteLoop swipeable showStatus={false}>
             {charities &&
               charities.map((charity, index) => (
@@ -35,6 +35,7 @@ const Charity = () => {
                       <img
                         alt="charity-logo"
                         src={charity.image_url}
+                        style={{objectFit: "contain"}}
                         height={"70%"}
                         className="p-5"
                         className="charity-logo"
