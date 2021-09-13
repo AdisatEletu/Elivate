@@ -45,7 +45,7 @@ const Login = (props) => {
           }}
         >
           {/*<div className={'overlay'}/>*/}
-          <div className={"d-flex align-items-center flex-column fullheight"}>
+          <div className={"d-flex align-items-center flex-column min-height-100vh"}>
             <div
               className={
                 "d-flex align-items-center flex-column fullheight  col-md-4"

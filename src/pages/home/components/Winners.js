@@ -8,7 +8,7 @@ export const HomepageWinners = () => {
 
   useEffect(() => {
     fetchWinners(4);
-  }, [loading]);
+  }, []);
   return (
     <div
       className={

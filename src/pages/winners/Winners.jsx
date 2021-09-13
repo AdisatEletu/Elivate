@@ -1,14 +1,20 @@
 import { Col, Row } from "react-bootstrap";
-import React,{useEffect} from "react";
-import "./winners.css"
-import {useWinners} from './useWinners'
+import React, { useEffect } from "react";
+import "./winners.css";
+import { useWinners } from "./useWinners";
+import { PageLoader } from "../../components/Loaders";
+import { Empty } from "antd";
 const Winners = () => {
-
-  const {winners, loading, fetchWinners} = useWinners();
+  const { winners, loading, fetchWinners,
+    winnerStats,
+    fetchWinnersStat } = useWinners();
 
   useEffect(() => {
-    fetchWinners(12)
-  }, [])
+    fetchWinners(12);
+    fetchWinnersStat()
+  }, []);
+
+  if (loading) return <PageLoader />;
   return (
     <div className="height-100vh  aligin-items-center justify-content-center">
       {/* <Empty/> */}
@@ -51,7 +57,7 @@ const Winners = () => {
             </Col>
             <Col md={10}>
               <div>Total Number of raffle winners</div>
-              <div>280,766</div>
+              <div>{winnerStats?.online_winners_count}</div>
             </Col>
           </Row>
         </Col>
@@ -88,7 +94,7 @@ const Winners = () => {
             </Col>
             <Col md={10}>
               <div>Total Number of prices won</div>
-              <div>280,766</div>
+              <div>{winnerStats?.prices_won_count}</div>
             </Col>
           </Row>
         </Col>
@@ -135,7 +141,7 @@ const Winners = () => {
             </Col>
             <Col md={10}>
               <div>Total Number of charity engagements</div>
-              <div>280,766</div>
+              <div>{winnerStats?.raffles_belonging_to_charity_count}</div>
             </Col>
           </Row>
         </Col>
@@ -145,36 +151,30 @@ const Winners = () => {
         <Col md={12}>
           <div className="bigTitle text-align-center">Prices won</div>
           <div className="grey-color text-align-center">
-          Here’s a list of prices that have been won on our platform
+            Here’s a list of prices that have been won on our platform
           </div>
         </Col>
       </Row>
 
+      <Row className="mt-5 ">
+        {winners && winners.length > 0 ? winners.map((winner, index)=>
+        
+        
+       <Col md={2} sm={12} xs={12} lg={3} key={index}>
+        <div className="items-holder" style={{backgroundImage: `url(${winner.image_url})`}}>
+          <div className="d-flex fullheight align-items-center justify-content-center flex-column">
+            <h4>{winner.name}</h4>
+            <div className="text-align-center"><img src={require('../../assets/trophy.svg')}/></div>
+          </div>
 
- <Row className="mt-5 ">
-        <Col md={2} sm={12}  xs={12} lg={3} >
-          <div className="items-holder">
-              hello
-          </div>
-        </Col>
-        <Col md={2} sm={12}  xs={12} lg={3}>
-          <div  className="items-holder">
-              hello
-          </div>
-        </Col>
-        <Col md={2} sm={12}  xs={12} lg={3}>
-          <div className="items-holder">
-              hello
-          </div>
-        </Col>
-        <Col md={2} sm={12}  xs={12} lg={3}>
-          <div className="items-holder">
-              hello
-          </div>
-        </Col>
+        </div>
+      </Col>
+        
+        )
+        :
+          <Empty />
+        }
       </Row>
-
-
     </div>
   );
 };
