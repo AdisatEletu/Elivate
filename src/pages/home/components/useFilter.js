@@ -5,7 +5,7 @@ import { getRequest } from "../../../helpers/requests";
 export const useFilter = ({ endpoint, setRaffles,sortEndpoint }) => {
   const [categories, setCategories] = useState([]);
   const [loading, setLoading] = useState(true);
-
+  const [searchValue, setSearchValue] = useState("");
   const getCategories = async () => {
     try {
       const { data, success } = await getRequest(`/customer/category`);
@@ -32,11 +32,27 @@ export const useFilter = ({ endpoint, setRaffles,sortEndpoint }) => {
     }
   };
 
+  const onClickSearch = async (value) => {
+    const { data, success } = await getRequest(`${sortEndpoint}name=${searchValue}`);
+    if (success) {
+      setRaffles(data.data);
+    }
+  };
+
+  const handleSearchChange = async (value) => {
+    setSearchValue(value)
+  };
+
+  
+
   return {
     categories,
     getCategories,
     loading,
     handleChange,
-    handleSortChange
+    handleSortChange,
+    handleSearchChange,
+    searchValue,
+    onClickSearch
   };
 };

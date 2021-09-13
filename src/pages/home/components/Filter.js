@@ -9,9 +9,11 @@ export const Filter = ({ classNames, setRaffles, endpoint, sortEndpoint }) => {
   const {
     categories,
     getCategories,
-    loading,
     handleChange,
     handleSortChange,
+    searchValue,
+    handleSearchChange,
+    onClickSearch,
   } = useFilter({ setRaffles, endpoint, sortEndpoint });
 
   useEffect(() => {
@@ -21,7 +23,7 @@ export const Filter = ({ classNames, setRaffles, endpoint, sortEndpoint }) => {
     <div
       className={`m-flex m-align-items-center justify-content-between ${classNames}`}
     >
-      <div className={"d-flex align-items-center justify-content-between"}>
+      <div className={"d-flex align-items-center justify-content-between top-filter-padding"}>
         <div className={"col-md-6 d-flex"}>
           <Select
             defaultValue="default"
@@ -55,7 +57,11 @@ export const Filter = ({ classNames, setRaffles, endpoint, sortEndpoint }) => {
       </div>
 
       <div className={"col-md-4"}>
-        <SearchInput />
+        <SearchInput
+          handleSearchChange={handleSearchChange}
+          value={searchValue}
+          onSubmit={onClickSearch}
+        />
       </div>
     </div>
   );

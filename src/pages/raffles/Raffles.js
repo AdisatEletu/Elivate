@@ -9,7 +9,6 @@ import "../../index.css";
 import { useRaffle } from "./useRaffle";
 import { EmptyData } from "../../components/EmptyData";
 import { PageLoader } from "../../components/Loaders";
-import { getRequest } from "../../helpers/requests";
 
 const Raffles = (props) => {
 
