@@ -23,7 +23,7 @@ const Notification = () => {
 
   useEffect(() => {
     fetchNotification();
-  }, [loading]);
+  }, [page]);
   return (
     <div>
       <div className={"profile-card"}>

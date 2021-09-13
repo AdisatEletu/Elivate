@@ -569,8 +569,7 @@ ul.navigtion-items {
 }
 
 .footer {
-  background-color: #00335c;
-  min-height: 620px;
+  background-color: #4d9e39;
   margin-top: 120px;
   left: 0;
   bottom: 0;
@@ -588,7 +587,7 @@ ul.navigtion-items {
 }
 
 .footer-info {
-  background-color: #4d9e39;
+  background-color: #e89606;
   height: 290px;
   width: 93%;
   margin-top: -200px;
@@ -602,6 +601,9 @@ ul.navigtion-items {
 
 .col-md-90 {
   width: 90%;
+}
+.footer a{
+  color: #ffffff;
 }
 
 .footer-links-holder {

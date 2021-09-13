@@ -7,7 +7,7 @@ export const Footer = () => {
   const date = new Date().getFullYear();
   return (
     <footer className={"footer"}>
-      <div className={""}
+      <div 
            style={{
              backgroundImage: `url(${require('../assets/—Pngtree.png')})`,
              backgroundPosition: 'center',
@@ -40,11 +40,11 @@ export const Footer = () => {
             <div>Trust & security</div>
             <div className={'grid-container grid-column-gap col-md-3 align-items-center mt-4'}>
               <img alt={'image'} className={'grid-item'} src={require('../assets/security-images/image 34.png')}
-                  height={30} width={50}/>
+                 />
               <img alt={'image'} className={'grid-item'} src={require('../assets/security-images/Group 5671.png')}
-                   height={30}  width={50}/>
+                />
               <img alt={'image'} className={'grid-item'} src={require('../assets/LOTTERY AUTHORITY.png')}
-                   width={50}/>
+                   height={80}/>
             </div>
             <div className={'col-md-12 mt-5 mb-5'}>
               <hr/>
