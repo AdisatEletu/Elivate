@@ -9,7 +9,6 @@ const Charity = () => {
   useEffect(() => {
     // setInterval(()=>handleSlideShow(), 10000);
     fetchCharities();
-    console.log({ charities });
   }, []);
 
   if (loading) {
@@ -46,10 +45,10 @@ const Charity = () => {
                         "col-md-6 d-flex flex-column justify-content-center p-5 m-text-align-center"
                       }
                     >
-                      <div className="charity-raise col-md-7 p-2 mb-2">
+                      {/* <div className="charity-raise col-md-7 p-2 mb-2">
                         <span>Total amount raised for charity</span>
                         <span> NGN 100, 000</span>
-                      </div>
+                      </div> */}
                       <div className={"bigTitle text-align-left mt-3 m-fs-24"}>
                         {charity.title}
                       </div>

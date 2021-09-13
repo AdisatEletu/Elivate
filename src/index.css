@@ -145,6 +145,10 @@ a {
   grid-gap: 25px;
 }
 
+.black-overlay{
+  background-color: rgb(34, 34, 34, 0.9);
+}
+
 .profile-grid {
   display: grid;
   grid-template-columns: 19% 79%;
@@ -355,6 +359,14 @@ ul.navigtion-items {
 
 .primary-color {
   color: #1e3b9e;
+}
+
+.primary-bg-color {
+  background-color: #1e3b9e;
+}
+
+.image-br{
+  border-radius: 30px 0 0 30px!important;
 }
 
 .primary-input {

@@ -80,7 +80,6 @@ export const UploadImage = ({
               src={fallbackResolver(`${profile}`, image)}
               alt={""}
               width={120}
-              height={100}
               className={"br-50"}
             />
           </div>

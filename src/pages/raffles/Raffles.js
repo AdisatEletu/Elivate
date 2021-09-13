@@ -47,7 +47,7 @@ const Raffles = (props) => {
         </div>
       )}
 
-      <div className={"d-flex justify-content-center primary-bg-color mt-6"}>
+      <div className={"d-flex justify-content-center  mt-6"}>
         <Pagination
           activePage={activePage}
           itemsCountPerPage={per_page}

@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { Banner } from "./components/Banner";
 import { HowItWorks } from "./components/HowItWorks";
 import { Filter } from "./components/Filter";
 import { FeaturedRaffleTitle } from "./components/FeaturedRaffleTitle";

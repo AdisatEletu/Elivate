@@ -83,7 +83,7 @@ const Dashboard = () => {
           )}
           {raffles.length > 0 && (
             <div
-              className={"d-flex justify-content-center primary-bg-color mt-6"}
+              className={"d-flex justify-content-center mt-6"}
             >
               <Pagination
                 activePage={activePage}

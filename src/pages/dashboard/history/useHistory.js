@@ -6,16 +6,17 @@ import { getRequest } from "../../../helpers/requests";
 export const useCustomerRaffle =()=>{
   const [raffles, setRaffles] = useState([]);
   const [fetching, setFetching] = useState(true);
-  const [per_page, setPerPage] = useState(20)
+  const [per_page, setPerPage] = useState(4)
   const [activePage, setActivePage] = useState(1);
 
   const [total, setTotal] = useState(0)
   const getRaffles = async () => {
     try {
-      const { data, success } = await getRequest(`/customer/raffle?per_page=${2}&page=${activePage}`);
+      const { data, success } = await getRequest(`/customer/raffle?per_page=${per_page}&page=${activePage}`);
       if (success) {
         setRaffles(data.data);
         setTotal(data.total)
+        console.log(data.total)
       }
       setFetching(false);
     } catch (error) {
@@ -30,8 +31,10 @@ export const useCustomerRaffle =()=>{
     return {
       raffles,
       fetching,
-      getRaffles, setActivePage,
+      getRaffles, 
+      setActivePage,
+      handlePageChange,
       activePage,
-      per_page, total
+      per_page, total,
     }
 }

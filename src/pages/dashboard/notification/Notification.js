@@ -63,7 +63,7 @@ const Notification = () => {
               </tbody>
             </Table>
             <div
-              className={"d-flex justify-content-center primary-bg-color mt-6"}
+              className={"d-flex justify-content-center mt-6"}
             >
               <Pagination
                 activePage={page}

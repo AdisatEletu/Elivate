@@ -4,21 +4,112 @@ import "./winners.css";
 import { useWinners } from "./useWinners";
 import { PageLoader } from "../../components/Loaders";
 import { Empty } from "antd";
+import "react-responsive-carousel/lib/styles/carousel.min.css";
+import { Carousel } from "react-responsive-carousel";
+import { FormButton } from "../../components/forms/Button";
 const Winners = () => {
-  const { winners, loading, fetchWinners,
+  const {
+    winners,
+    loading,
+    fetchWinners,
     winnerStats,
-    fetchWinnersStat } = useWinners();
+    fetchWinnersStat,
+    show,
+    handleLoadMore,
+    handleHover,
+    limit
+  } = useWinners();
 
   useEffect(() => {
-    fetchWinners(12);
-    fetchWinnersStat()
+    fetchWinners();
+  }, [limit]);
+
+  useEffect(() => {
+    fetchWinnersStat();
   }, []);
 
   if (loading) return <PageLoader />;
   return (
     <div className="height-100vh  aligin-items-center justify-content-center">
       {/* <Empty/> */}
-      <Row>
+
+      <div className="col-md-12 d-flex banner charity-banner justify-content-center flex-column m-flex ">
+        <Carousel autoPlay={true} infiniteLoop swipeable showStatus={false}>
+          {winners &&
+            winners.map((winner, index) => (
+              <div
+                className={
+                  "col-md-12 d-flex banner charity-banner justify-content-center flex-column m-flex primary-bg-color"
+                }
+                key={index}
+              >
+                <div
+                  className={
+                    "col-md-12 d-flex align-items-center justify-content-center  m-flex"
+                  }
+                >
+                  <div
+                    className={
+                      "col-md-6 d-flex flex-column justify-content-center p-5 m-text-align-center"
+                    }
+                  >
+                    {/* <div className="charity-raise col-md-7 p-2 mb-2">
+                        <span>Total amount raised for charity</span>
+                        <span> NGN 100, 000</span>
+                      </div> */}
+                    <div
+                      className={
+                        "bigTitle text-align-left mt-3 m-fs-24 white-color"
+                      }
+                    >
+                      {winner.name}
+                    </div>
+                    <div
+                      className={
+                        "paragraph text-align-left mt-3 m-mt-1 white-color"
+                      }
+                    >
+                      <div>Won by</div>
+                      <div
+                        className={
+                          "d-flex text-align-left fullwidth align-items-center"
+                        }
+                      >
+                        <div style={{ marginLeft: "-25px" }}>
+                          <img src={require("../../assets/trophy.svg")} />
+                        </div>
+                        <div>
+                          <div>
+                            <div>
+                              {`${winner?.winner?.first_name || ""} ${winner
+                                ?.winner?.last_name || ""}`}
+                            </div>
+
+                            <div>
+                              Number of tickets:{" "}
+                              {`${winner?.winner?.tickets || ""}`}
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="col-md-6 d-flex align-items-center justify-content-center image-br">
+                    <img
+                      alt="charity-logo"
+                      src={winner.image_url}
+                      height={"70%"}
+                      className="p-5 image-br"
+                      className="charity-logo"
+                      style={{ borderRadius: "0 30px 30px 0" }}
+                    />
+                  </div>
+                </div>
+              </div>
+            ))}
+        </Carousel>
+      </div>
+      <Row className="mt-5 mb-5">
         <Col xs={12} sm={12} md={4} lg={4} className="num-of-winners-holder">
           <Row>
             <Col md={2} className="text-align-center">
@@ -157,24 +248,48 @@ const Winners = () => {
       </Row>
 
       <Row className="mt-5 ">
-        {winners && winners.length > 0 ? winners.map((winner, index)=>
-        
-        
-       <Col md={2} sm={12} xs={12} lg={3} key={index}>
-        <div className="items-holder" style={{backgroundImage: `url(${winner.image_url})`}}>
-          <div className="d-flex fullheight align-items-center justify-content-center flex-column">
-            <h4>{winner.name}</h4>
-            <div className="text-align-center"><img src={require('../../assets/trophy.svg')}/></div>
-          </div>
-
-        </div>
-      </Col>
-        
-        )
-        :
+        {winners && winners.length > 0 ? (
+          winners.map((winner, index) => (
+            <Col md={2} sm={12} xs={12} lg={3} key={index}>
+              <div
+                className="items-holder white-color"
+                style={{
+                  backgroundImage: `url(${winner.image_url})`,
+                  backgroundSize: "cover",
+                }}
+                onMouseEnter={() => handleHover(index)}
+                onMouseLeave={() => handleHover(-1)}
+              >
+                {show >= 0 && (
+                  <div className="d-flex fullheight align-items-center justify-content-center flex-column black-overlay">
+                    <h4 className="white-color">{winner.name}</h4>
+                    <p className=" mt-3">Won by</p>
+                    <div className="text-align-center ">
+                      <img src={require("../../assets/trophy.svg")} />
+                    </div>
+                    <div>
+                      {`${winner?.winner?.first_name || ""} ${winner?.winner
+                        ?.last_name || ""}`}
+                    </div>
+                    <div>
+                      Number of tickets: {`${winner?.winner?.tickets || ""}`}
+                    </div>
+                  </div>
+                )}
+              </div>
+            </Col>
+          ))
+        ) : (
           <Empty />
-        }
+        )}
       </Row>
+
+      <div className="d-flex justify-content-center">
+        <Col md={2} sm={11} xs={12}>
+          <FormButton title={"Load more"} 
+          onClick={handleLoadMore}/>
+        </Col>
+      </div>
     </div>
   );
 };
