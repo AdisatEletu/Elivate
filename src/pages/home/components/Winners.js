@@ -1,6 +1,5 @@
-import React, { useState } from "react";
+import React from "react";
 import { useEffect } from "react";
-import { FormButton } from "../../../components/forms/Button";
 import { useWinners } from "../../winners/useWinners";
 
 export const HomepageWinners = () => {

@@ -6,13 +6,16 @@ export const useTicket = ({ user }) => {
   const [tickets, setTickets] = useState([]);
   const [fetching, setFetching] = useState(true);
   const [loading, setLoading] = useState(false);
-  const [ref, setRef] = useState({});
   const [amount, setAmount] = useState(0);
+  const [total, setTotal] = useState(0)
+  const [page, setPage] = useState(1)
+  const [limit, setLimit] = useState(10)
   const fetchTickets = async () => {
     try {
-      const { data, success } = await getRequest("/customer/ticket-bundle");
+      const { data, success } = await getRequest(`/customer/ticket-bundle?per_page=${limit}&page=${page}`);
       if (success) {
         setTickets(data.data);
+        setTotal(data?.total)
       }
       setFetching(false);
     } catch (error) {
@@ -39,6 +42,10 @@ export const useTicket = ({ user }) => {
   };
 
 
+  const handlePageChange = (pageNumber) => {
+    setPage(pageNumber)
+  };
+
 
   return {
     fetchTickets,
@@ -47,5 +54,9 @@ export const useTicket = ({ user }) => {
     setAmount,
     buyTickets,
     loading,
+    total,
+    handlePageChange,
+    limit,
+    page
   };
 };

@@ -3,7 +3,10 @@ import { useTicket } from "./useTicket";
 import { connect } from "react-redux";
 import { EmptyData } from "../../../components/EmptyData";
 import { getUser } from "../../../redux/actions/authActions";
-import { useDispatch } from 'react-redux'
+import { useDispatch } from "react-redux";
+
+import Pagination from "react-js-pagination";
+
 
 const Ticket = ({ user }) => {
   const {
@@ -12,68 +15,90 @@ const Ticket = ({ user }) => {
     tickets,
     setAmount,
     buyTickets,
-    loading
-  } = useTicket({user});
+    loading,
+    limit,
+    total,
+    page,
+    handlePageChange
+  } = useTicket({ user });
 
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(getUser());
     fetchTickets();
-  }, []);
+  }, [page]);
 
-
-
+  console.log({page, total,limit})
   return (
     <div>
       <div className={"profile-card"}>
         <div className={"header3 mb-3 mt-3 fw-bold"}>
           Purchase raffle tokens
         </div>
-        {fetching
-          ? "...Loading"
-          : tickets.length > 0 ?
-         
-              <div className={"ticket-m"} >
-                <div className={"ticket-grid mb-5"}>
-                {tickets.map((ticket, index) => (
-                  <div
-                    className={
-                      "ticket-card justify-content-around d-flex flex-column align-items-center"
-                    }
-                    key={ticket.uuid}
-                  >
-                    <div className={"text-align-center"}>
-                      <img
-                        alt={"icon"}
-                        src={require("../../../assets/icons/cinema 1.svg")}
-                      />
-                      <div>
-                        <span className={"fw-bold title1"}>
-                          {ticket.num_of_tickets}
-                        </span>
-                        &nbsp;
-                        <span className={"small-paragraph"}>Tokens</span>
-                      </div>
-                    </div>
-                    {ticket.bonus && (
-                      <div className="bonus">{`+${ticket.bonus} bonus`}</div>
-                    )}
-                    <div
-                      className={
-                        "ticket-button d-flex align-items-center justify-content-center pointer"
-                      }
-                      onClick={() => {
-                      buyTickets(ticket.id, index)
-                      }}
-                    >
-                     {loading[index] ? "Loading..." : <div>Buy &#8358; {ticket.amount}</div>}
+        {fetching ? (
+          "...Loading"
+        ) : tickets.length > 0 ? (
+          <div className={"ticket-m"}>
+            <div className={"ticket-grid mb-5"}>
+              {tickets.map((ticket, index) => (
+                <div
+                  className={
+                    "ticket-card justify-content-around d-flex flex-column align-items-center"
+                  }
+                  key={ticket.uuid}
+                >
+                  <div className={"text-align-center"}>
+                    <img
+                      alt={"icon"}
+                      src={require("../../../assets/icons/cinema 1.svg")}
+                    />
+                    <div>
+                      <span className={"fw-bold title1"}>
+                        {ticket.num_of_tickets}
+                      </span>
+                      &nbsp;
+                      <span className={"small-paragraph"}>Tokens</span>
                     </div>
                   </div>
-                
-                ))}</div> 
-              </div>
-           : <EmptyData/>}
+                  {ticket.bonus && (
+                    <div className="bonus">{`+${ticket.bonus} bonus`}</div>
+                  )}
+                  <div
+                    className={
+                      "ticket-button d-flex align-items-center justify-content-center pointer"
+                    }
+                    onClick={() => {
+                      buyTickets(ticket.id, index);
+                    }}
+                  >
+                    {loading[index] ? (
+                      "Loading..."
+                    ) : (
+                      <div>Buy &#8358; {ticket.amount}</div>
+                    )}
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            <div className={"d-flex justify-content-center mt-6"}>
+              <Pagination
+                activePage={page}
+                itemsCountPerPage={limit}
+                totalItemsCount={total}
+                pageRangeDisplayed={10}
+                onChange={handlePageChange}
+                innerClass="pagination justify-content-center pagination-holder"
+                itemClass="page-item"
+                activeClass="active"
+                linkClass="page-link"
+              />
+            </div>
+          </div>
+        ) : (
+          <EmptyData />
+        )}
       </div>
     </div>
   );
@@ -84,6 +109,5 @@ const mapStateToProps = (state) => {
     user: state.auth.user,
   };
 };
-
 
 export default connect(mapStateToProps)(Ticket);

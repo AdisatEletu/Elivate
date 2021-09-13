@@ -548,6 +548,15 @@ ul.navigtion-items {
   padding: 0;
 }
 
+.page-link {
+  position: relative;
+  display: block;
+  color: #4d9e39;
+  text-decoration: none;
+  background-color: #fff;
+  border: none;
+}
+
 .overlay {
   position: fixed;
   width: 100%;
