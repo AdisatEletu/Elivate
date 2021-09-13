@@ -1,11 +1,10 @@
 import React, { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { connect } from "react-redux";
-import classes from "./Header.module.css";
 import { FaBell } from "react-icons/fa";
 import img from "../assets/default-profile.jpeg";
 import { logoutUser } from "../redux/actions/authActions";
-import { Drawer, Badge } from "antd";
+import { Drawer, Badge, Divider } from "antd";
 const Header = ({ user, isAuthenticated, count, logoutUser }) => {
   const [visible, setVisible] = useState(false);
   const showDrawer = () => {
@@ -14,6 +13,38 @@ const Header = ({ user, isAuthenticated, count, logoutUser }) => {
   const onClose = () => {
     setVisible(false);
   };
+
+  const drawerHeader = (
+    <ul className="d-flex drawer-header-style justify-content-between align-items-center list-style-none show-mobile">
+      <li>
+        <NavLink activeClassName={"active-nav"} to="/tickets">
+          <img src={require("../assets/icons/ticket.svg")} />
+          &nbsp;
+          {user?.tickets}
+        </NavLink>
+      </li>
+      <li>
+        <NavLink activeClassName={"active-nav"} to="/notifications">
+          <Badge count={count}>
+            <FaBell />
+          </Badge>
+        </NavLink>
+      </li>
+      <li>
+        <NavLink activeClassName={"active-nav"} to="/profile">
+          <img
+            src={user?.image_thumbnail_url || img}
+            alt="img"
+            style={{ borderRadius: "50%" }}
+            height={40}
+            // srcset=""
+            // className={classes.Image}
+          />
+          {/* <BiDownArrow /> */}
+        </NavLink>
+      </li>
+    </ul>
+  );
   const links = (
     <ul className="navigation-items">
       <li>
@@ -49,26 +80,26 @@ const Header = ({ user, isAuthenticated, count, logoutUser }) => {
 
       {isAuthenticated ? (
         <>
-          <li className={classes.Watchlist}>
+          <li className={"border-none"}>
             <NavLink activeClassName={"active-nav"} to="/watchlist">
               Watchlist
             </NavLink>
           </li>
-          <li>
+          <li className={"menu"}>
             <NavLink activeClassName={"active-nav"} to="/tickets">
               <img src={require("../assets/icons/ticket.svg")} />
               &nbsp;
               {user?.tickets} Tokens
             </NavLink>
           </li>
-          <li>
+          <li  className={"menu"}>
             <NavLink activeClassName={"active-nav"} to="/notifications">
               <Badge count={count}>
                 <FaBell />
               </Badge>
             </NavLink>
           </li>
-          <li>
+          <li className={"menu"}>
             <NavLink activeClassName={"active-nav"} to="/profile">
               <img
                 src={user?.image_thumbnail_url || img}
@@ -82,122 +113,85 @@ const Header = ({ user, isAuthenticated, count, logoutUser }) => {
             </NavLink>
           </li>
 
+
           <div
             className={
-              "box-shadow sidenav-holder m-flex flex-column justify-content-between p-3 branding display-none showMobile"
+              " m-flex flex-column justify-content-between display-none showMobile"
             }
           >
-            <ul>
+            <Divider />
+            <ul className="navigation-items">
               <NavLink
                 to={"/dashboard"}
-                activeClassName={"active-class"}
+                activeClassName={"active-nav"}
                 className={
                   "d-flex sidebar-link justify-content-between align-items-center"
                 }
               >
-                <img
-                  className={"col-md-1"}
-                  alt={"not"}
-                  src={require("../assets/icons/Frame.svg")}
-                />
                 <div className={"col-md-10"}> Dashboard</div>
               </NavLink>
               <NavLink
                 to={"/notifications"}
-                activeClassName={"active-class"}
+                activeClassName={"active-nav"}
                 className={
                   "d-flex sidebar-link justify-content-between  align-items-center"
                 }
               >
-                <img
-                  className={"col-md-1"}
-                  alt={"not"}
-                  src={require("../assets/icons/notification.svg")}
-                />
                 <div className={"col-md-10"}> Notification</div>
               </NavLink>
               <NavLink
                 to={"/tickets"}
-                activeClassName={"active-class"}
+                activeClassName={"active-nav"}
                 className={
                   "d-flex sidebar-link justify-content-between  align-items-center"
                 }
               >
-                <img
-                  className={"col-md-1"}
-                  alt={"not"}
-                  src={require("../assets/icons/grey-ticket.svg")}
-                />
                 <div className={"col-md-10"}> Token</div>
               </NavLink>
               <NavLink
                 to={"/history"}
-                activeClassName={"active-class"}
+                activeClassName={"active-nav"}
                 className={
                   "d-flex sidebar-link justify-content-between align-items-center"
                 }
               >
-                <img
-                  className={"col-md-1"}
-                  alt={"not"}
-                  src={require("../assets/icons/history.svg")}
-                />
                 <div className={"col-md-10"}> History</div>
               </NavLink>
               <NavLink
                 to={"/transactions"}
-                activeClassName={"active-class"}
+                activeClassName={"active-nav"}
                 className={
                   "d-flex sidebar-link justify-content-between align-items-center"
                 }
               >
-                <img
-                  className={"col-md-1"}
-                  alt={"not"}
-                  src={require("../assets/icons/notification.svg")}
-                />
                 <div className={"col-md-10"}> Transactions</div>
               </NavLink>
               <NavLink
                 to={"/referral"}
-                activeClassName={"active-class"}
+                activeClassName={"active-nav"}
                 className={
                   "d-flex sidebar-link justify-content-between align-items-center"
                 }
               >
-                <img
-                  className={"col-md-1"}
-                  alt={"not"}
-                  src={require("../assets/icons/referrals.svg")}
-                />
                 <div className={"col-md-10"}> Referrals</div>
               </NavLink>
               <NavLink
                 to={"/profile"}
-                activeClassName={"active-class"}
+                activeClassName={"active-nav"}
                 className={
                   "d-flex sidebar-link justify-content-between align-items-center"
                 }
               >
-                <img
-                  className={"col-md-1"}
-                  alt={"not"}
-                  src={require("../assets/icons/profile.svg")}
-                />
                 <div className={"col-md-10"}> Profile</div>
               </NavLink>
             </ul>
+            <Divider />
             <div
               className={
-                "log-out d-flex justify-content-between align-items-center pl-2"
+                "log-out d-flex justify-content-between align-items-center"
               }
               onClick={logoutUser}
             >
-              <img
-                className={"col-md-1"}
-                alt={"not"}
-                src={require("../assets/icons/logout.svg")}
-              />
               <div className={"col-md-10"}> Logout</div>
             </div>
           </div>
@@ -214,9 +208,8 @@ const Header = ({ user, isAuthenticated, count, logoutUser }) => {
               className={`paragraph-bold text-align-center header-button`}
             >
               <NavLink activeClassName={"active-nav"} to="/sign-up">
-              Sign up
-            </NavLink>
-             
+                Sign up
+              </NavLink>
             </button>
           </li>
         </>
@@ -245,7 +238,7 @@ const Header = ({ user, isAuthenticated, count, logoutUser }) => {
         <nav className="menu">{links}</nav>
       </div>
       <Drawer
-        title="Basic Drawer"
+        title={drawerHeader}
         placement="right"
         onClose={onClose}
         visible={visible}

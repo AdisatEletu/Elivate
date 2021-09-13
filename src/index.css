@@ -15,7 +15,24 @@ input::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
+.ant-drawer-body  ul{
+  list-style-type: none;
+  margin: 0;
+  padding: 0.3rem
+}
 
+.border-none{
+  border-left: 1px solid rgb(184, 176, 176);
+}
+
+.ant-drawer-body .active-nav {
+  color: #4d9e39;
+}
+
+.ant-drawer-body li a{
+  color: #000000;
+ 
+}
 /* Firefox */
 input[type="number"] {
   -moz-appearance: textfield;

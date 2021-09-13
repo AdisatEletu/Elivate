@@ -9,6 +9,37 @@
         font-size: 16px!important;
     }
 
+    .navigation-items li{
+        padding: 0.5rem 0;
+      }
+
+      .sidebar-link {
+        color: #000000;
+        /* margin: 15px 0; */
+        padding: 0.5rem 0;
+      }
+
+      .border-none{
+          border: none;
+      }
+
+      .drawer-header-style{
+        padding: 0;
+        width: 85%;
+    }
+      
+      .active-class{
+          color: #4d9e39;
+          background-color: #ffffff;
+          font-weight: 500;
+          height: 0;
+          padding: 0;
+      }
+
+      ul{
+          list-style-type: none;
+      }
+
     .menu {
         display: none;
     }
@@ -186,5 +217,8 @@
 
     .faq-grid{
         display: block;
+    }
+    .mobile-flex{
+        display: flex;
     }
 }
