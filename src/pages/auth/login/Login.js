@@ -105,7 +105,6 @@ const Login = (props) => {
                         "small-paragraph col-md-4 text-align-center grey-color"
                       }
                     >
-                      {" "}
                       or sign in with
                     </div>
                     <div className={"col-md-4 hr"} />
