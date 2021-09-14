@@ -21,6 +21,16 @@ input::-webkit-inner-spin-button {
   padding: 0.3rem
 }
 
+/* .nav-item a:hover{
+  color: #ffffff;
+  opacity: 1;
+} */
+
+ul{
+  list-style-type: none;
+  margin: 0;
+}
+
 .border-none{
   border-left: 1px solid rgb(184, 176, 176);
 }
