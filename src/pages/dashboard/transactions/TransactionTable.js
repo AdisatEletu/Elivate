@@ -6,7 +6,6 @@ import './table.css'
 
 const TransactionTableItem = ({data,i, SN}) => {
   const status = data.status;
-  const {customer} = data;
   return (
     <tr
       className={"click-view"}

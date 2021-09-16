@@ -27,7 +27,7 @@ export const WatchlistBtn = ({
             {removing ? "Removing from watclist..." : "Remove"}
           </div>
         </div>
-        <div className="green-color fw-500" onClick={viewMore}>View more</div>
+        <div className="green-color fw-500 display-none" onClick={viewMore}>View more</div>
       </div>
     );
   } else if (!watchlist && !started) {
@@ -42,7 +42,7 @@ export const WatchlistBtn = ({
             {adding ? "Adding..." : "Add to watchlist"}
           </div>
         </div>
-        <div className="green-color fw-500" onClick={viewMore}>View more</div>
+        <div className="green-color fw-500 display-none" onClick={viewMore}>View more</div>
       </div>
     );
   } else if (watchlist && ended || !watchlist && ended) {
@@ -57,7 +57,7 @@ export const WatchlistBtn = ({
         </div>
         
       </div>
-         <div className="green-color fw-500" onClick={viewMore}>View more</div>
+         <div className="green-color fw-500 display-none" onClick={viewMore}>View more</div>
       </div>
      
     );
@@ -73,7 +73,7 @@ export const WatchlistBtn = ({
            {creating ? " Entering Raffle...": "Enter Raffle"}
           </div>
         </div>
-         <div className="green-color fw-500" onClick={viewMore}>View more</div>
+         <div className="green-color fw-500 display-none" onClick={viewMore}>View more</div>
       </div>
      
     );
@@ -88,7 +88,7 @@ export const WatchlistBtn = ({
           Raffle Ended
         </div>
       </div>
-         <div className="green-color fw-500" onClick={viewMore}>View more</div>
+         <div className="green-color fw-500 display-none" onClick={viewMore}>View more</div>
       </div>
       
     );

@@ -45,7 +45,6 @@ export const useFilter = ({ endpoint, setRaffles, searchEndpoint, sortEndpoint, 
     if (value === "" || value.length < 1) {
 
       setSearchValue("");
-      console.log(searchEndpoint)
       const { data, success } = await getRequest(
         `${searchEndpoint}`
       );
