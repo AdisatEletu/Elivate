@@ -13,7 +13,7 @@ const Signup = () => {
     email: "".trim(),
     password: "",
     phone_number: "",
-    referral_code: ""
+    referrer_code: ""
   };
   const [values, setValues] = useState({
     fields,

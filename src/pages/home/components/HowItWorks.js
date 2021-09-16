@@ -10,7 +10,7 @@ export const HowItWorks = () => {
      <div className={'paragraph col-md-12 m-flex mt-6'}>
         <Col md={12} lg={4} sm={12} className={'d-flex flex-column align-items-center justify-content-center'}>
           <div className={'cursive biggestText circle-background '}>1</div>
-          <div className={'title2 mt-3'}>Sign Up on Eliate9ja</div>
+          <div className={'title2 mt-3'}>Sign Up on Elivate9ja</div>
           <div className={'paragraph mt-2  p-4'}>Join the community and stay up to date on the latest deals and auctions.</div>
         </Col>
         <Col md={12} lg={4} sm={6} className={'d-flex flex-column align-items-center justify-content-center '}>
