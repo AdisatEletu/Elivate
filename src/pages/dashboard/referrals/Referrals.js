@@ -29,7 +29,6 @@ const Referrals = (auth) => {
         <div className={'small-paragraph mt-4'}>Your referral code:</div>
         <input className={'title1 mt-2 border-none outline-none referral-code'} value={auth.user?.referral_code}
                ref={textAreaRef} readOnly/>
-        {/*<div className={''}  ref={textAreaRef}>{auth.user?.referral_code}</div>*/}
       </div>
       <div className="d-flex mt-3 col-md-1 justify-content-around">
         <a href={"#"}><CopyOutlined onClick={copyToClipboard}
