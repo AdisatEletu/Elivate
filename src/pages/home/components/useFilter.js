@@ -2,7 +2,7 @@ import { useState } from "react";
 import handleError from "../../../helpers/handleError";
 import { getRequest } from "../../../helpers/requests";
 
-export const useFilter = ({ endpoint, setRaffles,sortEndpoint }) => {
+export const useFilter = ({ endpoint, setRaffles, searchEndpoint, sortEndpoint, }) => {
   const [categories, setCategories] = useState([]);
   const [loading, setLoading] = useState(true);
   const [searchValue, setSearchValue] = useState("");
@@ -33,17 +33,30 @@ export const useFilter = ({ endpoint, setRaffles,sortEndpoint }) => {
   };
 
   const onClickSearch = async (value) => {
-    const { data, success } = await getRequest(`${sortEndpoint}name=${searchValue}`);
+    const { data, success } = await getRequest(
+      `${sortEndpoint}name=${value}`
+    );
     if (success) {
       setRaffles(data.data);
     }
   };
 
   const handleSearchChange = async (value) => {
-    setSearchValue(value)
-  };
+    if (value === "" || value.length < 1) {
 
-  
+      setSearchValue("");
+      console.log(searchEndpoint)
+      const { data, success } = await getRequest(
+        `${searchEndpoint}`
+      );
+      if (success) {
+        setRaffles(data?.data);
+      }
+    }else{
+      setSearchValue(value);
+    }
+   
+  };
 
   return {
     categories,
@@ -53,6 +66,6 @@ export const useFilter = ({ endpoint, setRaffles,sortEndpoint }) => {
     handleSortChange,
     handleSearchChange,
     searchValue,
-    onClickSearch
+    onClickSearch,
   };
 };

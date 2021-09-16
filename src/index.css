@@ -802,13 +802,14 @@ ul.navigtion-items {
   min-height: 325px;
   border-radius: 20px;
   border: 1px #ececec solid;
-  padding: 0 0 15px 15px;
+  /* padding: 0 0 15px 15px; */
 }
 
 .raffle-image {
   /*width: 100%;*/
   background-repeat: no-repeat;
   height: 100%;
+  border-radius: 20px;
   background-position: center;
   background-size: contain;
 }
@@ -850,6 +851,18 @@ ul.navigtion-items {
   background-color: #ffffff;
   border: 1px solid #ececec;
   margin-right: 15px;
+}
+
+.m-mt-3{
+  margin-top: 3rem;
+}
+
+.overflow-ellipsis{
+  display: -webkit-box;
+-webkit-line-clamp: 2;
+-webkit-box-orient: vertical;
+overflow: hidden;
+text-overflow: ellipsis;
 }
 
 .padding-15px {

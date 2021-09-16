@@ -11,8 +11,8 @@ const [activeLink, setActiveLink] = useState("/dashboard");
 
 const history = useHistory();
 
-const pathname = history?.location?.pathname
-console.log({pathname})
+const pathname = history?.location?.pathname;
+
   const getNavLinkClass = (path) => {
     const regex = new RegExp(path, "gi");
   
@@ -22,11 +22,8 @@ console.log({pathname})
   useEffect(() => {
     setActiveLink(pathname);
 
-  console.log(activeLink)
   }, [activeLink, pathname]);
   
-  console.log(activeLink)
-
   return (
     <div className={"side-nav"}>
       <div

@@ -137,7 +137,9 @@ const Home = () => {
           <Filter
             classNames={"mt-6"}
             endpoint={`/customer/raffle/all?featured=${1}&category=`}
+            sortEndpoint={`/customer/raffle/all?featured=${1}&`}
             setRaffles={setRaffles}
+            searchEndpoint={`/customer/raffle/all?featured=${1}`}
           />
 
           <div className={"mt-3 "}>

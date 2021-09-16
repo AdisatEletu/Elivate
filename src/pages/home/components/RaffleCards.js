@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { RaffleTimer } from "./RaffleTimer";
 import { WatchlistBtn } from "./WatchlistBtn";
 import { Ticket } from "./Ticket";
@@ -89,12 +89,96 @@ export const RaffleCard = ({ onClick, profile, winner, stacked, raffle }) => {
   };
 
   const navigateToRaffleDetails = () => {
-    history.push=`/raffle/${raffle.id}/details`;
+    history.push(`/raffles/${raffle.id}/details`);
   };
   return (
+    <>
+        <div
+      className={
+        "raffle-card-holder justify-content-between m-flex display-none col-md-12 pointer"
+      }
+    >
+      <div
+        className={"col-md-4 p-2"}
+        onClick={navigateToRaffleDetails}
+      >
+        <div
+          className={"raffle-image"}
+          style={{ backgroundImage: `url(${raffle.image_url})` }}
+        >
+          <Ticket
+            ticket={raffle.number_of_tickets}
+            className={"display-none"}
+          />
+
+          {raffle.charity &&(
+            <img
+              alt={"charity"}
+              className={"charity-icon"}
+              src={require("../../../assets/icons/charity.svg")}
+            />
+          )}
+
+<div
+            className={""}
+            onClick={navigateToRaffleDetails}
+          >
+            <RaffleTimer
+              winner={winner}
+              black
+              stacked={stacked}
+              started={started}
+              profile={profile}
+              className={"raffle-card-button"}
+              timer={raffle?.start_date}
+            />
+          </div>
+        </div>
+      </div>
+      <div className={"col-md-7"}>
+  
+        <div className={"padding-right-15"}>
+          <div
+            className={`title2 m-mt-3 display-none`}
+            onClick={navigateToRaffleDetails}
+          >
+            {raffle.name}
+          </div>
+          <div
+            className={`${
+              stacked ? "small-paragraph mt-3 " : "small-paragraph mt-3 overflow-ellipsis description-height"
+            }`}
+            onClick={() => {
+              onClick
+                && onClick(raffle.raffle_id)
+            }}
+          >
+            {raffle.description}
+          </div>
+          <div className={"mt-3"}>
+            <WatchlistBtn
+              adding={adding}
+              raffle={raffle}
+              removing={removing}
+              creating={creating}
+              ended={ended}
+              handleRemoveWatchlist={handleRemoveWatchlist}
+              started={started}
+              start={raffle?.start_date}
+              watchlist={watchlist}
+              handleEnterRaffle={handleEnterRaffle}
+              handleAddWatchlist={handleAddWatchlist}
+              fullwidth
+              status={raffle.status}
+              viewMore={navigateToRaffleDetails}
+            />
+          </div>
+        </div>
+      </div>
+    </div>
     <div
       className={
-        "raffle-card-holder justify-content-between m-flex col-md-12 pointer"
+        "raffle-card-holder justify-content-between m-flex m-display-none col-md-12 pointer"
       }
     >
       <div
@@ -110,14 +194,12 @@ export const RaffleCard = ({ onClick, profile, winner, stacked, raffle }) => {
             className={"display-none"}
           />
 
-          {raffle.charity ? (
+          {raffle.charity &&(
             <img
               alt={"charity"}
               className={"charity-icon"}
               src={require("../../../assets/icons/charity.svg")}
             />
-          ) : (
-            ""
           )}
         </div>
       </div>
@@ -128,7 +210,7 @@ export const RaffleCard = ({ onClick, profile, winner, stacked, raffle }) => {
           }
           onClick={navigateToRaffleDetails}
         >
-          <div className={"title2 mt-5 m-di splay-none"}>{raffle.name}</div>
+          <div className={"title2 mt-5 m-display-none"}>{raffle.name}</div>
           <Ticket ticket={raffle.number_of_tickets} />
         </div>
         <div className={"padding-right-15"}>
@@ -144,8 +226,7 @@ export const RaffleCard = ({ onClick, profile, winner, stacked, raffle }) => {
             }`}
             onClick={() => {
               onClick
-                ? onClick(raffle.raffle_id)
-                : console.log("on location added");
+                && onClick(raffle.raffle_id)
             }}
           >
             {raffle.description}
@@ -170,6 +251,7 @@ export const RaffleCard = ({ onClick, profile, winner, stacked, raffle }) => {
               removing={removing}
               creating={creating}
               ended={ended}
+              raffle={raffle}
               handleRemoveWatchlist={handleRemoveWatchlist}
               started={started}
               start={raffle?.start_date}
@@ -178,10 +260,13 @@ export const RaffleCard = ({ onClick, profile, winner, stacked, raffle }) => {
               handleAddWatchlist={handleAddWatchlist}
               fullwidth
               status={raffle.status}
+              viewMore={navigateToRaffleDetails}
             />
           </div>
         </div>
       </div>
     </div>
+
+    </>
   );
 };

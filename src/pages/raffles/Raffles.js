@@ -25,7 +25,7 @@ const Raffles = (props) => {
     <div className={"mt-4"}>
       {/*{header.title}*/}
       <PageTitle text={"Ongoing and upcoming Raffles"} hideBack />
-      <Filter setRaffles={setRaffles} sortEndpoint={"/customer/raffle/all?"} endpoint={"/customer/raffle/all?category="}/>
+      <Filter setRaffles={setRaffles} sortEndpoint={"/customer/raffle/all?"} searchEndpoint={"/customer/raffle/all"} endpoint={"/customer/raffle/all?category="}/>
       {fetching ? (
         <PageLoader />
       ) : (

@@ -5,7 +5,7 @@ import { useFilter } from "./useFilter";
 import { Menu, Dropdown, Select } from "antd";
 
 const { Option } = Select;
-export const Filter = ({ classNames, setRaffles, endpoint, sortEndpoint }) => {
+export const Filter = ({ classNames, setRaffles, endpoint, sortEndpoint,searchEndpoint }) => {
   const {
     categories,
     getCategories,
@@ -14,7 +14,7 @@ export const Filter = ({ classNames, setRaffles, endpoint, sortEndpoint }) => {
     searchValue,
     handleSearchChange,
     onClickSearch,
-  } = useFilter({ setRaffles, endpoint, sortEndpoint });
+  } = useFilter({ setRaffles, endpoint, sortEndpoint, searchEndpoint });
 
   useEffect(() => {
     getCategories();

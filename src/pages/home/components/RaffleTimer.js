@@ -58,8 +58,8 @@ export const RaffleTimer = ({
               ? require("../../../assets/icons/blackTimer.svg")
               : require("../../../assets/icons/timer.svg")
           }
-        />{" "}
-        <span> &nbsp; Raffle have started </span>
+        />
+        <span > &nbsp; Raffle have started </span>
       </div>
     );
   } else if (!started) {
@@ -67,7 +67,7 @@ export const RaffleTimer = ({
       <div
         className={`raffle-button small-paragraph align-items-center m-raffle-btn ${className}`}
       >
-        <div>
+        <div className={"m-display-none"}>
           <img
             alt={"timer icon"}
             width={24}

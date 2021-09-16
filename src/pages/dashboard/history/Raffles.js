@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, {useEffect } from "react";
 import { RaffleCard } from "../../home/components/RaffleCards";
 import { useCustomerRaffle } from "./useHistory";
 
@@ -7,9 +7,7 @@ import Pagination from "react-js-pagination";
 const Raffles = () => {
   const {
     raffles,
-    fetching,
     getRaffles,
-    setActivePage,
     handlePageChange,
     activePage,
     per_page,
