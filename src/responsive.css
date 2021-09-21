@@ -187,6 +187,10 @@
     margin: 0;
   }
 
+  .testimony{
+    height: 150px;
+  }
+
   .description-height{
     height: 50px;
   }

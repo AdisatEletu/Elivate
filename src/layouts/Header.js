@@ -224,7 +224,7 @@ const Header = ({ user, isAuthenticated, count, logoutUser }) => {
           <Link to="/">
             <img
               alt={"logo"}
-              src={require("../assets/Elivate9ja/Elivat9ja_Logo_Asset_PNG.png")}
+              src={require("../assets/footer-logo.png")}
               height={"80px"}
             />
           </Link>

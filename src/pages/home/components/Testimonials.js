@@ -9,10 +9,10 @@ export const Testimonials = () => {
         <div className={'paragraph'}>Bidding on Elivate9ja happens in THREE easy steps</div>
       </div>
       <div className={'m-flex'}>
-        <div style={{backgroundImage: `url(${require('../../../assets/testimonialRec.svg')})`}} className={'col-md-5'}>
-          <img alt={'testimony'} src={require('../../../assets/image 33.png')}/>
+        <div style={{backgroundImage: `url(${require('../../../assets/testimonialRec.svg')})`}} className={'col-md-5 '}>
+          <img alt={'testimonial'} src={require('../../../assets/image 33.png')} className='testimony'/>
         </div>
-        <div className={'col-md-7 mt-6'}>
+        <div className={'col-md-7 m-mt-6'}>
           <div className={'container'}>
           <figure className="quote">
             <blockquote>

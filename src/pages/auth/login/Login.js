@@ -17,7 +17,6 @@ const Login = (props) => {
     password: "",
   });
 
-  console.log(input.email)
   const handleChange = (e) => {
     setInput({
       ...input,
@@ -55,9 +54,8 @@ const Login = (props) => {
                 <div>
                   <img
                     alt={"elivate logo"}
-                    src={require("../../../assets/Elivate9ja/Elivat9ja_Logo_Asset_PNG.png")}
+                    src={require("../../../assets/footer-logo.png")}
                     width={"114.1px"}
-                    height={"80px"}
                   />
                 </div>
                 <div className={"bigTitle text-align-center"}>
