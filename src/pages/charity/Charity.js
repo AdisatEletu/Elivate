@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { PageLoader } from "../../components/Loaders";
 import { useCharity } from "./useCharity";
 import { Carousel } from "react-responsive-carousel";
@@ -7,7 +7,6 @@ const Charity = () => {
   const { fetchCharities, charities, loading } = useCharity();
 
   useEffect(() => {
-    // setInterval(()=>handleSlideShow(), 10000);
     fetchCharities();
   }, []);
 

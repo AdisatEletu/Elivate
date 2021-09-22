@@ -80,12 +80,12 @@ const FAQ = () => {
             </div>
           </div>
           <div className={'text-align-center mt-5'}>
-            <img alt={'message'} src={require('../../assets/icons/place.svg')}/>
+            <img alt={'message'} width={80} src={require('../../assets/Whatsapp-logo-PNG-Transparent-Picture.png')}/>
             <div className={'grey-color mt-2'}>
-              Visit us
+              Chat on WhatsApp
             </div>
             <div className={'title2'}>
-              123 Lekki express way.
+              Coming soon!!!
             </div>
           </div>
         </div>

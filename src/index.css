@@ -199,6 +199,11 @@ a {
   grid-gap: 4%;
 }
 
+.faq-flex{
+  display: flex;
+    justify-content: space-around;
+}
+
 .secondary-bg-color {
   background-color: #e89606;
 }

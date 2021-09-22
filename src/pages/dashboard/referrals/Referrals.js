@@ -7,7 +7,7 @@ import ShareLink from 'react-facebook-share-link'
 
 const Referrals = (auth) => {
   
-  const [success, setCopySuccess] = useState();
+  const [, setCopySuccess] = useState();
   
   const textAreaRef = useRef();
   const copyToClipboard = (e) => {

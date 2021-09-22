@@ -1,16 +1,14 @@
-import axios from "axios";
 import {
   IS_LOGGING_IN,
   DONE_LOGGING_IN,
   SET_USER,
   LOGOUT_USER,
 } from "../types";
-import { v4 as uuidv4 } from "uuid";
 import { doAlert } from "../../components/alert/AlertComponent";
 import { postRequest, getRequest } from "../../helper/request";
 import handleError from "../../helpers/handleError";
 
-export const loginUser = (email, password, history) => async (dispatch) => {
+export const loginUser = (email, password) => async (dispatch) => {
   try {
     dispatch({ type: IS_LOGGING_IN });
     const { data, success, error } = await postRequest("/customer/login", {
@@ -40,11 +38,8 @@ export const setCurrentUser = (user) => (dispatch) => {
 };
 
 export const getUser = () => async (dispatch) => {
-  console.log('here')
   try {
     const { data, success } = await getRequest("/customer/profile");
-    console.log("called")
-    console.log({data})
     if (success) {
       dispatch(setCurrentUser(data));
       localStorage.user = JSON.stringify(data);

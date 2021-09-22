@@ -32,10 +32,11 @@ const Header = ({ user, isAuthenticated, count, logoutUser }) => {
       </li>
       <li>
         <NavLink activeClassName={"active-nav"} to="/profile">
+         
           <img
             src={user?.image_thumbnail_url || img}
             alt="img"
-            style={{ borderRadius: "50%" }}
+            style={{ borderRadius: "50%", width: '50px', height: '50px' }}
             height={40}
             // srcset=""
             // className={classes.Image}
@@ -101,15 +102,15 @@ const Header = ({ user, isAuthenticated, count, logoutUser }) => {
           </li>
           <li className={"menu"}>
             <NavLink activeClassName={"active-nav"} to="/profile">
-              <img
-                src={user?.image_thumbnail_url || img}
-                alt="img"
-                style={{ borderRadius: "50%" }}
-                height={40}
-                // srcset=""
-                // className={classes.Image}
-              />
-              {/* <BiDownArrow /> */}
+            <img
+            src={user?.image_thumbnail_url || img}
+            alt="img"
+            style={{ borderRadius: "50%",width: '50px', height: '50px', objectFit: 'cover' }}
+            height={40}
+            // srcset=""
+            // className={classes.Image}
+          />
+          {/* <BiDownArrow /> */}
             </NavLink>
           </li>
 
@@ -220,12 +221,13 @@ const Header = ({ user, isAuthenticated, count, logoutUser }) => {
   return (
     <header>
       <div className="navigation-div">
-        <div id="branding" onClick={showDrawer}>
+        <div id="branding">
           <Link to="/">
             <img
               alt={"logo"}
               src={require("../assets/footer-logo.png")}
-              height={"80px"}
+              height={"100px"}
+              style={{marginLeft: "20px"}}
             />
           </Link>
         </div>

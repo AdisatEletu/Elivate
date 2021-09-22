@@ -18,6 +18,9 @@ import handleError from "../../helpers/handleError";
 import { useHistory } from "react-router-dom";
 import { PageLoader } from "../../components/Loaders";
 import { useWinners } from "../winners/useWinners";
+import { Carousel } from "react-responsive-carousel";
+import "react-responsive-carousel/lib/styles/carousel.min.css";
+
 const Home = () => {
   //Hooks
   const dispatch = useDispatch();
@@ -119,13 +122,23 @@ const Home = () => {
 
   return (
     <div className="">
-      <div className={"homepage-featured  banner"}>
-        <img
-          src={require("../../assets/Ebanner(1272x534)_01.jpg")}
-          alt="alt banner"
-          className="fullwidth"
-        />
-      </div>
+      <Carousel autoPlay infiniteLoop swipeable showStatus={false}>
+        <div className={"homepage-featured  banner"}>
+          <img
+            src={require("../../assets/Ebanner(1272x534)_01.jpg")}
+            alt="alt banner"
+            className="fullwidth"
+          />
+        </div>
+        <div className={"homepage-featured  banner"}>
+          <img
+            src={require("../../assets/Ebanner(1272x534)_01.jpg")}
+            alt="alt banner"
+            className="fullwidth"
+          />
+        </div>
+      </Carousel>
+
       {/* <Banner data={raffles} /> */}
       <HowItWorks />
 

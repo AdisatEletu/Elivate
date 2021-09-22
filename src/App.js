@@ -23,7 +23,6 @@ export const initialize = async (windowObj, axiosLib) => {
   //set current user
   //sets persistent session
 
-  console.log(localStorage.user !== undefined);
   if (localStorage.user) {
     store.dispatch(setCurrentUser(JSON.parse(localStorage.user)));
     const count = await getNotificationCount();

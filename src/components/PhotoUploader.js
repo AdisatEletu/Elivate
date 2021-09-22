@@ -6,27 +6,21 @@ import { fallbackResolver, ternaryResolver } from "../utils/helpers.utils";
 import { setCurrentUser } from "../redux/actions/authActions";
 import { connect } from "react-redux";
 import image from "../assets/image 37.png";
+import { useDispatch } from "react-redux";
 export const progressOptionsResolver = (setPercent) => ({
   onUploadProgress: (progressEvent) => {
     const { loaded, total } = progressEvent;
-
     let percent = Math.floor((loaded * 100) / total);
-
     if (percent) {
       setPercent(percent);
     }
   },
 });
 
-export const UploadImage = ({
-  url,
-  photo,
-  text,
-  setImage,
-  setCurrentUser,
-}) => {
+export const UploadImage = ({ url, photo, text, setImage }) => {
   const myRef = useRef(null);
 
+  const dispatch = useDispatch()
   //states
 
   const [updatingPhoto, setUpdatingPhoto] = useState(false);
@@ -42,19 +36,16 @@ export const UploadImage = ({
 
       const options = progressOptionsResolver(setPercent);
 
-      const res = await postRequest(`${url}`, fd, options);
-      if (res.success) {
-        localStorage.user = JSON.stringify(res.data);
-        setCurrentUser(res.data);
-        setProfile(res?.data?.image_thumbnail_url);
-        setImage(res?.data?.image_thumbnail_url);
-        // if (typeof storeLogo === "function") {
-        //   await storeLogo(res.data);
-        // }
-        setUpdatingPhoto(false);
+      const { data, success } = await postRequest(`${url}`, fd, options);
+      if (success) {
+        localStorage.user = JSON.stringify(data);
+        setProfile(data?.image_thumbnail_url);
+        setImage(data?.image_thumbnail_url);
         setTimeout(() => {
           setPercent(0);
         }, 1000);
+        dispatch(setCurrentUser(data))
+        setUpdatingPhoto(false);
       }
       setUpdatingPhoto(false);
     } catch (e) {
@@ -78,7 +69,7 @@ export const UploadImage = ({
           <div className={"profile-holder "}>
             <img
               src={fallbackResolver(`${profile}`, image)}
-              alt={""}
+              alt={"profile"}
               width={120}
               className={"br-50"}
             />
@@ -127,4 +118,4 @@ const mapStateToProps = (state) => {
   return state;
 };
 
-export default connect(mapStateToProps, { setCurrentUser })(UploadImage);
+export default connect(mapStateToProps, { setCurrentUser})(UploadImage);
