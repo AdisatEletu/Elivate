@@ -19,7 +19,7 @@ const Charity = () => {
   } else {
     return (
       <section>
-        <div className="col-md-12 d-flex banner charity-banner justify-content-center flex-column m-flex ">
+        <div className="col-md-12 d-flex banner charity-banner mt-3 justify-content-center flex-column m-flex ">
           <Carousel autoPlay={true} infiniteLoop swipeable showStatus={false}>
             {charities &&
               charities.map((charity, index) => (
@@ -35,9 +35,9 @@ const Charity = () => {
                         alt="charity-logo"
                         src={charity.image_url}
                         style={{objectFit: "contain"}}
-                        height={"70%"}
-                        className="p-5"
-                        className="charity-logo"
+                        // height={"70%"}
+                        className=" charity-image"
+                        // className="charity-logo"
                       />
                     </div>
                     <div
@@ -65,9 +65,9 @@ const Charity = () => {
                             rel="noopener noreferrer"
                           >
                             <div
-                              className={`text-align-left secondary-bg-color secondary-btn white-color paragraph-bold`}
+                              className={`text-align-center secondary-bg-color secondary-btn white-color paragraph-bold`}
                             >
-                              Visit charity
+                              Visit charity website
                             </div>
                           </a>
                         </div>
@@ -78,8 +78,8 @@ const Charity = () => {
               ))}
           </Carousel>
         </div>
-        <div className="p-5">
-          <div className="text-align-center container mt-5">
+        <div className="m-container">
+          <div className="text-align-center mt-5">
             <div className="big-title bigTitle">
               The wonderful charities we support
             </div>
@@ -93,7 +93,7 @@ const Charity = () => {
           {charities &&
             charities.map((charity, index) => (
               <div
-                className="d-flex gap-30 p-5 align-items-center "
+                className="m-flex gap-30 p-5 align-items-center "
                 key={index}
               >
                 <div className="col-md-3 bordered charity-list-image">

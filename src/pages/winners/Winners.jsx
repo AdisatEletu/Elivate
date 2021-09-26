@@ -98,9 +98,7 @@ const Winners = () => {
                       alt="charity-logo"
                       src={winner.image_url}
                       height={"70%"}
-                      className="p-5 image-br"
-                      className="charity-logo"
-                      style={{ borderRadius: "0 30px 30px 0" }}
+                      className="charity-logo  image-br"
                     />
                   </div>
                 </div>

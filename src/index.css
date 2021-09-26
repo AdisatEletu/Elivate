@@ -1013,6 +1013,9 @@ text-overflow: ellipsis;
   margin-top: 6em;
 }
 
+.charity-image{
+  height: 70%;
+}
 
 .about-mb-5 {
   margin-bottom: 3rem;

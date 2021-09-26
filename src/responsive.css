@@ -96,6 +96,15 @@
     flex-direction: column !important;
   }
 
+  .image-br{
+    border-radius: 0!important;
+  }
+
+  .charity-image{
+    height: 100px;
+    width: 100%;
+  }
+
   .bigTitle {
     font-size: 24px;
     font-weight: bold;
