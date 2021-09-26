@@ -1,3 +1,5 @@
+import './home.css'
+
 import React, { useEffect, useState } from "react";
 import { HowItWorks } from "./components/HowItWorks";
 import { Filter } from "./components/Filter";
@@ -100,7 +102,7 @@ const Home = () => {
   const handleEnterRaffle = async () => {
     try {
       setCreating(true);
-      const { data, success, error } = await postRequest(
+      const { success, error } = await postRequest(
         `/customer/raffle/${featuredRaffles.id}`
       );
 
@@ -122,11 +124,12 @@ const Home = () => {
 
   return (
     <div className="">
-      <Carousel autoPlay infiniteLoop swipeable showStatus={false}>
+        <Carousel autoPlay={true} infiniteLoop swipeable showStatus={false}>
         <div className={"homepage-featured  banner"}>
           <img
             src={require("../../assets/Ebanner(1272x534)_01.jpg")}
             alt="alt banner"
+            style={{objectFit: 'cover', height: '100%'}}
             className="fullwidth"
           />
         </div>
@@ -134,6 +137,7 @@ const Home = () => {
           <img
             src={require("../../assets/Ebanner(1272x534)_01.jpg")}
             alt="alt banner"
+            style={{objectFit: 'cover', height: '100%'}}
             className="fullwidth"
           />
         </div>
@@ -199,6 +203,7 @@ const Home = () => {
                     ended={ended}
                     handleRemoveWatchlist={handleRemoveWatchlist}
                     started={started}
+                    className={'secondary-btn mt-3'}
                     start={featuredRaffles?.start_date}
                     watchlist={watchlist}
                     handleEnterRaffle={handleEnterRaffle}

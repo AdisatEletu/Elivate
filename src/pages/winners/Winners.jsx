@@ -35,8 +35,7 @@ const Winners = () => {
 
       <div className="col-md-12 d-flex banner charity-banner justify-content-center flex-column m-flex ">
         <Carousel autoPlay={true} infiniteLoop swipeable showStatus={false}>
-          {winners &&
-            winners.map((winner, index) => (
+          {winners?.map((winner, index) => (
               <div
                 className={
                   "col-md-12 d-flex banner charity-banner justify-content-center flex-column m-flex primary-bg-color"

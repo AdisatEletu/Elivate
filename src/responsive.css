@@ -1,7 +1,7 @@
 @media only screen and (max-width: 768px) {
   /* For mobile phones: */
   [class*="col-"] {
-    width: 100% !important;
+    width: 100%;
   }
 
   blockquote {
@@ -13,12 +13,47 @@
     padding: 0.5rem 0;
   }
 
+  .team-picture {
+    min-height: 534px;
+    object-fit: cover;
+  }
+
+  
   .sidebar-link {
     color: #000000;
     /* margin: 15px 0; */
     padding: 0.5rem 0;
   }
+  .circle-background1 {
+    height: 66px;
+    width: 66px;
+  }
+  .circle-background2 {
+    height: 66px;
+    width: 66px;
+  }
+  .circle-background3 {
+    height: 66px;
+    width: 66px;
+  }
+  .circle-background4 {
+    height: 66px;
+    width: 66px;
+  }
 
+  .circle-background5 {
+    height: 66px;
+    width: 66px;
+  }
+
+  .circle-background {
+    height: 66px;
+    width: 66px;
+  }
+
+  .t-mt-6 {
+    margin-top: 2rem;
+  }
   .border-none {
     border: none;
   }
@@ -61,6 +96,64 @@
     flex-direction: column !important;
   }
 
+  .bigTitle {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.biggestText {
+  font-size: 36px;
+}
+
+  .about-mt-6{
+    margin-top: 2rem;
+  }
+
+  .about-mb-5{
+    margin-bottom: 2rem;
+  }
+
+  .raffle-details-mt{
+    margin-top: 1rem!important;
+  }
+
+  .bottom-0{
+    bottom: 0!important
+  }
+
+  .r-mt-2{
+    margin-top: .5rem!important;
+  }
+
+  .border-radius-0{
+    border-radius: 0!important;
+  }
+
+  .raffle-details-image{
+    min-height: 300px;
+  }
+  .sponsor-grid{
+    display: flex;
+    flex-direction: column;
+  }
+
+  .raffle-button {
+    min-height: 24px;
+    border-radius: 4px;
+    background-color: rgba(255, 255, 255, 0.2);
+    width: 100%;
+    /* color: #ffffff; */
+    /* padding: 4%; */
+}
+
+  .ellipsis {
+    display: -webkit-box!important;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
   .m-pl-6 {
     padding: 0;
   }
@@ -75,7 +168,7 @@
   }
 
   .m-fs-24 {
-    font-size: 24px;
+    font-size: 20px;
   }
 
   .footer-links-holder {
@@ -99,6 +192,10 @@
 
   .m-text-align-center {
     text-align: center;
+  }
+
+  .m-container {
+    width: 95%;
   }
 
   .m-raffle-btn {
@@ -131,6 +228,13 @@
 
   .m-justify-content-normal {
     justify-content: normal;
+  }
+
+  .paragraph {
+    font-size: 12px;
+  }
+  .margin-bottom-300 {
+    margin-bottom: 200px;
   }
 
   .m-p-3 {
@@ -167,7 +271,7 @@
     grid-gap: 30px;
   }
 
-  .odometer-block{
+  .odometer-block {
     font-size: 10px;
   }
 
@@ -178,40 +282,118 @@
   }
 
   .raffle-image {
-    max-height: 200px;
+    max-height: 118px;
+    min-height: 108px;
     background-size: cover;
     background-position: center;
   }
 
-  .m-mt-3{
-    margin: 0;
+  .raffle-card-holder {
+    max-height: 240px;
+    min-height: 240px;
   }
 
-  .testimony{
-    height: 150px;
-  }
-
-  .description-height{
-    height: 50px;
-  }
-  .ticket-text{
+  .raffle-card-button {
     font-size: 10px;
   }
 
-  .padding-right-15{
+  .ticket-details {
+    float: right;
+    width: 66px;
+    height: 66px;
+    /* background-color: #eef7ff; */
+    /* margin-right: -40px;
+    margin-top: -15px; */
+    box-sizing: border-box;
+    /* -webkit-clip-path: ellipse(60px 40px at 75px 30px);
+    clip-path: ellipse(60px 60px at 75px 30px); */
+  }
+
+  
+
+  .container {
+    width: 95%;
+    margin: auto;
+  }
+
+  .m-mt-3 {
+    margin: 0;
+  }
+
+  .mobile__padding {
+    padding: 2rem;
+  }
+
+  .testimony {
+    height: 150px;
+  }
+
+  .r-mt-3{
+  
+      margin-top: 0!important;
+  }
+
+  .description-height {
+    height: 40px;
+  }
+  .ticket-text {
+    font-size: 10px;
+  }
+
+  .padding-right-15 {
     padding: 5px;
   }
 
   .charity-icon {
     bottom: -20px;
   }
-  .raffle-card-button{
+  .raffle-card-button {
     border-radius: 0 0 20px 20px;
+    position: relative;
+    bottom: -40px;
     background-color: rgb(236, 236, 236, 0.5);
   }
 
+  .m-padding-0{
+    padding: 0;
+  }
+
+  .raffle-secondary-btn {
+    height: 28px;
+    border-radius: 100px;
+    outline: none;
+    border: none;
+    font-size: 14px;
+    text-align: center;
+    padding: 0 15px;
+    line-height: 28px;
+}
+
   .m-display-none {
     display: none;
+  }
+
+  .m-ticket-details {
+    float: right;
+    min-width: 66px;
+    border-radius: 50px;
+    padding: 0 0.3rem;
+    /* height: 161px; */
+    font-size: 10px;
+    background-color: rgba(255, 255, 255, 0.4);
+    /* margin-right: -40px;
+    margin-top: -15px;
+    box-sizing: border-box;
+    -webkit-clip-path: ellipse(60px 40px at 75px 30px);
+    clip-path: ellipse(60px 60px at 75px 30px); */
+  }
+
+  .ticket-icon-size {
+    width: 12px;
+  }
+
+  .fs-10 {
+    font-size: 10px;
   }
 
   .display-none {

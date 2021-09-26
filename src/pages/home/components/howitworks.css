@@ -1,0 +1,23 @@
+.col-lg-4 {
+  flex: 0 0 auto;
+  width: 33.3333333333%;
+}
+
+.h-sign-up-tutorial {
+  display: flex;
+}
+
+@media only screen and (max-width: 768px) {
+  .h-sign-up-tutorial {
+    display: grid;
+    grid-template-columns: auto auto;
+    align-items: center;
+  }
+
+  .h-mt-4 {
+    margin-top: 2rem;
+  }
+  .h-sign-up {
+    width: 50%;
+  }
+}

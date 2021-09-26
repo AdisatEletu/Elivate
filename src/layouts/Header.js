@@ -208,7 +208,7 @@ const Header = ({ user, isAuthenticated, count, logoutUser }) => {
             <button
               className={`paragraph-bold text-align-center header-button`}
             >
-              <NavLink activeClassName={"active-nav"} to="/sign-up">
+              <NavLink activeClassName={"active-nav white-color"} style={{color: "#ffffff"}} to="/signup">
                 Sign up
               </NavLink>
             </button>

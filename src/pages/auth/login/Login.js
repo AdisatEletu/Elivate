@@ -35,7 +35,7 @@ const Login = (props) => {
         <ForgotPassword setFormState={setFormState} />
       ) : (
         <div
-          className={"auth-bg"}
+          className={"auth-bg mobile__padding"}
           style={{
             backgroundImage: `url(${require("../../../assets/Elivate9ja/auth-bg.jpeg")})`,
             backgroundPosition: "center",
@@ -51,13 +51,13 @@ const Login = (props) => {
               }
             >
               <div className={"d-flex align-items-center flex-column"}>
-                <div>
+                <NavLink to={'/'}>
                   <img
                     alt={"elivate logo"}
                     src={require("../../../assets/footer-logo.png")}
                     width={"114.1px"}
                   />
-                </div>
+                </NavLink>
                 <div className={"bigTitle text-align-center"}>
                   Hey, Welcome Back.
                 </div>

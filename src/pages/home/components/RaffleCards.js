@@ -7,7 +7,10 @@ import handleError from "../../../helpers/handleError";
 import { doAlert } from "../../../components/alert/AlertComponent";
 import axios from "axios";
 import { useRaffle } from "../../raffles/useRaffle";
-import {getNotificationCount, setNotificationCount }from "../../../redux/actions/uiActions"
+import {
+  getNotificationCount,
+  setNotificationCount,
+} from "../../../redux/actions/uiActions";
 import { useDispatch } from "react-redux";
 import { getUser } from "../../../redux/actions/authActions";
 import { useHistory } from "react-router-dom";
@@ -76,8 +79,7 @@ export const RaffleCard = ({ onClick, profile, winner, stacked, raffle }) => {
         doAlert("successfully entered raffle", "success");
         dispatch(getUser());
         const count = await getNotificationCount();
-        dispatch(setNotificationCount(count))
-    
+        dispatch(setNotificationCount(count));
       } else {
         doAlert(error.response.data.message, "error");
       }
@@ -93,180 +95,166 @@ export const RaffleCard = ({ onClick, profile, winner, stacked, raffle }) => {
   };
   return (
     <>
-        <div
-      className={
-        "raffle-card-holder justify-content-between m-flex display-none col-md-12 pointer"
-      }
-    >
       <div
-        className={"col-md-4 p-2"}
-        onClick={navigateToRaffleDetails}
+        className={
+          "raffle-card-holder justify-content-between m-flex display-none col-md-12 pointer"
+        }
       >
-        <div
-          className={"raffle-image"}
-          style={{ backgroundImage: `url(${raffle.image_url})` }}
-        >
-          <Ticket
-            ticket={raffle.number_of_tickets}
-            className={"display-none"}
-          />
-
-          {raffle.charity &&(
-            <img
-              alt={"charity"}
-              className={"charity-icon"}
-              src={require("../../../assets/icons/charity.svg")}
-            />
-          )}
-
-<div
-            className={""}
-            onClick={navigateToRaffleDetails}
+        <div className={"col-md-4 p-2"} onClick={navigateToRaffleDetails}>
+          <div
+            className={"raffle-image"}
+            style={{ backgroundImage: `url(${raffle.image_url})` }}
           >
-            <RaffleTimer
-              winner={winner}
-              black
-              stacked={stacked}
-              started={started}
-              profile={profile}
-              className={"raffle-card-button"}
-              timer={raffle?.start_date}
+            <Ticket
+              ticket={raffle.number_of_tickets}
+              // className={"display-none"}
             />
+
+            {raffle.charity && (
+              <img
+                alt={"charity"}
+                className={"charity-icon"}
+                src={require("../../../assets/icons/charity.svg")}
+              />
+            )}
+
+            <div onClick={navigateToRaffleDetails}>
+              <RaffleTimer
+                winner={winner}
+                black
+                stacked={stacked}
+                started={started}
+                profile={profile}
+                className={"raffle-card-button black-color m-padding-0"}
+                timer={raffle?.start_date}
+              />
+            </div>
+          </div>
+        </div>
+        <div className={"col-md-7"}>
+          <div className={"padding-right-15"}>
+            <div
+              className={`title2 m-mt-3 ellipsis display-none`}
+              onClick={navigateToRaffleDetails}
+            >
+              {raffle.name}
+            </div>
+            <div
+              className={`${
+                stacked
+                  ? "small-paragraph r-mt-3"
+                  : "small-paragraph r-mt-3 overflow-ellipsis description-height"
+              }`}
+              onClick={() => {
+                onClick && onClick(raffle.raffle_id);
+              }}
+            >
+              {raffle.description}
+            </div>
+            <div className={"mt-3 r-mt-2"}>
+              <WatchlistBtn
+                adding={adding}
+                raffle={raffle}
+                removing={removing}
+                creating={creating}
+                ended={ended}
+                handleRemoveWatchlist={handleRemoveWatchlist}
+                started={started}
+                start={raffle?.start_date}
+                watchlist={watchlist}
+                handleEnterRaffle={handleEnterRaffle}
+                handleAddWatchlist={handleAddWatchlist}
+                fullwidth
+                status={raffle.status}
+                viewMore={navigateToRaffleDetails}
+              />
+            </div>
           </div>
         </div>
       </div>
-      <div className={"col-md-7"}>
-  
-        <div className={"padding-right-15"}>
-          <div
-            className={`title2 m-mt-3 display-none`}
-            onClick={navigateToRaffleDetails}
-          >
-            {raffle.name}
-          </div>
-          <div
-            className={`${
-              stacked ? "small-paragraph mt-3 " : "small-paragraph mt-3 overflow-ellipsis description-height"
-            }`}
-            onClick={() => {
-              onClick
-                && onClick(raffle.raffle_id)
-            }}
-          >
-            {raffle.description}
-          </div>
-          <div className={"mt-3"}>
-            <WatchlistBtn
-              adding={adding}
-              raffle={raffle}
-              removing={removing}
-              creating={creating}
-              ended={ended}
-              handleRemoveWatchlist={handleRemoveWatchlist}
-              started={started}
-              start={raffle?.start_date}
-              watchlist={watchlist}
-              handleEnterRaffle={handleEnterRaffle}
-              handleAddWatchlist={handleAddWatchlist}
-              fullwidth
-              status={raffle.status}
-              viewMore={navigateToRaffleDetails}
-            />
-          </div>
-        </div>
-      </div>
-    </div>
-    <div
-      className={
-        "raffle-card-holder justify-content-between m-flex m-display-none col-md-12 pointer"
-      }
-    >
       <div
-        className={"col-md-4"}
-        onClick={navigateToRaffleDetails}
+        className={
+          "raffle-card-holder justify-content-between m-flex m-display-none col-md-12 pointer"
+        }
       >
-        <div
-          className={"raffle-image"}
-          style={{ backgroundImage: `url(${raffle.image_url})` }}
-        >
-          <Ticket
-            ticket={raffle.number_of_tickets}
-            className={"display-none"}
-          />
+        <div className={"col-md-4"} onClick={navigateToRaffleDetails}>
+          <div
+            className={"raffle-image"}
+            style={{ backgroundImage: `url(${raffle.image_url})` }}
+          >
+            <Ticket
+              ticket={raffle.number_of_tickets}
+              className={"display-none"}
+            />
 
-          {raffle.charity &&(
-            <img
-              alt={"charity"}
-              className={"charity-icon"}
-              src={require("../../../assets/icons/charity.svg")}
-            />
-          )}
+            {raffle.charity && (
+              <img
+                alt={"charity"}
+                className={"charity-icon"}
+                src={require("../../../assets/icons/charity.svg")}
+              />
+            )}
+          </div>
         </div>
-      </div>
-      <div className={"col-md-7"}>
-        <div
-          className={
-            "m-flex height-100px m-display-none justify-content-between"
-          }
-          onClick={navigateToRaffleDetails}
-        >
-          <div className={"title2 mt-5 m-display-none"}>{raffle.name}</div>
-          <Ticket ticket={raffle.number_of_tickets} />
-        </div>
-        <div className={"padding-right-15"}>
+        <div className={"col-md-7"}>
           <div
-            className={`title2 mt-5 display-none`}
+            className={
+              "m-flex height-100px m-display-none justify-content-between"
+            }
             onClick={navigateToRaffleDetails}
           >
-            {raffle.name}
+            <div className={"title2 mt-5 m-display-none"}>{raffle.name}</div>
+            <Ticket ticket={raffle.number_of_tickets} />
           </div>
-          <div
-            className={`${
-              stacked ? "small-paragraph mt-3" : "small-paragraph mt-3"
-            }`}
-            onClick={() => {
-              onClick
-                && onClick(raffle.raffle_id)
-            }}
-          >
-            {raffle.description}
-          </div>
-          <div
-            className={"mt-3"}
-            onClick={navigateToRaffleDetails}
-          >
-            <RaffleTimer
-              winner={winner}
-              black
-              stacked={stacked}
-              started={started}
-              profile={profile}
-              className={"raffle-card-button"}
-              timer={raffle?.start_date}
-            />
-          </div>
-          <div className={"mt-3"}>
-            <WatchlistBtn
-              adding={adding}
-              removing={removing}
-              creating={creating}
-              ended={ended}
-              raffle={raffle}
-              handleRemoveWatchlist={handleRemoveWatchlist}
-              started={started}
-              start={raffle?.start_date}
-              watchlist={watchlist}
-              handleEnterRaffle={handleEnterRaffle}
-              handleAddWatchlist={handleAddWatchlist}
-              fullwidth
-              status={raffle.status}
-              viewMore={navigateToRaffleDetails}
-            />
+          <div className={"padding-right-15"}>
+            <div
+              className={`title2 mt-5 display-none`}
+              onClick={navigateToRaffleDetails}
+            >
+              {raffle.name}
+            </div>
+            <div
+              className={`${
+                stacked ? "small-paragraph r-mt-3" : "small-paragraph mt-3"
+              }`}
+              onClick={() => {
+                onClick && onClick(raffle.raffle_id);
+              }}
+            >
+              {raffle.description}
+            </div>
+            <div className={"r-mt-3"} onClick={navigateToRaffleDetails}>
+              <RaffleTimer
+                winner={winner}
+                black
+                stacked={stacked}
+                started={started}
+                profile={profile}
+                className={"raffle-card-button"}
+                timer={raffle?.start_date}
+              />
+            </div>
+            <div className={"r-mt-3"}>
+              <WatchlistBtn
+                adding={adding}
+                removing={removing}
+                creating={creating}
+                ended={ended}
+                raffle={raffle}
+                handleRemoveWatchlist={handleRemoveWatchlist}
+                started={started}
+                start={raffle?.start_date}
+                watchlist={watchlist}
+                handleEnterRaffle={handleEnterRaffle}
+                handleAddWatchlist={handleAddWatchlist}
+                fullwidth
+                status={raffle.status}
+                viewMore={navigateToRaffleDetails}
+              />
+            </div>
           </div>
         </div>
       </div>
-    </div>
-
     </>
   );
 };

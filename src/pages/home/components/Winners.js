@@ -30,7 +30,7 @@ export const HomepageWinners = () => {
                 <div className={"title2 mt-3"}>{winner.name}</div>
                 <div className={"paragraph mt-2"}>
                   <span className={"overline light-grey"}>Won by</span>
-                  {`${winner?.winner?.firstname} ${winner?.winner?.lastname}`}
+                  {` ${winner?.winner?.first_name} ${winner?.winner?.last_name}`}
                 </div>
                 <div className={"d-flex mt-3"}>
                   <img

@@ -10,7 +10,7 @@ import { useRaffle } from "./useRaffle";
 import { EmptyData } from "../../components/EmptyData";
 import { PageLoader } from "../../components/Loaders";
 
-const Raffles = (props) => {
+const Raffles = () => {
 
   const { raffles, fetching, getRaffles, per_page,total,setRaffles,handlePageChange,activePage } = useRaffle();
 

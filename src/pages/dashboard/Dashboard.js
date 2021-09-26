@@ -8,14 +8,11 @@ import { useDashboard } from "./useDashboard";
 import { PageLoader } from "../../components/Loaders";
 
 const Dashboard = () => {
-  // const {  raffles,
-  //   fetching,
-  //   getRaffles} = useRaffle;
 
   
   const [raffles, setRaffles] = useState([]);
   const [fetching, setFetching] = useState(true);
-  const [limit, setLimit] = useState(2);
+  const [limit] = useState(2);
   const [activePage, setActivePage] = useState(1)
   const [total, setTotal] = useState(0)
   const getWatchlist = async () => {

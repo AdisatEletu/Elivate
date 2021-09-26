@@ -126,13 +126,17 @@ const RaffleDetails = (props) => {
     return (
       <div>
         <div className={"raffle-details m-flex col-md-12 light-blue-bg p-3"}>
+          {/* <div className="d-flex m-flex m-justify-content-center m-align-items-center"> */}
           <div
             className={"col-md-6 raffle-details-image"}
             style={{
               backgroundImage: `url(${raffle.image_url})`,
               backgroundRepeat: "no-repeat",
+              backgroundSize: 'cover'
             }}
-          ></div>
+          />
+          {/* </div> */}
+        
           <div
             className={
               "col-md-6 d-flex flex-column justify-content-center p-5 m-text-align-center"
@@ -142,15 +146,14 @@ const RaffleDetails = (props) => {
             <div className={"paragraph grey-color m-mt-1"}>
               {raffle.description}
             </div>
-            <div className={"col-md-7 mt-5"}>
               <RaffleTimer
                 timer={raffle.start_date}
-                className={"raffle-card-button"}
+                className={"raffle-card-button border-radius-0 bottom-0 raffle-details-mt"}
                 started={started}
+                stacked
                 black
               />
-            </div>
-            <div className={"mt-5"}>
+            <div className={"mt-5 raffle-details-mt"}>
               <WatchlistBtn
                 adding={adding}
                 removing={removing}
@@ -174,14 +177,15 @@ const RaffleDetails = (props) => {
         {fetching ? (
           <PageLoader />
         ) : (
-          <div className={"mt-6"}>
-            <div className={"bigTitle"}>You may also be interested in</div>
-            <div className={"mt-4 card-grid"}>
-              {raffles.map((raffle, index) => (
-                <RaffleCard key={index} raffle={raffle} />
-              ))}
-            </div>
-          </div>
+          // <div className={"mt-6"}>
+          //   <div className={"bigTitle"}>You may also be interested in</div>
+          //   <div className={"mt-4 card-grid"}>
+          //     {raffles.map((raffle, index) => (
+          //       <RaffleCard key={index} raffle={raffle} />
+          //     ))}
+          //   </div>
+          // </div>
+          ""
         )}
       </div>
     );

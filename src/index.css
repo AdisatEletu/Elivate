@@ -146,6 +146,7 @@ a {
   z-index: 100;
   background-color: #ffffff;
   height: 80px;
+  padding: 0 20px;
 }
 
 .card-grid {
@@ -202,6 +203,10 @@ a {
 .faq-flex{
   display: flex;
     justify-content: space-around;
+}
+
+.white-color{
+  color: #ffffff;
 }
 
 .secondary-bg-color {
@@ -760,9 +765,14 @@ ul.navigtion-items {
 .homepage-featured {
   background-position: center;
   background-size: cover;
-  min-height: 205px;
+  /* height: 563px; */
   width: 100%;
   border-radius: 20px;
+}
+
+.m-container {
+  width: 70%;
+  margin: auto;
 }
 
 .homepage-cover {
@@ -785,6 +795,21 @@ ul.navigtion-items {
 .ticket-details-holder {
   overflow: hidden;
   border-radius: 20px;
+}
+
+.r-mt-3 {
+  margin-top: 1rem!important;
+}
+
+.raffle-secondary-btn {
+  width: 280px;
+  height: 50px;
+  border-radius: 100px;
+  outline: none;
+  border: none;
+  text-align: center;
+  padding: 0 15px;
+  line-height: 50px;
 }
 
 .ticket-text {
@@ -980,8 +1005,17 @@ text-overflow: ellipsis;
 
 .raffle-details-image {
   background-repeat: no-repeat;
-  height: 534px;
+  min-height: 534px;
   background-size: contain;
+}
+
+.about-mt-6 {
+  margin-top: 6em;
+}
+
+
+.about-mb-5 {
+  margin-bottom: 3rem;
 }
 
 .padding-5 {

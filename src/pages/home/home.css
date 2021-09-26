@@ -1,0 +1,17 @@
+.carousel .thumbs-wrapper {
+  display: none;
+}
+
+@media only screen and (max-width: 768px) {
+  .title2 {
+    font-size: 14px;
+  }
+
+  .p-4 {
+    padding: 0.5rem !important;
+  }
+
+  .h-m-mb-4{
+      margin-bottom: 3rem;
+  }
+}

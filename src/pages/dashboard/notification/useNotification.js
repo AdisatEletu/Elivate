@@ -8,7 +8,7 @@ export const useNotification =()=>{
     const [modal, setModal] = useState(false);
     const [selectedNotification, setSelectedNotification]= useState({})
     const [requesting, setRequesting] = useState(false)
-    const [limit, setLimit] = useState(15)
+    const [limit] = useState(15)
     const [total, setTotal] = useState(0)
     const [page, setPage] = useState(1)
 

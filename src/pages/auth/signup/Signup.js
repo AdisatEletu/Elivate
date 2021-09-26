@@ -46,13 +46,13 @@ const Signup = () => {
         <div
           className={"d-flex flex-column align-items-center col-md-7 col-xs-12"}
         >
-          <div className={"text-align-center"}>
+          <NavLink to="/" className={"text-align-center"}>
             <img
               alt={"elivate"}
               src={require("../../../assets/footer-logo.png")}
               width={"114.1px"}
             />
-          </div>
+          </NavLink>
           <div className={"bigTitle text-align-center"}>
             Host your own&nbsp;<span>Raffle </span>
           </div>

@@ -8,7 +8,6 @@ import moment from "moment";
 const Referrals = () => {
   const {
     referrals,
-    fetching,
     getRefferals,
     per_page,
     total,

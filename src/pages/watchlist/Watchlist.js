@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { setSubHeaderAction } from "../../redux/actions/uiActions";
 import { connect } from "react-redux";
 import { Filter } from "../home/components/Filter";
@@ -11,20 +11,26 @@ import { EmptyData } from "../../components/EmptyData";
 import { PageLoader } from "../../components/Loaders";
 import { useWatchlist } from "./useWatchlist";
 
-const Watchlist = (props) => {
-  const [activePage, setActivePage] = useState(1);
-  const {raffles,
+const Watchlist = () => {
+  const { 
+    raffles,
     fetching,
-    getWatchlist} = useWatchlist()
+    getWatchlist,
+    handlePageChange,
+    activePage,
+    per_page,
+    setWatchlist,
+    total} = useWatchlist()
 
   useEffect(() => {
-    getWatchlist();
     setSubHeaderAction("Ongoing and upcoming Raffles");
   }, []);
 
-  const handlePageChange = (pageNumber) => {
-    console.log({ pageNumber });
-  };
+  useEffect(()=>{
+    getWatchlist();
+  },[activePage])
+
+  
 
   // const onClickRaffle = (id) => {
   //   window.location.href = `/raffles/${id}/details`;
@@ -33,24 +39,28 @@ const Watchlist = (props) => {
   return (
     <div className={"mt-4"}>
       <PageTitle text={"Here’re your watchlist"} hideBack />
-      <Filter />
+      <Filter  setRaffles={setWatchlist} sortEndpoint={"/customer/watchlist?"} searchEndpoint={"/customer/watchlist"} endpoint={"/customer/watchlist?category="}/>
       {fetching ? (
         <PageLoader />
       ) : (
+        <>
+       { raffles.length > 0 ?
         <div className={"mt-6 card-grid"}>
-          {raffles.length > 0 ? raffles.map((raffle, index) => (
+          {raffles?.map((raffle, index) => (
             <RaffleCard
               key={index}
              raffle={raffle}
             />
-          )): <EmptyData/>}
+          ))}
         </div>
+        : <EmptyData/>}
+        </>
       )}
       <div className={"d-flex justify-content-center mt-6"}>
         <Pagination
           activePage={activePage}
-          itemsCountPerPage={10}
-          totalItemsCount={10}
+          itemsCountPerPage={per_page}
+          totalItemsCount={total}
           pageRangeDisplayed={10}
           onChange={handlePageChange}
           innerClass="pagination justify-content-center pagination-holder"

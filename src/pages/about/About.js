@@ -1,38 +1,45 @@
 import React from "react";
+import { Row } from "react-bootstrap";
+import { Col } from "reactstrap";
 
 const About = () => {
   return (
     <section id="about">
       <img
         src={require("../../assets/aboutUs.png")}
-        className={"border-radius-20 col-md-12"}
+        className={"border-radius-20 team-picture col-md-12"}
         alt={"team-picture"}
       />
-      <div className={"card-grid align-items-center mt-6"}>
-        <div>
-          <div className={"paragraph grey-color"}>About us</div>
-          <div className={"title1-regular"}>
-            Elivate9ja is an online and offline raffle and promotional platform
-            in Lagos state, Nigeria, established with the sole purpose of
-            changing lives through fun and rewarding games where great prizes
-            are raffled off.
-          </div>
-        </div>
-        <div className={"paragraph grey-color"}>
-          We believe raffles should be used in the service of great causes.
-          That’s why we donate a percentage of earnings from every raffle to
-          help charities in Lagos. In doing so, we encourage the giving culture
-          in Nigeria, help create a better world while also helping people
-          achieve their dreams.
-        </div>
+      <div className={"align-items-center mt-6"}>
+        <div className={"paragraph grey-color"}>About us</div>
+        <Row>
+          <Col md={6} sm={12} xs={12}>
+            <div className={"title1-regular"}>
+              Elivate9ja is an online and offline raffle and promotional
+              platform in Lagos state, Nigeria, established with the sole
+              purpose of changing lives through fun and rewarding games where
+              great prizes are raffled off.
+            </div>
+          </Col>
+          <Col md={6} sm={12} xs={12}>
+            <div className={"paragraph grey-color t-mt-6"}>
+              We believe raffles should be used in the service of great causes.
+              That’s why we donate a percentage of earnings from every raffle to
+              help charities in Lagos. In doing so, we encourage the giving
+              culture in Nigeria, help create a better world while also helping
+              people achieve their dreams.
+            </div>
+          </Col>
+        </Row>
       </div>
 
-      <div className={"container mt-6"}>
-        <div className={"bigTitle text-align-center mb-5"}>Our Core Values</div>
-        <div className={"card-grid"}>
-          <div
+      <div className={"container m-container"}>
+        <div className={"bigTitle text-align-center about-mb-5 about-mt-6"}>Our Core Values</div>
+        <Row>
+          <Col md={6} sm={12}
+        
             className={
-              "d-flex flex-column align-items-center justify-content-center"
+              "d-flex flex-column align-items-center justify-content-center "
             }
           >
             <img
@@ -46,10 +53,10 @@ const About = () => {
               of our core values. There are no foul play at Elivate9ja. Whenever
               you play, you can be sure that you are playing on safe ground.
             </div>
-          </div>
-          <div
+          </Col>
+          <Col md={6}  sm={12}
             className={
-              "d-flex flex-column align-items-center justify-content-center "
+              "d-flex flex-column align-items-center justify-content-center  t-mt-6"
             }
           >
             <img
@@ -66,10 +73,10 @@ const About = () => {
               best experience possible on our platforms. We want you to
               experience what it feels like to win.
             </div>
-          </div>
-          <div
+          </Col>
+          <Col md={6}  sm={12}
             className={
-              "d-flex flex-column align-items-center justify-content-center"
+              "d-flex flex-column align-items-center justify-content-center t-mt-6"
             }
           >
             <img
@@ -85,10 +92,10 @@ const About = () => {
               better. This can be seen in the rewards we offer, our affordable
               token pricing, and the charities we support.
             </div>
-          </div>
-          <div
+          </Col>
+          <Col md={6}  sm={12}
             className={
-              "d-flex flex-column align-items-center justify-content-center"
+              "d-flex flex-column align-items-center justify-content-center  t-mt-6"
             }
           >
             <img
@@ -101,8 +108,8 @@ const About = () => {
               We are committed to doing our part and giving back to our
               community. Donating to different charities helps us achieve that.
             </div>
-          </div>
-        </div>
+          </Col>
+        </Row>
       </div>
 
       <div className="border-radius-20 mt-6 fullwidth about-us-video d-flex justify-content-center about-us-video-height">
@@ -115,8 +122,8 @@ const About = () => {
           className="border-radius-20 fullwidth about-us-video-height"
         />
       </div>
-      <div className={"d-flex flex-column align-items-center mt-6 container"}>
-        <div className={"bigTitle text-align-center"}>
+      <div className={"d-flex flex-column align-items-center container"}>
+        <div className={"bigTitle text-align-center  about-mt-6"}>
           Why Play With Elivate9ja Raffles?
         </div>
         <div className={"grey-color text-align-center"}>
@@ -175,8 +182,8 @@ const About = () => {
               <div className={"paragraph grey-color"}>
                 Rather than accepting millions of entries, as most raffle and
                 lottery platforms do, we keep the number of our entries low
-                --relative to the cost of the prize-- and keep token prices
-                low, as well. This way, you stand a better chance at winning.
+                --relative to the cost of the prize-- and keep token prices low,
+                as well. This way, you stand a better chance at winning.
               </div>
             </div>
           </div>
@@ -211,9 +218,9 @@ const About = () => {
                 Our platform was created to help people pursue their dreams. We
                 give a percentage of raffle earnings to charities, and for some
                 raffles, we donate every single earning. This means that every
-                token purchased on the website goes to a good cause. So, even
-                if you play and don’t win, you would have helped someone out
-                there achieve their dreams.
+                token purchased on the website goes to a good cause. So, even if
+                you play and don’t win, you would have helped someone out there
+                achieve their dreams.
               </div>
             </div>
           </div>
@@ -231,9 +238,9 @@ const About = () => {
                 Our platform was created to help people pursue their dreams. We
                 give a percentage of raffle earnings to charities, and for some
                 raffles, we donate every single earning. This means that every
-                token purchased on the website goes to a good cause. So, even
-                if you play and don’t win, you would have helped someone out
-                there achieve their dreams.
+                token purchased on the website goes to a good cause. So, even if
+                you play and don’t win, you would have helped someone out there
+                achieve their dreams.
               </div>
             </div>
           </div>
