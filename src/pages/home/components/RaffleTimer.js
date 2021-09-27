@@ -33,12 +33,13 @@ export const RaffleTimer = ({
       <div
         className={`raffle-button small-paragraph ${
           stacked ? "block" : "d-flex"
-        } align-items-center m-raffle-btn ${className}`}
+        } align-items-center justify-content-center m-raffle-btn ${className}`}
       >
         <img
           alt={"wins"}
+          className={'mobile-style'}
           src={require("../../../assets/icons/confetti 1.svg")}
-        />{" "}
+        />
         <span> &nbsp; You won this!!! </span>
       </div>
     );

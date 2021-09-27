@@ -80,7 +80,7 @@ const Account = ({ profileDetails, setCurrentUser, logoutUser }) => {
           setImage={setImage}
         />
 
-        <div className={"card-grid col-md-10 mt-5"}>
+        <div className={"profile-card-grid col-md-10 mt-5"}>
           <div>
             <FormInput
               label={"First name"}

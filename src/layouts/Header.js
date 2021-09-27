@@ -226,7 +226,7 @@ const Header = ({ user, isAuthenticated, count, logoutUser }) => {
             <img
               alt={"logo"}
               src={require("../assets/footer-logo.png")}
-              height={"100px"}
+              height={"80px"}
               style={{marginLeft: "20px"}}
             />
           </Link>

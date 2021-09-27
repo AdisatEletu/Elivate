@@ -184,6 +184,24 @@
     display: flex;
     flex-direction: column;
   }
+  .grid-70-30 {
+    grid-template-columns: 100%;
+    grid-gap: 15px;
+    display: grid;
+  }
+
+  .mobile-font-10{
+    font-size: 10px;
+  }
+  .mobile-style{
+    width: 14px;
+
+  }
+
+  .profile-card-grid {
+    display: grid;
+    grid-template-columns: 100%;
+  }
 
   .footer-links > ul > li {
     display: flex;
@@ -372,7 +390,7 @@
     border-radius: 100px;
     outline: none;
     border: none;
-    font-size: 14px;
+    font-size: 10px;
     text-align: center;
     padding: 0 15px;
     line-height: 28px;

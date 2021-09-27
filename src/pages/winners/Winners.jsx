@@ -17,7 +17,8 @@ const Winners = () => {
     show,
     handleLoadMore,
     handleHover,
-    limit
+    limit,
+    total,
   } = useWinners();
 
   useEffect(() => {
@@ -30,80 +31,76 @@ const Winners = () => {
 
   if (loading) return <PageLoader />;
   return (
-    <div className="height-100vh  aligin-items-center justify-content-center">
+    <div className="height-100vh  aligin-items-center justify-content-center mt-3">
       {/* <Empty/> */}
 
       <div className="col-md-12 d-flex banner charity-banner justify-content-center flex-column m-flex ">
         <Carousel autoPlay={true} infiniteLoop swipeable showStatus={false}>
           {winners?.map((winner, index) => (
+            <div
+              className={
+                "col-md-12 d-flex banner charity-banner justify-content-center flex-column m-flex primary-bg-color"
+              }
+              key={index}
+            >
               <div
                 className={
-                  "col-md-12 d-flex banner charity-banner justify-content-center flex-column m-flex primary-bg-color"
+                  "col-md-12 d-flex align-items-center justify-content-center  m-flex"
                 }
-                key={index}
               >
                 <div
                   className={
-                    "col-md-12 d-flex align-items-center justify-content-center  m-flex"
+                    "col-md-6 d-flex flex-column justify-content-center p-5 m-text-align-center"
                   }
                 >
                   <div
                     className={
-                      "col-md-6 d-flex flex-column justify-content-center p-5 m-text-align-center"
+                      "bigTitle text-align-left mt-3 m-fs-24 white-color"
                     }
                   >
-                    {/* <div className="charity-raise col-md-7 p-2 mb-2">
-                        <span>Total amount raised for charity</span>
-                        <span> NGN 100, 000</span>
-                      </div> */}
+                    {winner.name}
+                  </div>
+                  <div
+                    className={
+                      "paragraph text-align-left mt-3 m-mt-1 white-color"
+                    }
+                  >
+                    <div>Won by</div>
                     <div
                       className={
-                        "bigTitle text-align-left mt-3 m-fs-24 white-color"
+                        "d-flex text-align-left fullwidth align-items-center"
                       }
                     >
-                      {winner.name}
-                    </div>
-                    <div
-                      className={
-                        "paragraph text-align-left mt-3 m-mt-1 white-color"
-                      }
-                    >
-                      <div>Won by</div>
-                      <div
-                        className={
-                          "d-flex text-align-left fullwidth align-items-center"
-                        }
-                      >
-                        <div style={{ marginLeft: "-25px" }}>
-                          <img src={require("../../assets/trophy.svg")} />
-                        </div>
+                      <div style={{ marginLeft: "-25px" }}>
+                        <img src={require("../../assets/trophy.svg")} />
+                      </div>
+                      <div>
                         <div>
                           <div>
-                            <div>
-                              {`${winner?.winner?.first_name || ""} ${winner
-                                ?.winner?.last_name || ""}`}
-                            </div>
+                            {`${winner?.winner?.first_name || ""} ${winner
+                              ?.winner?.last_name || ""}`}
+                          </div>
 
-                            <div>
-                              Number of tickets:{" "}
-                              {`${winner?.winner?.tickets || ""}`}
-                            </div>
+                          <div>
+                            Number of tickets:{" "}
+                            {`${winner?.winner?.tickets || ""}`}
                           </div>
                         </div>
                       </div>
                     </div>
                   </div>
-                  <div className="col-md-6 d-flex align-items-center justify-content-center image-br">
-                    <img
-                      alt="charity-logo"
-                      src={winner.image_url}
-                      height={"70%"}
-                      className="charity-logo  image-br"
-                    />
-                  </div>
+                </div>
+                <div className="col-md-6 d-flex align-items-center justify-content-center image-br">
+                  <img
+                    alt="charity-logo"
+                    src={winner.image_url}
+                    height={"70%"}
+                    className="charity-logo  image-br"
+                  />
                 </div>
               </div>
-            ))}
+            </div>
+          ))}
         </Carousel>
       </div>
       <Row className="mt-5 mb-5">
@@ -249,7 +246,7 @@ const Winners = () => {
           winners.map((winner, index) => (
             <Col md={2} sm={12} xs={12} lg={3} key={index}>
               <div
-                className="items-holder white-color"
+                className="items-holder white-color background-position-center"
                 style={{
                   backgroundImage: `url(${winner.image_url})`,
                   backgroundSize: "cover",
@@ -280,13 +277,13 @@ const Winners = () => {
           <Empty />
         )}
       </Row>
-
-      <div className="d-flex justify-content-center">
-        <Col md={2} sm={11} xs={12}>
-          <FormButton title={"Load more"} 
-          onClick={handleLoadMore}/>
-        </Col>
-      </div>
+      {total > limit && (
+        <div className="d-flex justify-content-center">
+          <Col md={2} sm={11} xs={12}>
+            <FormButton title={"Load more"} onClick={handleLoadMore} />
+          </Col>
+        </div>
+      )}
     </div>
   );
 };

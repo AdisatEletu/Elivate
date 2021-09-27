@@ -8,7 +8,8 @@ export const useWinners =()=>{
     const [page, setPage] = useState(1)
     const [show, setShow] = useState(-1)
     const [limit, setLimit] = useState(12)
-
+    const [total, setTotal] = useState(0)
+ 
     const fetchWinners =async(pagelimit)=>{
         let url ="";
         if(pagelimit){
@@ -21,6 +22,7 @@ export const useWinners =()=>{
             const {data, success} = await getRequest(url)
             if(success){
                 setWinners(data?.data)
+                setTotal(data?.total)
             }
             setLoading(false)
         } catch (error) {
@@ -57,6 +59,7 @@ export const useWinners =()=>{
         show,
         handleHover,
         handleLoadMore,
-        limit
+        limit,
+        total
     }
 }

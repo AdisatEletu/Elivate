@@ -48,7 +48,7 @@ export const WatchlistBtn = ({
       <div>
          <div className={"m-flex m-justify-content-center fullwidth "}>
         <div
-          className={`a-disabled raffle-secondary-btn  paragraph-bold ${className}`}
+          className={`a-disabled raffle-secondary-btn  paragraph-bold mobile-font-10 ${className}`}
           style={fullwidth ? { width: "100%" } : { width: "280px" }}
         >
           Raffle Ended

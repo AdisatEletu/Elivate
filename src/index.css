@@ -155,6 +155,12 @@ a {
   grid-gap: 30px;
 }
 
+.profile-card-grid {
+  display: grid;
+  grid-template-columns: 48% 48%;
+  grid-gap: 30px;
+}
+
 .about-us-grid {
   display: grid;
   grid-template-columns: 10% 88%;
@@ -642,7 +648,11 @@ ul.navigtion-items {
 
 .grid-container {
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
+}
+
+.grid-item{
+  margin: 0 0.4rem;
 }
 
 .col-md-90 {
@@ -768,6 +778,10 @@ ul.navigtion-items {
   /* height: 563px; */
   width: 100%;
   border-radius: 20px;
+}
+
+.background-position-center{
+  background-position: center;
 }
 
 .m-container {

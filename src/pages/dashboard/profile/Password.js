@@ -56,7 +56,7 @@ const Password = () => {
   return (
     <div className={"Password-card  padding-5"}>
       <div className={"mt-5 d-flex flex-column"}>
-        <div className={"card-grid mt-5"}>
+        <div className={"profile-card-grid mt-5"}>
           <div>
             <FormInput
               label={"Enter current password"}
@@ -66,7 +66,7 @@ const Password = () => {
             />
           </div>
         </div>
-        <div className={"card-grid mt-5"}>
+        <div className={"profile-card-grid mt-4"}>
           <div>
             <FormInput
               label={"New password"}

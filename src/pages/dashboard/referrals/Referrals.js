@@ -30,12 +30,12 @@ const Referrals = (auth) => {
         <input className={'title1 mt-2 border-none outline-none referral-code'} value={auth.user?.referral_code}
                ref={textAreaRef} readOnly/>
       </div>
-      <div className="d-flex mt-3 col-md-1 justify-content-around">
-        <a href={"#"}><CopyOutlined onClick={copyToClipboard}
+      <div className="d-flex mt-3 col-md-1 justify-content-center">
+        <a href={"#"} className={'p-2'}><CopyOutlined onClick={copyToClipboard}
                                     className={'pointer'}/></a>
         <ShareLink link='https://www.elivate.com'>
           {link => (
-            <a href={link} target='_blank'><FacebookOutlined className={'pointer'}/></a>
+            <a href={link} target='_blank' className={'p-2'}><FacebookOutlined className={'pointer'}/></a>
           )}
         </ShareLink>
       

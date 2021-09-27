@@ -39,8 +39,8 @@ export const Footer = () => {
             className={'title2 d-flex flex-column  align-items-center justify-content-center col-md-12 mt-5 col-md-90'}>
             <div>Trust & security</div>
             <div className={'grid-container grid-column-gap col-md-3 align-items-center mt-4'}>
-              <img alt={'image'} className={'grid-item'} src={require('../assets/security-images/image 34.png')}
-                 />
+              {/* <img alt={'image'} className={'grid-item'} src={require('../assets/security-images/image 34.png')}
+                 /> */}
               <img alt={'image'} className={'grid-item'} src={require('../assets/security-images/Group 5671.png')}
                 />
               <img alt={'image'} className={'grid-item'} src={require('../assets/LOTTERY AUTHORITY.png')}
