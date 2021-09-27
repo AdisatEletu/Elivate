@@ -88,8 +88,8 @@ export const Footer = () => {
             </div>
           </div>
           <div className={'paragraph text-align-center col-md-4 mt-2'}>
-            &copy; Copyright {date} Elivate9ja Ltd. All rights reserved. Company No. 12345567
-            123 Lekki express way. support@elivate9ja.com
+            &copy; Copyright {date} Elivate9ja Ltd. All rights reserved.
+            support@elivate9ja.com
            <NavLink to='/privacy' className={"pointer"}> Privacy Policy</NavLink><NavLink className={"pointer"} to='/terms'> Terms & Condition</NavLink>
           </div>
         </div>

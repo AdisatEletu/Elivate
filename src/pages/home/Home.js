@@ -125,7 +125,7 @@ const Home = () => {
   return (
     <div className="">
         <Carousel autoPlay={true} infiniteLoop swipeable showStatus={false}>
-        <div className={"homepage-featured  banner"}>
+        <div className={"homepage-banner-featured  banner"}>
           <img
             src={require("../../assets/Ebanner(1272x534)_01.jpg")}
             alt="alt banner"
@@ -133,7 +133,7 @@ const Home = () => {
             className="fullwidth"
           />
         </div>
-        <div className={"homepage-featured  banner"}>
+        <div className={"homepage-banner-featured  banner"}>
           <img
             src={require("../../assets/Ebanner(1272x534)_01.jpg")}
             alt="alt banner"
