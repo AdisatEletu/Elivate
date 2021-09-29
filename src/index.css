@@ -861,10 +861,16 @@ ul.navigtion-items {
 .charity-icon {
   position: relative;
   bottom: -250px;
-  left: 0;
+  left: 30px;
   background-color: #ffffff;
   border-radius: 50%;
   border: 1px solid #ececec;
+}
+.padding-0{
+  padding: 0!important;
+}
+.m-black-color{
+  color: #000000;
 }
 
 .height-100px {

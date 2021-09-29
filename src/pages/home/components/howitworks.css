@@ -2,7 +2,9 @@
   flex: 0 0 auto;
   width: 33.3333333333%;
 }
-
+.t-mt-6{
+  margin-top: 4rem;
+}
 .h-sign-up-tutorial {
   display: flex;
 }
@@ -11,12 +13,17 @@
   .h-sign-up-tutorial {
     display: grid;
     grid-template-columns: auto auto;
-    align-items: center;
+    /* align-items: center; */
   }
 
   .h-mt-4 {
     margin-top: 2rem;
   }
+
+  .t-mt-6{
+    margin-top: 2rem;
+  }
+
   .h-sign-up {
     width: 50%;
   }

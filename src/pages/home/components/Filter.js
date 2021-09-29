@@ -38,14 +38,16 @@ export const Filter = ({ classNames, setRaffles, endpoint, sortEndpoint,searchEn
             ))}
           </Select>
           <div
-            className="d-flex justify-content-around black black-color align-items-center fw-500"
+            className="m-flex justify-content-around black black-color m-display-none align-items-center  fw-500"
             style={{ width: "150px" }}
           >
             Sort By:
           </div>
+          <div className=''>
           <Select
             defaultValue=""
-            style={{ width: "300px" }}
+            className='m-mr-2'
+            // style={{ width: "300px" }}
             onChange={handleSortChange}
           >
             <Option value={""}>Recently added</Option>
@@ -53,6 +55,8 @@ export const Filter = ({ classNames, setRaffles, endpoint, sortEndpoint,searchEn
             <Option value={"price=0"}>Lowest token</Option>
             <Option value={"price=1"}>Highest token</Option>
           </Select>
+          </div>
+         
         </div>
       </div>
 

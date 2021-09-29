@@ -46,12 +46,12 @@ export const Footer = () => {
               <img alt={'image'} className={'grid-item'} src={require('../assets/LOTTERY AUTHORITY.png')}
                    height={80}/>
             </div>
-            <div className={'col-md-12 mt-5 mb-5'}>
+            <div className={'col-md-12 mt-5 mb-5 m-margin-0'}>
               <hr/>
             </div>
             <div className={'footer-links-holder'}>
               <Link to="/">
-                <img alt={'logo'} src={require('../assets/Elivate9ja_Logo_On Black.png')} 
+                <img alt={'logo'} src={require('../assets/footer-logo.png')} 
                      height={'120px'}/>
               </Link>
               <div className={'footer-links white-color'}>
@@ -88,7 +88,7 @@ export const Footer = () => {
             </div>
           </div>
           <div className={'paragraph text-align-center col-md-4 mt-2'}>
-            &copy; Copyright {date} Elivate9ja Ltd. All rights reserved.
+            &copy; Copyright {date} Elivate9ja Promotions Limited. All rights reserved.
             support@elivate9ja.com
            <NavLink to='/privacy' className={"pointer"}> Privacy Policy</NavLink><NavLink className={"pointer"} to='/terms'> Terms & Condition</NavLink>
           </div>

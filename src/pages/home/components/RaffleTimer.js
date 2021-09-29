@@ -54,6 +54,7 @@ export const RaffleTimer = ({
           alt={"timer icon"}
           width={24}
           height={24}
+          className='m-display-none'
           src={
             black
               ? require("../../../assets/icons/blackTimer.svg")
@@ -66,7 +67,7 @@ export const RaffleTimer = ({
   } else if (!started) {
     return (
       <div
-        className={`raffle-button small-paragraph align-items-center m-raffle-btn ${className}`}
+        className={`raffle-button small-paragraph d-flex align-items-center m-raffle-btn ${className}`}
       >
         <div className={"m-display-none"}>
           <img
@@ -78,11 +79,11 @@ export const RaffleTimer = ({
                 ? require("../../../assets/icons/blackTimer.svg")
                 : require("../../../assets/icons/timer.svg")
             }
-          />{" "}
+          />
           &nbsp; Raffle starts in: &nbsp;
         </div>
         <div>
-          <DateCountdown dateTo={timer}/>
+          <DateCountdown  locales_plural={['yrs', 'mnths', 'days', 'hrs', 'mins', 'secs']} locales={['yr', 'mnth', 'day', 'hr', 'min', 'sec']} dateTo={timer}/>
         </div>
       </div>
     )

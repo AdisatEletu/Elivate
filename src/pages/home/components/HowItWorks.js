@@ -13,19 +13,19 @@ export const HowItWorks = () => {
         <Col md={12} lg={4} sm={12} className={'d-flex flex-column align-items-center justify-content-center h-sign-up'}>
           <div className={'cursive biggestText circle-background '}>1</div>
           <div className={'title2 mt-3'}>Sign Up on Elivate9ja</div>
-          <div className={'paragraph mt-2  p-4'}>Join the community and stay up to date on the latest deals and auctions.</div>
+          <div className={'paragraph mt-2  p-4'}>Join our Community and start winning</div>
         </Col>
         <div className='h-sign-up-tutorial h-mt-4 col-md-8'>
         <Col md={12} lg={6} sm={6} className={'d-flex flex-column align-items-center justify-content-center h-token-tutorial'}>
           <div className={'cursive biggestText circle-background2'}>2</div>
           <div className={'title2 mt-3'}>Buy tokens</div>
-          <div className={'paragraph mt-2  p-4'}>Join the community and stay up to date on the latest deals and auctions.</div>
+          <div className={'paragraph mt-2  p-4'}>Get your tokens to enter the raffle, you are just one step away from winning</div>
 
         </Col>
-        <Col md={12} lg={6} sm={6} className={'d-flex flex-column align-items-center justify-content-center h-raffle-tutorial'}>
+        <Col md={12} lg={6} sm={6} className={'d-flex flex-column align-items-center h-raffle-tutorial'}>
           <div className={'cursive biggestText circle-background3'}>3</div>
           <div className={'title2 mt-3'}>Play raffle</div>
-          <div className={'paragraph mt-2 p-4'}>Join the community and stay up to date on the latest deals and auctions.</div>
+          <div className={'paragraph mt-2 p-4'}>Enter raffle for a chance to win amazing prices.</div>
         </Col>
         </div>
         

@@ -143,12 +143,12 @@ const RaffleDetails = (props) => {
             }
           >
             <div className={"bigTitle m-fs-24"}>{raffle.name}</div>
-            <div className={"paragraph grey-color m-mt-1"}>
+            <div className={"paragraph grey-color m-mt-1 mb-3"}>
               {raffle.description}
             </div>
               <RaffleTimer
                 timer={raffle.start_date}
-                className={"raffle-card-button border-radius-0 bottom-0 raffle-details-mt"}
+                className={" m-black-color text-align-center border-radius-0 bottom-0 raffle-details-mt padding-0 raffle-details-center"}
                 started={started}
                 stacked
                 black

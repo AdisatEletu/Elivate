@@ -100,41 +100,45 @@ export const RaffleCard = ({ onClick, profile, winner, stacked, raffle }) => {
           "raffle-card-holder justify-content-between m-flex display-none col-md-12 pointer"
         }
       >
-        <div className={"col-md-4 p-2"} onClick={navigateToRaffleDetails}>
+        <div className={"col-md-4 p-2 "} onClick={navigateToRaffleDetails}>
           <div
             className={"raffle-image"}
             style={{ backgroundImage: `url(${raffle.image_url})` }}
           >
-            <Ticket
-              ticket={raffle.number_of_tickets}
-              // className={"display-none"}
-            />
-
-            {raffle.charity && (
-              <img
-                alt={"charity"}
-                className={"charity-icon"}
-                src={require("../../../assets/icons/charity.svg")}
+            <div className='absolute-div'>
+              <Ticket
+                ticket={raffle.number_of_tickets}
+                // className={"display-none"}
               />
-            )}
 
-            <div onClick={navigateToRaffleDetails}>
-              <RaffleTimer
-                winner={winner}
-                black
-                stacked={stacked}
-                started={started}
-                profile={profile}
-                className={"raffle-card-button black-color m-padding-0"}
-                timer={raffle?.start_date}
-              />
+              {/* <div className="d-flex justify-content-end"> */}
+                {raffle.charity && (
+                  <img
+                    alt={"charity"}
+                    className={"charity-icon"}
+                    src={require("../../../assets/icons/charity.svg")}
+                  />
+                )}
+              {/* </div> */}
+
+              <div onClick={navigateToRaffleDetails}>
+                <RaffleTimer
+                  winner={winner}
+                  black
+                  stacked={stacked}
+                  started={started}
+                  profile={profile}
+                  className={"raffle-card-button black-color m-padding-0"}
+                  timer={raffle?.start_date}
+                />
+              </div>
             </div>
           </div>
         </div>
         <div className={"col-md-7"}>
           <div className={"padding-right-15"}>
             <div
-              className={`title2 m-mt-3 ellipsis display-none`}
+              className={`title2 m-title2 m-mt-3 ellipsis display-none`}
               onClick={navigateToRaffleDetails}
             >
               {raffle.name}
@@ -203,7 +207,7 @@ export const RaffleCard = ({ onClick, profile, winner, stacked, raffle }) => {
             }
             onClick={navigateToRaffleDetails}
           >
-            <div className={"title2 mt-5 m-display-none"}>{raffle.name}</div>
+            <div className={"title2 m-title2 mt-5 m-display-none"}>{raffle.name}</div>
             <Ticket ticket={raffle.number_of_tickets} />
           </div>
           <div className={"padding-right-15"}>
