@@ -1,4 +1,4 @@
-import './home.css'
+import "./home.css";
 
 import React, { useEffect, useState } from "react";
 import { HowItWorks } from "./components/HowItWorks";
@@ -32,12 +32,13 @@ const Home = () => {
   const [raffles, setRaffles] = useState([]);
   const [featuredRaffles, setFeaturedRaffles] = useState({});
   const [isLoading, setIsLoading] = useState(true);
-
+  const [total, setTotal] = useState(0);
+  const [perpage, setPerPage] = useState(20);
   const [adding, setAdding] = useState(false);
   const [creating, setCreating] = useState(false);
   const [removing, setRemoving] = useState(false);
   const [watchlist, setWatchlist] = useState(featuredRaffles?.in_watchlist);
-
+  const [loadingMore, setLoadingMore] = useState(false);
   let today = new Date();
   let start_date = new Date(featuredRaffles?.start_date);
   const end_date = new Date(featuredRaffles?.end_date);
@@ -47,19 +48,27 @@ const Home = () => {
 
   const getRaffles = async () => {
     try {
+      setLoadingMore(true);
       const { data, success } = await getRequest(
-        `/customer/raffle/all?featured=${1}`
+        `/customer/raffle/all?featured=${1}&per_page=${perpage}&page=${1}`
       );
       if (success) {
         const filteredRaffle = data?.data[0];
         setFeaturedRaffles(filteredRaffle);
         setRaffles(data?.data);
+        setTotal(data?.total);
       }
+      setLoadingMore(false);
       setIsLoading(false);
     } catch (e) {
       handleError(e);
+      setLoadingMore(false);
       setIsLoading(false);
     }
+  };
+
+  const LoadMore = () => {
+    setPerPage(perpage * 2);
   };
 
   const handleAddWatchlist = async () => {
@@ -120,16 +129,16 @@ const Home = () => {
 
   useEffect(() => {
     getRaffles();
-  }, []);
+  }, [perpage]);
 
   return (
     <div className="">
-        <Carousel autoPlay={true} infiniteLoop swipeable showStatus={false}>
+      <Carousel autoPlay={true} infiniteLoop swipeable showStatus={false}>
         <div className={"homepage-banner-featured  banner"}>
           <img
             src={require("../../assets/Ebanner(1272x534)_01.jpg")}
             alt="alt banner"
-            style={{objectFit: 'cover', height: '100%'}}
+            style={{ objectFit: "cover", height: "100%" }}
             className="fullwidth"
           />
         </div>
@@ -137,7 +146,7 @@ const Home = () => {
           <img
             src={require("../../assets/Ebanner(1272x534)_01.jpg")}
             alt="alt banner"
-            style={{objectFit: 'cover', height: '100%'}}
+            style={{ objectFit: "cover", height: "100%" }}
             className="fullwidth"
           />
         </div>
@@ -203,7 +212,7 @@ const Home = () => {
                     ended={ended}
                     handleRemoveWatchlist={handleRemoveWatchlist}
                     started={started}
-                    className={'secondary-btn mt-3'}
+                    className={"secondary-btn mt-3"}
                     start={featuredRaffles?.start_date}
                     watchlist={watchlist}
                     handleEnterRaffle={handleEnterRaffle}
@@ -234,21 +243,35 @@ const Home = () => {
             <PageLoader />
           </div>
         ) : (
-          <div className={`mt-6 mb-5 card-grid `}>
-            {raffles.length > 0 ? (
-              raffles.map((raffle, index) => (
-                <RaffleCard
-                  key={index}
-                  raffle={raffle}
-                  getRaffles={getRaffles}
-                />
-              ))
-            ) : (
-              <div className="d-flex justify-content-center fw-500 fs-20">
-                {/* Opsss! there happened to be no data at the moment */}
+          <>
+            <div className={`mt-6 mb-5 card-grid `}>
+              {raffles.length > 0 ? (
+                raffles.map((raffle, index) => (
+                  <RaffleCard
+                    key={index}
+                    raffle={raffle}
+                    ticketclassName={"m-justify-content-center"}
+                    getRaffles={getRaffles}
+                  />
+                ))
+              ) : (
+                <div className="d-flex justify-content-center fw-500 fs-20">
+                  {/* Opsss! there happened to be no data at the moment */}
+                </div>
+              )}
+            </div>
+            {total > perpage && (
+              <div className="d-flex justify-content-center">
+                <div
+                  className={`raffle-secondary-btn primary-bg-color white-color paragraph-bold`}
+                  style={{ width: "180px" }}
+                  onClick={() => LoadMore()}
+                >
+                  {loadingMore ? "Loading..." : "Load More"}
+                </div>
               </div>
             )}
-          </div>
+          </>
         )}
       </div>
       <div className={"mt-6  m-background"}>

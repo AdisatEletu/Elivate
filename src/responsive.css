@@ -235,7 +235,7 @@
   }
 
   .m-raffle-btn {
-    width: 88%;
+    width: 100%;
   }
 
   .m-mt-1 {
@@ -322,6 +322,7 @@
     height: 165px;
     background-size: cover;
     background-position: center;
+    border-radius: 0 0 20px 20px;
     /* position: absolute; */
     width: 100%;
     /* border-top-left-radius: calc(.25rem - 1px);

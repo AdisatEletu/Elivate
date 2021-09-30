@@ -14,7 +14,7 @@ import {
 import { useDispatch } from "react-redux";
 import { getUser } from "../../../redux/actions/authActions";
 import { useHistory } from "react-router-dom";
-export const RaffleCard = ({ onClick, profile, winner, stacked, raffle }) => {
+export const RaffleCard = ({ onClick, profile,ticketclassName, winner, stacked, raffle }) => {
   const { getRaffles } = useRaffle();
   const history = useHistory();
 
@@ -100,7 +100,7 @@ export const RaffleCard = ({ onClick, profile, winner, stacked, raffle }) => {
           "raffle-card-holder justify-content-between m-flex display-none col-md-12 pointer"
         }
       >
-        <div className={"col-md-4 p-2 "} onClick={navigateToRaffleDetails}>
+        <div className={"col-md-4 "} onClick={navigateToRaffleDetails}>
           <div
             className={"raffle-image"}
             style={{ backgroundImage: `url(${raffle.image_url})` }}
@@ -128,7 +128,7 @@ export const RaffleCard = ({ onClick, profile, winner, stacked, raffle }) => {
                   stacked={stacked}
                   started={started}
                   profile={profile}
-                  className={"raffle-card-button black-color m-padding-0"}
+                  className={`raffle-card-button black-color m-padding-0 ${ticketclassName}`}
                   timer={raffle?.start_date}
                 />
               </div>

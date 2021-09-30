@@ -91,7 +91,7 @@ const Login = (props) => {
                   <FormButton
                     title={"Log In"}
                     className={"mt-3"}
-              
+
                     type={"submit"}
                     disabled={props.isLoggingIn}
                     loading={props.isLoggingIn}
@@ -107,8 +107,9 @@ const Login = (props) => {
                     </div>
                     <div className={"col-md-4 hr"} />
                   </div>
-                  <GoogleButton title={"Google"} />
+                 
                 </form>
+                <GoogleButton title={"Google"} />
               </div>
 
               <div className={"d-flex flex-column align-items-center mt-3"}>
