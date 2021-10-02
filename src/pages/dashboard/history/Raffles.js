@@ -11,9 +11,9 @@ const Raffles = () => {
     handlePageChange,
     activePage,
     per_page,
-    total,
+    raffleTotal,
   } = useCustomerRaffle();
-
+  console.log(raffleTotal)
   useEffect(() => {
     getRaffles();
   }, [activePage]);
@@ -28,7 +28,7 @@ const Raffles = () => {
         <Pagination
           activePage={activePage}
           itemsCountPerPage={per_page}
-          totalItemsCount={total}
+          totalItemsCount={raffleTotal}
           pageRangeDisplayed={10}
           onChange={handlePageChange}
           innerClass="pagination justify-content-center pagination-holder"

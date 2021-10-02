@@ -6,33 +6,33 @@ import Pagination from "react-js-pagination";
 import { useCustomerRaffle } from "./useHistory";
 const Payment = () => {
   const {
-    fetching,
-    setData,
     data,
     per_page,
-    total,
+    transactionTotal,
     handlePageChange,
     activePage,
     getTransactions,
   } = useCustomerRaffle();
 
+  console.log({per_page})
   useEffect(() => {
     getTransactions();
   }, [activePage]);
 
+ 
   return (
     <div className="p-3">
       {/*<div className={'header3  '}>Your Wishlist</div>*/}
       <div className="col-md-7">
-      <Table className={"mt-3 "}>
-        <thead>
-          <tr>
-            <th className={"paragraph-bold"}>Order Number</th>
-            <th className={"paragraph-bold"}>Payment Date</th>
-            <th className={"paragraph-bold"}>Status</th>
-          </tr>
-        </thead>
-        <tbody>
+        <Table className={"mt-3 "}>
+          <thead>
+            <tr>
+              <th className={"paragraph-bold"}>Order Number</th>
+              <th className={"paragraph-bold"}>Payment Date</th>
+              <th className={"paragraph-bold"}>Status</th>
+            </tr>
+          </thead>
+          <tbody>
             {data && data.length > 0 ? (
               data.map((data, index) => {
                 const status = data.status;
@@ -74,7 +74,7 @@ const Payment = () => {
         <Pagination
           activePage={activePage}
           itemsCountPerPage={per_page}
-          totalItemsCount={total}
+          totalItemsCount={transactionTotal}
           pageRangeDisplayed={10}
           onChange={handlePageChange}
           innerClass="pagination justify-content-center pagination-holder"
@@ -82,10 +82,8 @@ const Payment = () => {
           activeClass="active"
           linkClass="page-link"
         />
-
       </div>
-  
-      </div>
+    </div>
   );
 };
 

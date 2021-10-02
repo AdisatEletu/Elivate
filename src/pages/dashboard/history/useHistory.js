@@ -11,6 +11,10 @@ export const useCustomerRaffle = () => {
   const [wins, setWins] = useState([]);
   const [refferals, setRefferals] = useState([]);
   const [total, setTotal] = useState(0);
+  const [raffleTotal, setRaffleTotal] = useState(0);
+  const [refferalTotal, setRefferalTotal] = useState(0);
+  const [transactionTotal, setTransactionTotal] = useState(0);
+
   const getRaffles = async () => {
     try {
       const { data, success } = await getRequest(
@@ -18,8 +22,7 @@ export const useCustomerRaffle = () => {
       );
       if (success) {
         setRaffles(data.data);
-        setTotal(data.total);
-        console.log(data.total);
+        setRaffleTotal(data.total);
       }
       setFetching(false);
     } catch (error) {
@@ -51,7 +54,7 @@ export const useCustomerRaffle = () => {
       );
       if (success) {
         setRefferals(data.data);
-        setTotal(data.total);
+        setRefferalTotal(data.total);
       }
       setFetching(false);
     } catch (error) {
@@ -65,7 +68,7 @@ export const useCustomerRaffle = () => {
       const {success, data} = await getRequest(`/customer/transactions?per_page=${per_page}&page=${activePage}`);
       if(success){
           setData(data.data);
-        setTotal(data.total)
+        setTransactionTotal(data.total)
       }
       setFetching(false)
     } catch (error) {
@@ -93,6 +96,9 @@ export const useCustomerRaffle = () => {
     setRefferals,
     getTransactions,
     setData,
-    data
+    data,
+    raffleTotal,
+    refferalTotal,
+    transactionTotal
   };
 };

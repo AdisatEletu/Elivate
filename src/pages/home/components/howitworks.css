@@ -9,6 +9,13 @@
   display: flex;
 }
 
+.h-align-items-center{
+  justify-content: center;
+}
+
+.h-justify-content-center{
+  align-items: center;
+}
 @media only screen and (max-width: 768px) {
   .h-sign-up-tutorial {
     display: grid;
@@ -16,8 +23,16 @@
     /* align-items: center; */
   }
 
+  .h-justify-content-center{
+    justify-content: center;
+  }
+
   .h-mt-4 {
     margin-top: 2rem;
+  }
+
+  .h-align-items-center{
+    align-items: center;
   }
 
   .t-mt-6{

@@ -10,7 +10,7 @@ const Referrals = () => {
     referrals,
     getRefferals,
     per_page,
-    total,
+    refferalTotal,
     handlePageChange,
     activePage,
   } = useCustomerRaffle();
@@ -22,6 +22,7 @@ const Referrals = () => {
     <div className="p-3">
       {/*<div className={'header3  '}>Your Wishlist</div>*/}
       <div className="col-md-7">
+      {referrals?.length > 0 ?
       <Table className={"mt-3 "}>
         <thead>
           <tr>
@@ -31,7 +32,7 @@ const Referrals = () => {
           </tr>
         </thead>
         <tbody>
-          {referrals && referrals.length > 0 ? referrals.map((referral, index)=>(
+          {referrals?.map((referral, index)=>(
             <tr key={index}>
               <td className={"fw-400 grey-color p-3"}>
                 {referral?.email}
@@ -45,20 +46,21 @@ const Referrals = () => {
               </td>
               <td>{moment(referral?.phone_number_verified_at)}</td>
             </tr>
-          ) ): (
-            <tr>
-              <td colSpan={12}>
-                <Empty />
-              </td>
-            </tr>
-          )}
+          ))}
         </tbody>
       </Table>
+      : (
+        <div className="d-flex mt-5 justify-content-center">
+          <Empty />
+        </div>
+      )}
+
+      {refferalTotal > per_page &&
       <div className={"d-flex justify-content-center mt-6"}>
         <Pagination
           activePage={activePage}
           itemsCountPerPage={per_page}
-          totalItemsCount={total}
+          totalItemsCount={refferalTotal}
           pageRangeDisplayed={10}
           onChange={handlePageChange}
           innerClass="pagination justify-content-center pagination-holder"
@@ -67,6 +69,7 @@ const Referrals = () => {
           linkClass="page-link"
         />
       </div>
+      }
       </div>
     </div>
   );

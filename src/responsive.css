@@ -318,20 +318,16 @@
   }
 
   .raffle-image {
-    /* max-height: 2px; */
-    height: 165px;
+    height: 201px;
     background-size: cover;
     background-position: center;
     border-radius: 0 0 20px 20px;
-    /* position: absolute; */
     width: 100%;
-    /* border-top-left-radius: calc(.25rem - 1px);
-    border-top-right-radius: calc(.25rem - 1px); */
   }
 
   .raffle-card-holder {
-    max-height: 300px;
-    min-height: 300px;
+    max-height: 315px;
+    min-height: 315px;
     position: relative;
     display: -ms-flexbox;
     display: flex;
@@ -442,7 +438,7 @@
 
 .absolute-div{
   position: absolute;
-  height: 165px;
+  height: 201px;
   width: 100%;
 }
 
