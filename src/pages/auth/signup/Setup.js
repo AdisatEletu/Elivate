@@ -12,7 +12,6 @@ const Setup = () => {
   const setUpUser = async () => {
     setCreating(true);
     const id = localStorage.getItem("id");
-    console.log(values);
     const param = {
       first_name: values.first_name,
       password: localStorage.getItem("spfa"),

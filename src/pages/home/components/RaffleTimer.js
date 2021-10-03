@@ -8,7 +8,10 @@ export const RaffleTimer = ({
   profile,
  started,
   winner,
+  ended
 }) => {
+
+  console.log({started,ended})
   if (profile && !started)
   {
     return (
@@ -87,7 +90,7 @@ export const RaffleTimer = ({
         </div>
       </div>
     )
-  } else {
-    return <div>hh</div>
+  } else if( ended ) {
+    return  <span > &nbsp; Raffle have ended </span>
   }
 }

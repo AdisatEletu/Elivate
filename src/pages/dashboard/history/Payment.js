@@ -14,7 +14,6 @@ const Payment = () => {
     getTransactions,
   } = useCustomerRaffle();
 
-  console.log({per_page})
   useEffect(() => {
     getTransactions();
   }, [activePage]);

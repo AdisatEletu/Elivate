@@ -873,6 +873,11 @@ ul.navigtion-items {
   color: #000000;
 }
 
+.disabled{
+  cursor: not-allowed;
+  color: #ccc
+}
+
 .height-100px {
   height: 100px;
 }

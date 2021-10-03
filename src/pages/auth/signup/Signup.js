@@ -26,6 +26,7 @@ const Signup = () => {
     try {
       const { success, data, error } = await postRequest("customer", values);
       if (success) {
+        localStorage.setItem('phone_number', values.phone_number)
         localStorage.setItem("id", data.id_2);
         window.location.href = "/verification";
       } else {

@@ -6,7 +6,6 @@ import { Empty } from "antd";
 const Win = () => {
   const {
     wins,
-    fetching,
     getWins,
     per_page,
     total,

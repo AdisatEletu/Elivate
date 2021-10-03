@@ -128,6 +128,7 @@ export const RaffleCard = ({ onClick, profile,ticketclassName, winner, stacked, 
                   stacked={stacked}
                   started={started}
                   profile={profile}
+                  ended={ended}
                   className={`raffle-card-button black-color m-padding-0 ${ticketclassName}`}
                   timer={raffle?.start_date}
                 />

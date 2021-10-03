@@ -29,14 +29,21 @@ const Profile = lazy(() => import("../pages/dashboard/profile/Profile"));
 const FAQ = lazy(() => import("../pages/faq/FAQ"));
 const RaffleFAQ = lazy(() => import("../pages/faq/RaffleFAQ"));
 const Charity = lazy(() => import("../pages/charity/Charity"));
-const Transaction = lazy(()=> import('../pages/dashboard/transactions/Transactions'));
-const Winners = lazy(()=> import('../pages/winners/Winners'))
-const Privacy = lazy(()=> import("../pages/home/Privacy"))
-const Terms = lazy(()=> import("../pages/home/Terms"))
-const WinningFAQ = lazy(()=> import('../pages/faq/Winning'))
-const AccountFAQ = lazy(()=> import('../pages/faq/Account'))
-const CharityFAQ = lazy(()=> import('../pages/faq/Charity'))
-const TokenFAQ = lazy(()=> import('../pages/faq/Tokens'))
+const Transaction = lazy(() =>
+  import("../pages/dashboard/transactions/Transactions")
+);
+const Winners = lazy(() => import("../pages/winners/Winners"));
+const Privacy = lazy(() => import("../pages/home/Privacy"));
+const Terms = lazy(() => import("../pages/home/Terms"));
+const WinningFAQ = lazy(() => import("../pages/faq/Winning"));
+const AccountFAQ = lazy(() => import("../pages/faq/Account"));
+const CharityFAQ = lazy(() => import("../pages/faq/Charity"));
+const TokenFAQ = lazy(() => import("../pages/faq/Tokens"));
+const PhoneNumberUpdate = lazy(() =>
+  import("../pages/auth/signup/PhoneNumberUpdate")
+);
+const SocialAuth = lazy(() => import("../pages/auth/signup/SocialAuth"));
+
 const Routes = () => (
   // eslint-disable-next-line no-undef
   <Router basename={process.env.PUBLIC_URL}>
@@ -49,7 +56,7 @@ const Routes = () => (
         <AuthRoute exact path="/signup" component={Signup} />
         <AuthRoute exact path="/setup" component={Setup} />
         <AuthRoute path="/verification" component={Verification} />
-
+        <AuthRoute path="/social-auth" component={SocialAuth} />
         {/* can only access them when you are logged in */}
         {/* public route: accessible to both !!authenticated users */}
         <PublicRoute exact path="/about" component={About} />
@@ -78,6 +85,7 @@ const Routes = () => (
         <PrivateRoute exact path={"/profile"} component={Profile} />
         <PrivateRoute exact path={"/payment/response"} component={Response} />
         <PrivateRoute exact path={"/transactions"} component={Transaction} />
+        <AuthRoute exact path={"/phone_update"} component={PhoneNumberUpdate} />
 
         {/* catch all invalid urls */}
         <Route component={Error404} />
