@@ -3,6 +3,7 @@ import { FormButton } from "../../../components/forms/Button";
 import { FormInput } from "../../../components/forms/Input";
 import { getRequest, postRequest } from "../../../helper/request";
 import { useHistory } from "react-router-dom";
+import handleError from '../../../helpers/handleError';
 
 const PhoneNumberUpdate = () => {
 
@@ -21,9 +22,13 @@ const PhoneNumberUpdate = () => {
       if (success) {
         localStorage.setItem('phone_number', phone)
           history.push('/verification')
+      }else{
+      
       }
       setIsCreating(false);
-    } catch (error) {}
+    } catch (error) {
+      handleError(error)
+    }
   };
   return (
     <div className="d-flex flex-column justify-content-center height-100vh align-items-center">

@@ -2,6 +2,7 @@ import React, {useState} from "react";
 import axios from "axios";
 import Modal from "antd/lib/modal/Modal";
 import PhoneNumberUpdate from "../../pages/auth/signup/PhoneNumberUpdate";
+import { getRequest } from "../../helpers/requests";
 
 
 export const GoogleButton = ({type, title, onSubmit, className}) =>{
@@ -20,21 +21,19 @@ export const GoogleButton = ({type, title, onSubmit, className}) =>{
   const getSocialAuth =async()=>{
     const google_id = localStorage.getItem('social_id');
     try {
-      if(google_id){
-        return loginUserWithId(google_id)
-      }
-      const {data} = await axios.get('/customer/google-login')
-      if(data?.data?.authorize_url){
-        window.open(data?.data?.authorize_url, "_blank")
+      // if(google_id){
+      //   return loginUserWithId(google_id)
+      // }
+      const {data, success} = await getRequest('/customer/google-login')
+      console.log({data})
+      if(success){
+        console.log("in here")
+        window.open(data?.authorize_url, "_blank")
       }
     } catch (error) {
-      
+      console.log({error})
     }
    
-  }
-
-  const handleOk =()=>{
-
   }
 
 
