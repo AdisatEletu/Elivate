@@ -13,16 +13,13 @@ import "./index.css";
 import "./responsive.css";
 import "antd/dist/antd.css";
 
-export const initialize = async (windowObj, axiosLib) => {
+export const initialize = async ( axiosLib) => {
   axiosLib.defaults.baseURL = "https://desolate-fjord-54053.herokuapp.com/api/";
   axios.defaults.headers.common[
     "Authorization"
   ] = `Bearer ${localStorage.token}`;
-  //decode token and get user
-  // const decoded = jwt_decode(localStorage.token);
-  //set current user
-  //sets persistent session
 
+console.log("i was re initialized",localStorage.token )
   if (localStorage.user) {
     store.dispatch(setCurrentUser(JSON.parse(localStorage.user)));
     const count = await getNotificationCount();
@@ -38,7 +35,8 @@ const setInterceptor = async (axiosLib) => {
     (error) => {
       const status = error.response.status;
       if (status === 401 && !window.location.href.includes("/login")) {
-        localStorage.clear();
+        localStorage.removeItem('user');
+        localStorage.removeItem('token');
         window.location.href = "/login";
         logoutUser();
       }
@@ -47,33 +45,15 @@ const setInterceptor = async (axiosLib) => {
   );
 };
 
-// export const verifyToken = (axiosLib) => {
-//   const bearerToken = localStorage.getItem("jwt");
-//   if (!bearerToken) return;
-//   axiosLib.defaults.headers.common["Authorization"] = bearerToken;
-
-//   const decoded = jwt_decode(bearerToken);
-
-//   setCurrentUser(JSON.parse(localStorage.getItem("user")))(store.dispatch);
-
-// check for expired token
-//   const currentTime = Date.now() / 1000;
-
-//   if (decoded.exp < currentTime) {
-//     logoutUser()(store.dispatch);
-//   }
-// };
 
 const App = () => {
   setInterceptor(axios);
-  initialize(window, axios);
-  // verifyToken(axios);
+  initialize( axios);
   return (
     <>
       <Provider store={store}>
         <Routes />
       </Provider>
-      {/*<ServiceWorkerWrapper />*/}
     </>
   );
 };

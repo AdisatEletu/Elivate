@@ -7,6 +7,7 @@ import PhoneNumberUpdate from "./PhoneNumberUpdate";
 import { useDispatch } from "react-redux";
 import { setCurrentUser } from "../../../redux/actions/authActions";
 import { doAlert } from "../../../components/alert/AlertComponent";
+import axios from 'axios'
 const SocialAuth = (props) => {
   console.log(props);
 
@@ -31,7 +32,14 @@ const SocialAuth = (props) => {
         localStorage.setItem("social_id", data?.id_2);
         setShow(true);
       } else if (success && data?.phone_number_verified) {
+  
+        axios.defaults.headers.common[
+          "Authorization"
+        ] = `Bearer ${data.token}`;
+
         localStorage.setItem("user", JSON.stringify(data));
+        localStorage.setItem("token",data.token);
+        localStorage.setItem('google_id', data?.google_id)
         dispatch(setCurrentUser(data));
       }else{
           doAlert(" Can't log you in at this time ...")

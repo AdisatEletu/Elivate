@@ -20,7 +20,8 @@ const auth = (state = initialState, action) => {
     case SET_USER:
       return { ...state, user: action.payload, isAuthenticated: true };
     case LOGOUT_USER:
-      localStorage.clear();
+      localStorage.removeItem('user');
+      localStorage.removeItem('token');
       return { ...state, user: {}, isAuthenticated: false };
     default:
       return state;

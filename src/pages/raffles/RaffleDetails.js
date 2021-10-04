@@ -2,8 +2,6 @@ import React, { useEffect, useState } from "react";
 import { RaffleTimer } from "../home/components/RaffleTimer";
 import { WatchlistBtn } from "../home/components/WatchlistBtn";
 import Details from "./Details";
-import { RaffleCard } from "../home/components/RaffleCards";
-import { raffleData } from "../../utils/mock";
 import { getRequest, postRequest } from "../../helpers/requests";
 import handleError from "../../helpers/handleError";
 import { PageLoader } from "../../components/Loaders";

@@ -8,7 +8,7 @@ const Charity = () => {
 
   useEffect(() => {
     fetchCharities();
-  }, [fetchCharities]);
+  }, []);
 
   if (loading) {
     return (
