@@ -232,6 +232,7 @@ export const RaffleCard = ({ onClick, profile,ticketclassName, winner, stacked, 
               <RaffleTimer
                 winner={winner}
                 black
+                ended={ended}
                 stacked={stacked}
                 started={started}
                 profile={profile}

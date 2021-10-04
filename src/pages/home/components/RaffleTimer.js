@@ -11,7 +11,6 @@ export const RaffleTimer = ({
   ended
 }) => {
 
-  console.log({started,ended})
   if (profile && !started)
   {
     return (
@@ -46,7 +45,7 @@ export const RaffleTimer = ({
         <span> &nbsp; You won this!!! </span>
       </div>
     );
-  } else if (started) {
+  } else if (started && !ended) {
     return (
       <div
         className={`raffle-button small-paragraph ${
@@ -64,10 +63,10 @@ export const RaffleTimer = ({
               : require("../../../assets/icons/timer.svg")
           }
         />
-        <span > &nbsp; Raffle have started </span>
+        <span> &nbsp; Raffle have started </span>
       </div>
     );
-  } else if (!started) {
+  } else if (!started && !ended) {
     return (
       <div
         className={`raffle-button small-paragraph d-flex align-items-center m-raffle-btn ${className}`}
@@ -90,7 +89,11 @@ export const RaffleTimer = ({
         </div>
       </div>
     )
-  } else if( ended ) {
-    return  <span > &nbsp; Raffle have ended </span>
+  } else if(ended) {
+    return <div
+    className={`raffle-button small-paragraph ${
+      stacked ? "block" : "d-flex"
+    } align-items-center m-raffle-btn ${className}`}
+  ><span> &nbsp; Raffle have ended </span></div>
   }
 }
