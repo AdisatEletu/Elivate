@@ -67,7 +67,7 @@ const FAQ = () => {
               Contact us on
             </div>
             <div className={'title2'}>
-              +(234) 813 879 0378
+              +(234) 913 881 0000
             </div>
           </div>
           <div className={'text-align-center mt-5'}>
@@ -76,7 +76,7 @@ const FAQ = () => {
              Send us an email on
             </div>
             <div className={'title2'}>
-              support@elivate9ja.comUs
+            support@elivate9ja.com
             </div>
           </div>
           <div className={'text-align-center mt-5'}>
