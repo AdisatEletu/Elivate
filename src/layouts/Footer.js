@@ -72,7 +72,7 @@ export const Footer = () => {
                     <Link to="/winners">Winners</Link>
                   </li>
                   <li>
-                    <Link to="/tickets">Tokens</Link>
+                    <Link to="/tickets">Buy Tokens</Link>
                   </li>
                 </ul>
               

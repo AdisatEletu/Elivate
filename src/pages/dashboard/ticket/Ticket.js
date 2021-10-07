@@ -13,7 +13,6 @@ const Ticket = ({ user }) => {
     fetchTickets,
     fetching,
     tickets,
-    setAmount,
     buyTickets,
     loading,
     limit,
@@ -29,7 +28,6 @@ const Ticket = ({ user }) => {
     fetchTickets();
   }, [page]);
 
-  console.log({page, total,limit})
   return (
     <div>
       <div className={"profile-card"}>
@@ -38,10 +36,10 @@ const Ticket = ({ user }) => {
         </div>
         {fetching ? (
           "...Loading"
-        ) : tickets.length > 0 ? (
+        ) : tickets?.length > 0 ? (
           <div className={"ticket-m"}>
             <div className={"ticket-grid mb-5"}>
-              {tickets.map((ticket, index) => (
+              {tickets?.map((ticket, index) => (
                 <div
                   className={
                     "ticket-card justify-content-around d-flex flex-column align-items-center"

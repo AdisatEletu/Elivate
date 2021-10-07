@@ -43,7 +43,6 @@ const Password = () => {
       if (success) {
         doAlert("succefully updated password", "success");
       } else {
-        console.log({res})
         doAlert(res.error.response.data.message);
       }
       setSaving(false);

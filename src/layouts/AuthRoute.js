@@ -14,7 +14,7 @@ const AuthRoute = ({ component: Component, auth, ...rest }) => {
           return <Redirect to="/" />;
         } else {
           return (
-            <main className="container-fluid padding-0" id="auth-route-layout">
+            <main className="container-fluid auth-padding" id="auth-route-layout">
               <ErrorBoundary>
                 <Component {...props} />
               </ErrorBoundary>

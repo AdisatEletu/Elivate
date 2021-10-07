@@ -19,7 +19,6 @@ export const initialize = async ( axiosLib) => {
     "Authorization"
   ] = `Bearer ${localStorage.token}`;
 
-console.log("i was re initialized",localStorage.token )
   if (localStorage.user) {
     store.dispatch(setCurrentUser(JSON.parse(localStorage.user)));
     const count = await getNotificationCount();

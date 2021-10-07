@@ -30,7 +30,7 @@ const Verification = () => {
   const setResendTimeout =()=>{
     setTimeout(()=>{
       setResendVisible(true)
-    }, 2000)
+    }, 20000)
   }
 
   useEffect(()=>{
@@ -94,7 +94,7 @@ const Verification = () => {
                     Didn't receive a code? &nbsp;
                   </span>
                   <div className="text-align-center" onClick={resendVisible ? resendCode : ''}>
-                    <span className={`${resendVisible ? 'disabled' : 'forgot-password'} small-paragraph "text-align-center"`}>
+                    <span className={`${resendVisible ? 'forgot-password ' : 'disabled'} small-paragraph "text-align-center"`}>
                       Resend it
                     </span>
                   </div>

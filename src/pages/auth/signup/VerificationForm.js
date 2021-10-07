@@ -34,7 +34,7 @@ const history = useHistory()
   const setResendTimeout = () => {
     setTimeout(() => {
       setResendVisible(true);
-    }, 2000);
+    }, 20000);
   };
 
   useEffect(() => {
@@ -75,6 +75,7 @@ const history = useHistory()
       setCreating(false);
     } catch (e) {
       handleError(e);
+      setCreating(false);
     }
   };
   return (
@@ -106,11 +107,11 @@ const history = useHistory()
               Enter the verification code
             </div>
             <div className={"paragraph text-align-center grey-color"}>
-              Enter the 4-digit code we sent to your email/phone number
+              Enter the 6-digit code we sent to your email/phone number
             </div>
           </div>
           <div className={"form-holder fullwidth mt-4"}>
-            <div className={"title2 text-align-center"}>Enter 4-digit code</div>
+            <div className={"title2 text-align-center"}>Enter 6-digit code</div>
 
             <div className={"mt-4 text-align-center"}>
               <OtpInput
@@ -142,7 +143,7 @@ const history = useHistory()
               >
                 <span
                   className={`${
-                    resendVisible ? "disabled" : "forgot-password"
+                    resendVisible ? "forgot-password" : "disabled"
                   } small-paragraph "text-align-center"`}
                 >
                   Resend it

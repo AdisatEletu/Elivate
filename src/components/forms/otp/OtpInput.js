@@ -29,7 +29,6 @@ export const OtpInput = ({ length, label, loading, onComplete }) =>{
     }
   };
   
-  console.log({code});
   
   return(
     <>

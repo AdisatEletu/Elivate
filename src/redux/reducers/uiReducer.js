@@ -9,7 +9,6 @@ const initialState = {
 export const headerReducer = (state = initialState, action) => {
   switch (action.type) {
     case SET_SUBHEADER :
-      console.log({state});
       return {title: action.payload};
     case NOTIFICATION_COUNT :
       return {notification_count: action.payload}

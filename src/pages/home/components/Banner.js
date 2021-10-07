@@ -1,24 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { EmptyData } from "../../../components/EmptyData";
 import { RaffleTimer } from "./RaffleTimer";
-import { WatchlistBtn } from "./WatchlistBtn";
 
 export const Banner = ({ data }) => {
   const [index, setIndex] = useState(0);
-
-  const handleSlideShow = () => {
-    if (index + 1 < data.length) {
-      setIndex(index + 1);
-    } else {
-      setIndex(0);
-    }
-  };
-
-  console.log();
-
-  // useEffect(() => {
-  //   setInterval(() => handleSlideShow(), 10000);
-  // }, [index]);
 
   return (
     <div className={"banner-bg banner"}>

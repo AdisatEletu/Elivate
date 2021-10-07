@@ -278,7 +278,7 @@ const Home = () => {
         <div className={"m-flex justify-content-between"}>
           <div className={"col-md-10"}>
             <div className={"d-flex align-items-center"}>
-              <div className={"title2"}>Elivate Prize Winners</div>
+              <div className={"title2"}>Elivate9ja Prize Winners</div>
               <img alt={"icon"} src={require("../../assets/icons/prize.svg")} />
             </div>
             <div className={"paragraph"}>

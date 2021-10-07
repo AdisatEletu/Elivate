@@ -13,14 +13,13 @@ const Raffles = () => {
     per_page,
     raffleTotal,
   } = useCustomerRaffle();
-  console.log(raffleTotal)
   useEffect(() => {
     getRaffles();
   }, [activePage]);
   return (
     <>
       <div className={"card-grid mt-4 padding-15px margin-bottom-80"}>
-        {raffles.map((raffle, index) => (
+        {raffles?.map((raffle, index) => (
           <RaffleCard key={index} getRaffles={getRaffles} raffle={raffle} />
         ))}
       </div>

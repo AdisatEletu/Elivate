@@ -28,6 +28,7 @@ const PhoneNumberUpdate = () => {
       setIsCreating(false);
     } catch (error) {
       handleError(error)
+      setIsCreating(false);
     }
   };
   return (

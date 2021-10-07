@@ -30,7 +30,6 @@ const Signup = () => {
         localStorage.setItem("id", data.id_2);
         window.location.href = "/verification";
       } else {
-        console.log({ error });
         doAlert(error.response.data.data[0]);
       }
       setCreating(false);

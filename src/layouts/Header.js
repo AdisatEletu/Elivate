@@ -147,7 +147,7 @@ const Header = ({ user, isAuthenticated, count, logoutUser }) => {
                   "d-flex sidebar-link justify-content-between  align-items-center"
                 }
               >
-                <div className={"col-md-10"}> Token</div>
+                <div className={"col-md-10"}>Buy Token</div>
               </NavLink>
               <NavLink
                 to={"/history"}

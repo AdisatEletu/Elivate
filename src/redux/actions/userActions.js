@@ -20,11 +20,9 @@ export const userDetailsFail = (error) => (dispatch) => {
 export const fetchUserdetails = () => {
   return (dispatch) => {
     dispatch(userDetailsStart());
-    const token = localStorage.getItem("token");
     axios
       .get("/customer/profile")
       .then((res) => {
-        console.log(res.data.data);
         dispatch(setUserDetailsSuccess(res.data.data));
       })
       .catch((error) => {

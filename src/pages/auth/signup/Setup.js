@@ -34,6 +34,7 @@ const Setup = () => {
       setCreating(false);
     } catch (e) {
       handleError(e);
+      setCreating(false);
     }
   };
 

@@ -222,6 +222,15 @@
     flex-direction: column;
   }
 
+  .auth-padding{
+    padding: 0.5rem;
+  }
+
+  .otp-input{
+    height: 30px!important;
+    width: 30px!important;
+  }
+
   .m-flex {
     flex-direction: column;
   }

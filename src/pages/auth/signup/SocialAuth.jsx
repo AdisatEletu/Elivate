@@ -9,7 +9,6 @@ import { setCurrentUser } from "../../../redux/actions/authActions";
 import { doAlert } from "../../../components/alert/AlertComponent";
 import axios from 'axios'
 const SocialAuth = (props) => {
-  console.log(props);
 
   //state
 

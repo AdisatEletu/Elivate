@@ -10,12 +10,12 @@ export const setSubHeaderAction = (title) => (dispatch) => {
 
 export const getNotificationCount = async (dispatch) => {
   try {
-    const { data, success } = await axios.get(
+    const { data } = await axios.get(
       "/customer/notifications/unread-count"
     );
     if (data.success) {
       // dispatch(setNotificationCount(data?.data?.count));
-      return data.data.count
+      return data?.data?.count
     }
   } catch (error) {
     console.log(error);

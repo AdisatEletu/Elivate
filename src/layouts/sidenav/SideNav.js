@@ -79,7 +79,7 @@ const pathname = history?.location?.pathname;
                 alt={"not"}
                 src={activeLink === "/tickets" ?  require("../../assets/icons/active-ticket.svg") :require("../../assets/icons/grey-ticket.svg")}
               />
-              <div className={"col-md-10"}> Token</div>
+              <div className={"col-md-10"}>Buy Token</div>
             </NavLink>
           </li>
 

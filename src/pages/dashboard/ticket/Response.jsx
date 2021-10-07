@@ -20,9 +20,9 @@ const Response = (props) => {
       );
       if (res.success) {
         dispatch(getUser());
-        setLoading(false);
         setSuccess(true);
       }
+      setLoading(false);
     } catch (error) {
       console.log({ error });
     }

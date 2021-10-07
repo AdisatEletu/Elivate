@@ -25,7 +25,6 @@ const ForgotPassword = ({ setFormState }) => {
     }
   };
 
-  console.log({submitting})
   return (
     <div
       className={"auth-bg"}
