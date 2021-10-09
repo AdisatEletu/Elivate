@@ -14,7 +14,12 @@ import "./responsive.css";
 import "antd/dist/antd.css";
 
 export const initialize = async ( axiosLib) => {
-  axiosLib.defaults.baseURL = "https://desolate-fjord-54053.herokuapp.com/api/";
+  if (window.location.href.includes("elivate9jaonline")) {
+    axios.defaults.baseURL = " https://api.elivate9jaonline.com/api";
+  } else{
+    axiosLib.defaults.baseURL = "https://desolate-fjord-54053.herokuapp.com/api/";
+  } 
+  
   axios.defaults.headers.common[
     "Authorization"
   ] = `Bearer ${localStorage.token}`;

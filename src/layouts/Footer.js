@@ -63,7 +63,7 @@ export const Footer = () => {
                     <Link to="/about">About us</Link>
                   </li>
                   <li>
-                    <Link to="/faq">Help & FAQs</Link>
+                    <Link to="/help">Help & FAQs</Link>
                   </li>
                   <li>
                     <Link to="/charity">Charity</Link>
