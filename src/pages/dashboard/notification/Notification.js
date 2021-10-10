@@ -90,7 +90,7 @@ const Notification = () => {
               <div className="text-align-center header3 heading3 mb-4">
                 {selectedNotification?.title}
               </div>
-              <div> {selectedNotification?.message}</div>
+              <div dangerouslySetInnerHTML={{__html: selectedNotification?.message}} />
             </ModalBody>
             <ModalFooter>
               <button
