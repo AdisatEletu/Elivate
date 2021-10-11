@@ -25,7 +25,7 @@ export const loginUser = (email, password) => async (dispatch) => {
       doAlert("successfully logged in");
       window.location.href = "/";
     }else{
-      doAlert(error.response.data.message)
+      doAlert(error.response.data.message);
       dispatch({ type: DONE_LOGGING_IN });
     }
   } catch (e) {

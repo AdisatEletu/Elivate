@@ -76,7 +76,7 @@ const FAQ = () => {
              Send us an email on
             </div>
             <div className={'title2'}>
-            support@elivate9ja.com
+              support@elivate9jaonline
             </div>
           </div>
           <div className={'text-align-center mt-5'}>

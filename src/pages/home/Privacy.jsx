@@ -120,7 +120,7 @@ const Privacy = () => {
           and you may be responsible for any actions taken using this
           information. In the event you suspect a third party has gained access
           to your password, please log in to your elivate9ja.com profile, change
-          it and promptly notify support@elivate9ja.com.
+          it and promptly notify support@elivate9jaonline.
         </div>
         <br/>
         <br/>
@@ -130,7 +130,7 @@ const Privacy = () => {
           this Privacy Policy are adhered to. Should you have any questions
           about this privacy statement, information services or your
           transactions on our platform, you can contact us via our customer
-          helplines or by email to support@elivate9ja.com.
+          helplines or by email to support@elivate9jaonline.
         </div>
       </div>
     </div>

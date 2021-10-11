@@ -13,7 +13,7 @@ const AccountFAQ = () => {
     
       <ExpandableFAQ
         question={'CAN MY BUSINESS OR CHARITY BECOME AN ELIVATE9JA RAFFLES PARTNER?'}
-        description={'Yes, we are always open to talking about partnerships with new organizations and would love to hear from you! Please do send an email to support@elivate9ja.com and a member of our partnerships team will follow up with you directly.        '}/>
+        description={'Yes, we are always open to talking about partnerships with new organizations and would love to hear from you! Please do send an email to support@elivate9jaonline and a member of our partnerships team will follow up with you directly.        '}/>
 
     </div>
   )
