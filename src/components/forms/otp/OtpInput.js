@@ -2,7 +2,7 @@ import React, {useRef, useState} from "react";
 import './otp.css'
 
 export const OtpInput = ({ length, label, loading, onComplete }) =>{
-  const [code, setCode] = useState([...Array(length)].map(() => ""));
+  const [code, setCode] = useState([...Array(length)]?.map(() => ""));
   const inputs = useRef([]);
   
   const controlInput = (e, slot) =>{
@@ -32,7 +32,7 @@ export const OtpInput = ({ length, label, loading, onComplete }) =>{
   
   return(
     <>
-      {code.map((num, i)=>{
+      {code?.map((num, i)=>{
         return <input className={'otp-input'} value={num} autoFocus={!code[0].length && i === 0} readOnly={loading}
                       onChange={e => controlInput(e, i)}
                       key={i}

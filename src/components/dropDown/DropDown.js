@@ -71,7 +71,7 @@ export const DropDown = ({
         <OptionsWrapper>
           {options.length > 0 ? (
             <DropdownOption>
-              {options.map((option, index) => {
+              {options?.map((option, index) => {
                 return (
                   <Options
                     style={

@@ -89,7 +89,7 @@ export class AlertWrapper extends React.Component {
   render() {
     return (
       <ul className="alert-container" style={{}}>
-        {this.state.alerts.map((alert, i) => {
+        {this.state.alerts?.map((alert, i) => {
           return (
             <AlertItem
               alert={alert}

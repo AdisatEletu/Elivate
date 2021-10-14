@@ -42,7 +42,7 @@ const Notification = () => {
               </thead>
               <tbody>
                 {notifications.length > 0 ? (
-                  notifications.map((notification) => (
+                  notifications?.map((notification) => (
                     <tr
                       key={notification.id}
                       onClick={() => toggleOn(notification)}

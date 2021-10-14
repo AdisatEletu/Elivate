@@ -32,7 +32,7 @@ const Raffles = () => {
         <div>
         {raffles.length > 0 ?
         <div className={"mt-6 card-grid"}>
-           {raffles.map((raffle, index) => (
+           {raffles?.map((raffle, index) => (
               <RaffleCard
                 key={index}
                 raffle={raffle}

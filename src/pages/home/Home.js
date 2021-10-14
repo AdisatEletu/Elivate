@@ -246,7 +246,7 @@ const Home = () => {
           <>
             <div className={`mt-6 mb-5 card-grid `}>
               {raffles.length > 0 ? (
-                raffles.map((raffle, index) => (
+                raffles?.map((raffle, index) => (
                   <RaffleCard
                     key={index}
                     raffle={raffle}

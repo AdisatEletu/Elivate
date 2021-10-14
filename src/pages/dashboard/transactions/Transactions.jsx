@@ -66,7 +66,7 @@ const Transactions = () =>{
                     </tr>
                     :
                     !fetching && data.length > 0 ?
-                      data.map((transaction, index) => {
+                      data?.map((transaction, index) => {
                           let SN = index + 1;
                           // if (skip > 0) {
                           //   SN = SN + limit * skip;

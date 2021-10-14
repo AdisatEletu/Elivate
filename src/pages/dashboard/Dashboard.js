@@ -71,7 +71,7 @@ const Dashboard = () => {
           <div className={"header3  "}>Your Wishlist</div>
           {raffles.length > 0 ? (
             <div className={"card-grid mt-4 "}>
-              {raffles.map((raffle, index) => (
+              {raffles?.map((raffle, index) => (
                 <RaffleCard key={index} raffle={raffle} />
               ))}
             </div>
