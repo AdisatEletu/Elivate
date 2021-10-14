@@ -10,7 +10,7 @@ export const useFilter = ({ endpoint, setRaffles, searchEndpoint, sortEndpoint, 
     try {
       const { data, success } = await getRequest(`/customer/category`);
       if (success) {
-        setCategories(data.data);
+        setCategories(data);
       }
       setLoading(false);
     } catch (error) {

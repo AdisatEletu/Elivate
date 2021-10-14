@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { SearchInput } from "../../../components/filters/SearchInput";
 // import { DropDown } from "../../../components/dropDown/DropDown";
 import { useFilter } from "./useFilter";
-import { Menu, Dropdown, Select } from "antd";
+import { Select } from "antd";
 
 const { Option } = Select;
 export const Filter = ({ classNames, setRaffles, endpoint, sortEndpoint,searchEndpoint }) => {
@@ -27,19 +27,19 @@ export const Filter = ({ classNames, setRaffles, endpoint, sortEndpoint,searchEn
         <div className={"col-md-6 d-flex"}>
           <Select
             defaultValue="default"
-            style={{ width: "300px" }}
+            style={{ width: "400px" }}
             onChange={handleChange}
           >
             <Option value={"default"}>Category</Option>
-            {categories.map((category, index) => (
+            {categories?.map((category, index) => (
               <Option value={category.id} key={index}>
                 {category.name}
               </Option>
             ))}
           </Select>
           <div
-            className="m-flex justify-content-around black black-color m-display-none align-items-center  fw-500"
-            style={{ width: "150px" }}
+            className="m-flex justify-content-around black black-color m-display-none mr-2  align-items-center  fw-500"
+            style={{ width: "300px" }}
           >
             Sort By:
           </div>
