@@ -79,17 +79,17 @@ export const Footer = () => {
               </div>
               <div className={' mt-3'}>
                 <div className={'socials-holder'}>
-                  <img alt={'social icon'} src={require('../assets/icons/Frame.png')} className={'m-2'}/>
-                  <img alt={'social icon'} src={require('../assets/icons/Frame (1).png')} className={'m-2'}/>
+                  <img alt={'social icon'} src={require('../assets/icons/Frame.png')} onClick={()=>window.open('https://www.instagram.com/elivate9jaofficial/')} className={'m-2'}/>
+                  <img alt={'social icon'} src={require('../assets/icons/Frame (1).png')} className={'m-2'} onClick={()=>window.open('https://web.facebook.com/Elivate9jaofficial')} />
                   <img alt={'social icon'} src={require('../assets/icons/Frame (2).png')} className={'m-2'}/>
-                  <img alt={'social icon'} src={require('../assets/icons/Frame (3).png')} className={'m-2'}/>
+                  <img alt={'social icon'} src={require('../assets/icons/Frame (3).png')} className={'m-2'} onClick={()=>window.open('https://twitter.com/Elivate9jaoffi1?s=08')}/>
                 </div>
               </div>
             </div>
           </div>
           <div className={'paragraph text-align-center col-md-4 mt-2'}>
             &copy; Copyright {date} Elivate9ja Promotions Limited. All rights reserved.
-            support@elivate9ja.com
+            support@elivate9jaonline.com
            <NavLink to='/privacy' className={"pointer"}> Privacy Policy</NavLink><NavLink className={"pointer"} to='/terms'> Terms & Condition</NavLink>
           </div>
         </div>

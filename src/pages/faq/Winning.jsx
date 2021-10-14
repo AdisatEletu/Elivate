@@ -64,7 +64,7 @@ const WinningFAQ = () => {
       <ExpandableFAQ
         question={"WHY ISNT MY PAYMENT GOING THROUGH?"}
         description={
-          "If you receive a message indicating that we were unable to accept your payment, please do double check your details and try again. If you’re still having trouble paying, please get in contact with us at support@elivate9jaonline."
+          "If you receive a message indicating that we were unable to accept your payment, please do double check your details and try again. If you’re still having trouble paying, please get in contact with us at support@elivate9jaonline.com."
         }
       />
       <ExpandableFAQ

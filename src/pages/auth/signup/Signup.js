@@ -137,7 +137,7 @@ const Signup = () => {
             <div
               className={"mt-3 small-paragraph text-align-center grey-color"}
             >
-              By creating an account, you agree to Elevate9ja’s website
+              By creating an account, you agree to Elivate9ja’s website
               <NavLink
                 className={"forgot-password small-paragraph"}
                 to="/terms"
@@ -149,7 +149,6 @@ const Signup = () => {
                 className={"forgot-password small-paragraph"}
                 to="/privacy"
               >
-                {" "}
                 Privacy Policy.
               </NavLink>
             </div>
