@@ -32,6 +32,8 @@ const Home = () => {
   const [raffles, setRaffles] = useState([]);
   const [featuredRaffles, setFeaturedRaffles] = useState({});
   const [isLoading, setIsLoading] = useState(true);
+  const [isLoadingBigRaffle, setIsLoadingBigRaffle] = useState(true);
+  const [bigRaffle, setBigRaffle] = useState({});
   const [total, setTotal] = useState(0);
   const [perpage, setPerPage] = useState(20);
   const [adding, setAdding] = useState(false);
@@ -40,8 +42,9 @@ const Home = () => {
   const [watchlist, setWatchlist] = useState(featuredRaffles?.in_watchlist);
   const [loadingMore, setLoadingMore] = useState(false);
   let today = new Date();
-  let start_date = new Date(featuredRaffles?.start_date);
-  const end_date = new Date(featuredRaffles?.end_date);
+
+  let start_date = new Date(bigRaffle?.start_date);
+  const end_date = new Date(bigRaffle?.end_date);
 
   const started = start_date < today;
   const ended = end_date < today;
@@ -90,6 +93,19 @@ const Home = () => {
     }
   };
 
+  const getBigFeatured =async()=>{
+    try {
+      setIsLoadingBigRaffle(true)
+      const {data, success} = await getRequest(`/customer/raffle/big-featured`);
+      if(success){
+        setBigRaffle(data)
+      }
+      setIsLoadingBigRaffle(false)
+    } catch (error) {
+      setIsLoadingBigRaffle(false)
+    }
+  }
+
   const handleRemoveWatchlist = async () => {
     try {
       setRemoving(true);
@@ -131,6 +147,10 @@ const Home = () => {
     getRaffles();
   }, [perpage]);
 
+  useEffect(() => {
+    getBigFeatured();
+  }, []);
+
   return (
     <div className="">
       <Carousel autoPlay={true} infiniteLoop swipeable showStatus={false}>
@@ -156,23 +176,16 @@ const Home = () => {
       <HowItWorks />
 
       <FeaturedRaffleTitle />
-      {isLoading ? (
+      {isLoadingBigRaffle ? (
         ""
-      ) : raffles.length > 0 ? (
+      ) : bigRaffle ? (
         <>
-          <Filter
-            classNames={"mt-6"}
-            endpoint={`/customer/raffle/all?featured=${1}&category=`}
-            sortEndpoint={`/customer/raffle/all?featured=${1}&`}
-            setRaffles={setRaffles}
-            searchEndpoint={`/customer/raffle/all?featured=${1}`}
-          />
-
+         
           <div className={"mt-3 "}>
             <div
               className={"homepage-featured "}
               style={{
-                backgroundImage: `url(${featuredRaffles.image_url})`,
+                backgroundImage: `url(${bigRaffle?.image_url})`,
               }}
             >
               <div
@@ -180,7 +193,7 @@ const Home = () => {
                 style={{ minHeight: " 325px" }}
               >
                 <div className={"col-md-4 ticket-details-holder m-show"}>
-                  <Ticket ticket={featuredRaffles.num} />
+                  <Ticket ticket={bigRaffle?.number_of_tickets} />
                 </div>
                 <div
                   className={
@@ -188,15 +201,16 @@ const Home = () => {
                   }
                 >
                   <div className={"title1 white-color"}>
-                    {featuredRaffles.name}
+                    {bigRaffle?.name}
                   </div>
                   <div className={"paragraph off-white-color"}>
-                    {featuredRaffles.description}
+                    {bigRaffle?.description}
                   </div>
                   <div className={"col-md-10 mt-5"}>
                     <RaffleTimer
-                      timer={featuredRaffles?.start_date}
+                      timer={bigRaffle?.start_date}
                       started={started}
+                      ended={ended}
                     />
                   </div>
                 </div>
@@ -222,7 +236,7 @@ const Home = () => {
                   />
                 </div>
                 <div className={"col-md-4 ticket-details-holder m-hidden"}>
-                  <Ticket ticket={featuredRaffles.number_of_tickets} />
+                  <Ticket ticket={bigRaffle?.number_of_tickets} />
                 </div>
               </div>
             </div>
@@ -233,7 +247,7 @@ const Home = () => {
           className="d-flex justify-content-center header3 mt-5 "
           style={{ height: "100px" }}
         >
-          No featured raffle
+          No Large featured raffle
         </div>
       )}
       <div className="raffle-wrapper ">
@@ -243,22 +257,27 @@ const Home = () => {
             <PageLoader />
           </div>
         ) : (
+          raffles?.length > 0 ? (
           <>
+           <Filter
+            classNames={"mt-6"}
+            endpoint={`/customer/raffle/all?featured=${1}&category=`}
+            sortEndpoint={`/customer/raffle/all?featured=${1}&`}
+            setRaffles={setRaffles}
+            searchEndpoint={`/customer/raffle/all?featured=${1}`}
+          />
+
             <div className={`mt-6 mb-5 card-grid `}>
-              {raffles.length > 0 ? (
-                raffles?.map((raffle, index) => (
+             
+                {raffles?.map((raffle, index) => (
                   <RaffleCard
                     key={index}
                     raffle={raffle}
                     ticketclassName={"m-justify-content-center"}
                     getRaffles={getRaffles}
                   />
-                ))
-              ) : (
-                <div className="d-flex justify-content-center fw-500 fs-20">
-                  {/* Opsss! there happened to be no data at the moment */}
-                </div>
-              )}
+                ))}
+             
             </div>
             {total > perpage && (
               <div className="d-flex justify-content-center">
@@ -272,6 +291,11 @@ const Home = () => {
               </div>
             )}
           </>
+          ): (
+            <div className="d-flex justify-content-center mt-5 fw-500 fs-20">
+             No Featured Raffle
+            </div>
+          )
         )}
       </div>
       <div className={"mt-6  m-background"}>
