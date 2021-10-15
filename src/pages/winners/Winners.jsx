@@ -30,6 +30,13 @@ const Winners = () => {
   }, []);
 
   if (loading) return <PageLoader />;
+
+
+  if(winners.length < 1){
+    return(<div className="d-flex align-items-center justify-content-center">
+      <Empty/>
+    </div>)
+  }
   return (
     <div className="height-100vh  aligin-items-center justify-content-center mt-3">
       {/* <Empty/> */}

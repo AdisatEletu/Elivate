@@ -261,7 +261,7 @@ const Home = () => {
                     handleEnterRaffle={handleEnterRaffle}
                     handleAddWatchlist={handleAddWatchlist}
                     fullwidth
-                    status={featuredRaffles.status}
+                    status={featuredRaffles?.status}
                   />
                 </div>
                 <div className={"col-md-4 ticket-details-holder m-hidden"}>
