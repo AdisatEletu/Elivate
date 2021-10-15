@@ -37,13 +37,17 @@ const setInterceptor = async (axiosLib) => {
       return response;
     },
     (error) => {
+      console.log(error.response?.data?.message, {error})
       const status = error.response.status;
-      if (status === 401 && !window.location.href.includes("/login")) {
-        localStorage.removeItem('user');
-        localStorage.removeItem('token');
-        window.location.href = "/login";
-        logoutUser();
+      if(status === 401 && error.response?.message?.includes('Please verify your phone number. A code has been sent.')){
+        window.location.href = "/phone_update";
       }
+      // if (status === 401 && !window.location.href.includes("/login")) {
+      //   localStorage.removeItem('user');
+      //   localStorage.removeItem('token');
+      //   window.location.href = "/login";
+      //   logoutUser();
+      // }
       return Promise.reject(error);
     }
   );

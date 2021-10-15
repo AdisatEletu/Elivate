@@ -3,6 +3,7 @@ import {
   DONE_LOGGING_IN,
   SET_USER,
   LOGOUT_USER,
+  PHONE_NOT_VERIFIED,
 } from "../types";
 import { doAlert } from "../../components/alert/AlertComponent";
 import { postRequest, getRequest } from "../../helper/request";
@@ -24,11 +25,23 @@ export const loginUser = (email, password) => async (dispatch) => {
       localStorage.user = JSON.stringify(data);
       doAlert("successfully logged in");
       window.location.href = "/";
-    }else{
+    }else if(!success && data){
+      
+      return localStorage.setItem('social_email', 'data.email')
+      dispatch({ type: PHONE_NOT_VERIFIED });
+      dispatch({ type: DONE_LOGGING_IN });
+    }else {
+      if(data){
+        return localStorage.setItem('social_email', "data.email")
+      }
       doAlert(error.response.data.message);
       dispatch({ type: DONE_LOGGING_IN });
     }
   } catch (e) {
+    const data = e.response.data?.data
+    if(e.response.data.data){
+      return localStorage.setItem('social_email', "data.email")
+    }
     dispatch({ type: DONE_LOGGING_IN });
     handleError(e);
   }

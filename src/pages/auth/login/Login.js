@@ -9,14 +9,18 @@ import ForgotPassword from "./ForgotPassword";
 import axios from "axios";
 
 import { loginUser } from "../../../redux/actions/authActions";
+import { Modal } from "react-bootstrap";
+import PhoneNumberUpdate from "../signup/PhoneNumberUpdate";
 
 const Login = (props) => {
   const [formState, setFormState] = useState();
+  const [show, setShow] = useState(true);
   const [input, setInput] = useState({
     email: "".trim(),
     password: "",
   });
 
+  
   const handleChange = (e) => {
     setInput({
       ...input,
@@ -132,6 +136,10 @@ const Login = (props) => {
               </div>
             </div>
           </div>
+
+          <Modal visible={show} footer={null} onCancel={()=>setShow(false)}>
+            <PhoneNumberUpdate/>
+          </Modal>
         </div>
       )}
     </>

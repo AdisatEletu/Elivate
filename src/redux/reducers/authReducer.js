@@ -3,6 +3,9 @@ import {
   DONE_LOGGING_IN,
   SET_USER,
   LOGOUT_USER,
+ PHONE_NOT_VERIFIED,
+ PHONE_VERIFIED
+       
 } from "../types";
 
 const initialState = {
@@ -19,9 +22,13 @@ const auth = (state = initialState, action) => {
       return { ...state, isLoggingIn: false };
     case SET_USER:
       return { ...state, user: action.payload, isAuthenticated: true };
+    case PHONE_NOT_VERIFIED:
+      return { ...state, verified_number: false };
+    case PHONE_VERIFIED:
+      return { ...state, verified_number: true };
     case LOGOUT_USER:
-      localStorage.removeItem('user');
-      localStorage.removeItem('token');
+      localStorage.removeItem("user");
+      localStorage.removeItem("token");
       return { ...state, user: {}, isAuthenticated: false };
     default:
       return state;

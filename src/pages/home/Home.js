@@ -30,6 +30,8 @@ const Home = () => {
   const { winners } = useWinners();
   //State
   const [raffles, setRaffles] = useState([]);
+  const [banners, setBanners] = useState([]);
+  const [isLoadingBanner, setIsLoadingBanner] = useState(true);
   const [featuredRaffles, setFeaturedRaffles] = useState({});
   const [isLoading, setIsLoading] = useState(true);
   const [isLoadingBigRaffle, setIsLoadingBigRaffle] = useState(true);
@@ -93,18 +95,20 @@ const Home = () => {
     }
   };
 
-  const getBigFeatured =async()=>{
+  const getBigFeatured = async () => {
     try {
-      setIsLoadingBigRaffle(true)
-      const {data, success} = await getRequest(`/customer/raffle/big-featured`);
-      if(success){
-        setBigRaffle(data)
+      setIsLoadingBigRaffle(true);
+      const { data, success } = await getRequest(
+        `/customer/raffle/big-featured`
+      );
+      if (success) {
+        setBigRaffle(data);
       }
-      setIsLoadingBigRaffle(false)
+      setIsLoadingBigRaffle(false);
     } catch (error) {
-      setIsLoadingBigRaffle(false)
+      setIsLoadingBigRaffle(false);
     }
-  }
+  };
 
   const handleRemoveWatchlist = async () => {
     try {
@@ -121,6 +125,19 @@ const Home = () => {
       setRemoving(false);
     } catch (e) {
       handleError(e);
+    }
+  };
+
+  const getBanner = async () => {
+    try {
+      setIsLoadingBanner(true);
+      const { data, success } = await getRequest(`/admin/banners/active`);
+      if (success) {
+        setBanners(data);
+      }
+      setIsLoadingBanner(false);
+    } catch (error) {
+      setIsLoadingBanner(false);
     }
   };
 
@@ -149,27 +166,42 @@ const Home = () => {
 
   useEffect(() => {
     getBigFeatured();
+    getBanner();
   }, []);
+
+  console.log({ banners });
+
+  if (isLoadingBanner) {
+    return (
+      <div className="d-flex align-items-center fullwidth mt-6">
+        <PageLoader />
+      </div>
+    );
+  }
 
   return (
     <div className="">
       <Carousel autoPlay={true} infiniteLoop swipeable showStatus={false}>
-        <div className={"homepage-banner-featured  banner"}>
-          <img
-            src={require("../../assets/Ebanner(1272x534)_01.jpg")}
-            alt="alt banner"
-            style={{ objectFit: "cover", height: "100%" }}
-            className="fullwidth"
-          />
-        </div>
-        <div className={"homepage-banner-featured  banner"}>
-          <img
-            src={require("../../assets/Ebanner(1272x534)_01.jpg")}
-            alt="alt banner"
-            style={{ objectFit: "cover", height: "100%" }}
-            className="fullwidth"
-          />
-        </div>
+        {banners.length > 0 ? 
+        banners?.map((banner, index) => (
+          <div className={"homepage-banner-featured  banner"}>
+            <img
+              src={banner}
+              alt="banner"
+              style={{ objectFit: "cover", height: "535px" }}
+              className="fullwidth"
+            />
+          </div>
+        )):  <div className={"homepage-banner-featured  banner"}>
+        <img
+          src={require("../../assets/Ebanner(1272x534)_01.jpg")}
+          alt="alt banner"
+          style={{ objectFit: "cover", height: "100%" }}
+          className="fullwidth"
+        />
+      </div>}
+
+       
       </Carousel>
 
       {/* <Banner data={raffles} /> */}
@@ -180,7 +212,6 @@ const Home = () => {
         ""
       ) : bigRaffle ? (
         <>
-         
           <div className={"mt-3 "}>
             <div
               className={"homepage-featured "}
@@ -200,9 +231,7 @@ const Home = () => {
                     "col-md-4  m-flex flex-column m-p-2 justify-content-center"
                   }
                 >
-                  <div className={"title1 white-color"}>
-                    {bigRaffle?.name}
-                  </div>
+                  <div className={"title1 white-color"}>{bigRaffle?.name}</div>
                   <div className={"paragraph off-white-color"}>
                     {bigRaffle?.description}
                   </div>
@@ -256,28 +285,25 @@ const Home = () => {
           <div className="d-flex col-md-12 mb-5  justify-content-center">
             <PageLoader />
           </div>
-        ) : (
-          raffles?.length > 0 ? (
+        ) : raffles?.length > 0 ? (
           <>
-           <Filter
-            classNames={"mt-6"}
-            endpoint={`/customer/raffle/all?featured=${1}&category=`}
-            sortEndpoint={`/customer/raffle/all?featured=${1}&`}
-            setRaffles={setRaffles}
-            searchEndpoint={`/customer/raffle/all?featured=${1}`}
-          />
+            <Filter
+              classNames={"mt-6"}
+              endpoint={`/customer/raffle/all?featured=${1}&category=`}
+              sortEndpoint={`/customer/raffle/all?featured=${1}&`}
+              setRaffles={setRaffles}
+              searchEndpoint={`/customer/raffle/all?featured=${1}`}
+            />
 
             <div className={`mt-6 mb-5 card-grid `}>
-             
-                {raffles?.map((raffle, index) => (
-                  <RaffleCard
-                    key={index}
-                    raffle={raffle}
-                    ticketclassName={"m-justify-content-center"}
-                    getRaffles={getRaffles}
-                  />
-                ))}
-             
+              {raffles?.map((raffle, index) => (
+                <RaffleCard
+                  key={index}
+                  raffle={raffle}
+                  ticketclassName={"m-justify-content-center"}
+                  getRaffles={getRaffles}
+                />
+              ))}
             </div>
             {total > perpage && (
               <div className="d-flex justify-content-center">
@@ -291,11 +317,10 @@ const Home = () => {
               </div>
             )}
           </>
-          ): (
-            <div className="d-flex justify-content-center mt-5 fw-500 fs-20">
-             No Featured Raffle
-            </div>
-          )
+        ) : (
+          <div className="d-flex justify-content-center mt-5 fw-500 fs-20">
+            No Featured Raffle
+          </div>
         )}
       </div>
       <div className={"mt-6  m-background"}>
